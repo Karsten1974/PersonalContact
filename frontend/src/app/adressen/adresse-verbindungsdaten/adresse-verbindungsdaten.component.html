@@ -1,0 +1,21 @@
+<div class="ui raised segment">
+  <label class="ui grey label">Verbindunsdaten:</label>
+  <form class="ui form" [formGroup]="verbindungsdatenForm">
+
+    <div formArrayName="verbindungsdaten">
+    <div class="fields" *ngFor="let vdItem of controls; let i = index" [formGroupName]="i">
+
+      <div class="three wide field">
+        <select class="ui compact selection dropdown" formControlName="verbindungsdatenArtUUID">
+          <option *ngFor="let a of verbindungsdatenArten" [value]="a.id">{{ a.bezeichnung }}</option>
+        </select>
+      </div>
+      <div class="thirteen wide field">
+        <input type="text" formControlName="verbindungsdaten" placeholder="Nr">
+      </div>
+
+    </div>
+    </div>
+
+  </form>
+</div>

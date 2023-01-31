@@ -1,0 +1,5 @@
+<div class="ui two item menu">
+  <a class="item" [class.active]="selectedTab === eTabHeader.Adressen" (click)="onTabSelect(eTabHeader.Adressen)"
+     [routerLink]="['/adressen']">Adressen</a>
+  <a class="item" [class.active]="selectedTab === eTabHeader.Stammdaten" (click)="onTabSelect(eTabHeader.Stammdaten)">Stammdaten</a>
+</div>

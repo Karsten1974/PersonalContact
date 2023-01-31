@@ -1,0 +1,30 @@
+<div class="ui raised segment">
+  <label class="ui grey label">Adressen:</label>
+  <form class="ui form" [formGroup]="adressenForm">
+
+    <div class="field">
+      <label>Adresse</label>
+      <select class="ui compact selection dropdown" formControlName="adrUUID" (click)="adresseCB()">
+        <option *ngFor="let a of adressen" [value]="a.id">{{ a.bezeichnung }}</option>
+      </select>
+    </div>
+
+    <div formGroupName="adresse">
+
+    <div class="field">
+      <label>Strasse</label>
+      <input type="text" formControlName="strasse" placeholder="Strasse">
+    </div>
+    <div class="fields">
+      <div class="three wide field">
+        <label>Plz</label>
+        <input type="text" formControlName="plz" placeholder="Plz">
+      </div>
+      <div class="thirteen wide field">
+        <label>Ort</label>
+        <input type="text" formControlName="ort" placeholder="Ort">
+      </div>
+    </div>
+    </div>
+  </form>
+</div>

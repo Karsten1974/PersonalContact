@@ -1,0 +1,11 @@
+<div class="ui raised segment">
+  <div class="ui segment">
+    <div class="ui middle aligned selection divided list" *ngFor="let a of adressenFound">
+      <div class="item">
+        <div class="content">
+          <a class="header" [routerLink]="['/adressen/', a.id]">{{ a.name }}, {{ a.vorname }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
