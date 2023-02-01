@@ -1,6 +1,6 @@
-package com.percon.rest;
+package com.percon.presentation.endpoint;
 
-import com.percon.data.Branche;
+import com.percon.dataaccess.model.Branche;
 import com.percon.service.IBrancheService;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.percon.rest.transfer.BrancheCreateView;
-import com.percon.rest.transfer.BrancheMapper;
-import com.percon.rest.transfer.BrancheView;
+import com.percon.presentation.dto.BrancheCreateView;
+import com.percon.presentation.mapper.BrancheMapper;
+import com.percon.presentation.dto.BrancheView;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

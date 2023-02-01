@@ -1,4 +1,4 @@
-package com.percon.data;
+package com.percon.dataaccess.model;
 
 import java.util.UUID;
 import javax.persistence.Column;

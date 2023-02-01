@@ -1,7 +1,7 @@
 package com.percon.service;
 
-import com.percon.data.Adresse;
-import com.percon.data.repository.AdresseRepository;
+import com.percon.dataaccess.model.Adresse;
+import com.percon.dataaccess.repository.AdresseRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

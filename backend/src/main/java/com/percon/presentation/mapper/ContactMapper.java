@@ -1,6 +1,8 @@
-package com.percon.rest.transfer;
+package com.percon.presentation.mapper;
 
-import com.percon.data.Contact;
+import com.percon.dataaccess.model.Contact;
+import com.percon.presentation.dto.ContactCreateView;
+import com.percon.presentation.dto.ContactView;
 
 public class ContactMapper {
     

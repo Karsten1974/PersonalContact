@@ -1,6 +1,6 @@
-package com.percon.data.repository;
+package com.percon.dataaccess.repository;
 
-import com.percon.data.Adresse;
+import com.percon.dataaccess.model.Adresse;
 import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

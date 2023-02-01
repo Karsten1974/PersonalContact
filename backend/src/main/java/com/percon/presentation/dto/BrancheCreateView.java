@@ -1,4 +1,4 @@
-package com.percon.rest.transfer;
+package com.percon.presentation.dto;
 
 import javax.validation.constraints.NotNull;
 

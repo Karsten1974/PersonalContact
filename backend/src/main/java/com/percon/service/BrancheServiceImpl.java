@@ -1,7 +1,7 @@
 package com.percon.service;
 
-import com.percon.data.Branche;
-import com.percon.data.repository.BrancheRepository;
+import com.percon.dataaccess.model.Branche;
+import com.percon.dataaccess.repository.BrancheRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ public class BrancheServiceImpl implements IBrancheService {
     private BrancheRepository brancheRepository;
 
     /* (non-Javadoc)
-     * @see com.percon.service.IBrancheService#save(com.percon.data.Branche)
+     * @see com.percon.service.IBrancheService#save(com.percon.dataaccess.model.Branche)
      */
     @Override
     public Branche save(Branche branche) {

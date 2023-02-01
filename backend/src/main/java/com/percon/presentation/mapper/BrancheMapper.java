@@ -1,6 +1,8 @@
-package com.percon.rest.transfer;
+package com.percon.presentation.mapper;
 
-import com.percon.data.Branche;
+import com.percon.dataaccess.model.Branche;
+import com.percon.presentation.dto.BrancheCreateView;
+import com.percon.presentation.dto.BrancheView;
 
 public class BrancheMapper {
     

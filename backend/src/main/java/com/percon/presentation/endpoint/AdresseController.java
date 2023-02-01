@@ -1,10 +1,10 @@
-package com.percon.rest;
+package com.percon.presentation.endpoint;
 
-import com.percon.data.Adresse;
-import com.percon.rest.transfer.AdresseCreateView;
-import com.percon.rest.transfer.AdresseView;
-import com.percon.rest.transfer.AdresseBezeichnungView;
-import com.percon.rest.transfer.AdresseMapper;
+import com.percon.dataaccess.model.Adresse;
+import com.percon.presentation.dto.AdresseCreateView;
+import com.percon.presentation.dto.AdresseView;
+import com.percon.presentation.dto.AdresseBezeichnungView;
+import com.percon.presentation.mapper.AdresseMapper;
 import com.percon.service.IAdresseService;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.percon.rest;
+package com.percon.presentation.endpoint;
 
-import com.percon.data.Branche;
-import com.percon.data.Contact;
-import com.percon.rest.transfer.ContactCreateView;
-import com.percon.rest.transfer.ContactView;
+import com.percon.dataaccess.model.Branche;
+import com.percon.dataaccess.model.Contact;
+import com.percon.presentation.dto.ContactCreateView;
+import com.percon.presentation.dto.ContactView;
 import com.percon.service.IBrancheService;
 import com.percon.service.IContactService;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.percon.rest.transfer.ContactMapper;
+import com.percon.presentation.mapper.ContactMapper;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

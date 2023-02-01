@@ -1,6 +1,6 @@
 package com.percon.service;
 
-import com.percon.data.Adresse;
+import com.percon.dataaccess.model.Adresse;
 import java.util.List;
 
 public interface IAdresseService {

@@ -1,6 +1,8 @@
-package com.percon.rest.transfer;
+package com.percon.presentation.mapper;
 
-import com.percon.data.Adresse;
+import com.percon.dataaccess.model.Adresse;
+import com.percon.presentation.dto.AdresseCreateView;
+import com.percon.presentation.dto.AdresseView;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

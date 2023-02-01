@@ -1,4 +1,4 @@
-package com.percon.rest.transfer;
+package com.percon.presentation.dto;
 
 import java.util.UUID;
 import javax.validation.constraints.NotNull;

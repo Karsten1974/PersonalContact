@@ -8,8 +8,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.percon.data.Contact;
-import com.percon.data.repository.ContactRepository;
+import com.percon.dataaccess.model.Contact;
+import com.percon.dataaccess.repository.ContactRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -20,7 +20,7 @@ public class ContactServiceImpl implements IContactService {
     private ContactRepository contactRepository;
 
     /* (non-Javadoc)
-     * @see com.percon.service.IContactService#save(com.percon.data.Contact)
+     * @see com.percon.service.IContactService#save(com.percon.dataaccess.model.Contact)
      */
     @Override
     public Contact save(Contact contact) {
