@@ -9,7 +9,7 @@ export interface ListItem {
 
 export interface AdresseData {
   version: number;
-  adrUUID?: string;
+  id?: string;
   strasse: string;
   plz: string;
   ort: string;

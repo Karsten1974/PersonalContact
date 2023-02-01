@@ -73,14 +73,14 @@ export class MemoryDataStorage {
     this.adressenList = [
       {
         version: 1,
-        adrUUID: 'ecd63862-39e8-12f4-9c0a-edfcc7612571',
+        id: 'ecd63862-39e8-12f4-9c0a-edfcc7612571',
         strasse: 'Duckstr. 1',
         plz: '23876',
         ort: 'Entenhausen'
       },
       {
         version: 1,
-        adrUUID: 'ecd63862-39e8-42f4-9c0a-edfcc7612572',
+        id: 'ecd63862-39e8-42f4-9c0a-edfcc7612572',
         strasse: 'Dargo 2',
         plz: '23876',
         ort: 'Entenhausen'
@@ -179,7 +179,7 @@ export class MemoryDataStorage {
 
   getAdresse(adrUUID: string): Observable<AdresseData> {
     let ret = new Observable<AdresseData>((observer:Subscriber<AdresseData>)  => {
-      let myAdresseData = this.adressenList.find(a => a.adrUUID === adrUUID);
+      let myAdresseData = this.adressenList.find(a => a.id === adrUUID);
       observer.next(myAdresseData);
     });
 

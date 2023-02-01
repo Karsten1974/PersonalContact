@@ -2,7 +2,7 @@ import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ListItem, ContactData } from '../shared/data';
+import { ListItem, ContactData, AdresseData } from '../shared/data';
 import { PersonalconDataService } from '../shared/personalcon-data.service';
 import { AdressenUpdate } from './adressen-update.subject';
 
@@ -20,7 +20,7 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
     bemerkung: [''],
     todesprio: "1",
     todesBemerkung: [''],
-    adrUUID: '1',
+    adrUUID: '',
     verbindungsdatenArt: '2',
     adresse: this.fb.group( {
 
@@ -45,6 +45,14 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
     todesBemerkung: ''
   };
 
+  adresseLoaded: AdresseData = {
+    version: 0,
+    id: '',
+    strasse: '',
+    plz: '',
+    ort: ''
+  }
+
   branchen: ListItem[] = [];
   adressen: ListItem[] = [];
   verbindungsdatenArten: ListItem[] = [];
@@ -57,7 +65,7 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(private fb: FormBuilder, private adressenUpdate: AdressenUpdate, private ds: PersonalconDataService,
               private route: ActivatedRoute) {
-    this.subscriptionAdresse = this.adressenUpdate.adresseChanged$.subscribe(adrData => {this.adressenForm.get('adresse')?.patchValue(adrData)});
+    this.subscriptionAdresse = this.adressenUpdate.adresseChanged$.subscribe(adrData => {this.adressenForm.get('adresse')?.patchValue(adrData); this.adresseLoaded = adrData});
   }
 
   ngOnChanges() {
@@ -89,6 +97,13 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
         todesprio: "1",
         todesBemerkung: ''
       };
+      this.adresseLoaded = {
+        version: 0,
+        id: '',
+        strasse: '',
+        plz: '',
+        ort: ''
+      }
     }
     console.log("contactUUID:"+this.contactUUID);
     this.initForm();
@@ -106,10 +121,15 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
 
       this.ds.getContact(this.contactUUID).subscribe(tb => {
         this.contactLoaded = tb;
-        this.adressenForm.patchValue(tb);
-        this.ds.getAdresse(tb.adrUUID).subscribe(adr => {
-          this.adressenUpdate.adresseChanged$.next(adr); // Daten für Adressen-Panel
-        });
+
+        if (tb.adrUUID == null) { tb.adrUUID = '';}
+        this.adressenForm.patchValue(tb)
+
+        if (tb.adrUUID != '') {
+          this.ds.getAdresse(tb.adrUUID).subscribe(adr => {
+            this.adressenUpdate.adresseChanged$.next(adr); // Daten für Adressen-Panel
+          });
+        }
       });
     }
 
@@ -135,6 +155,17 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
     console.log('adressen:'+formValue['adrUUID']);
 
     const contact: ContactData = {...formValue, version: this.contactLoaded.version, id: this.contactLoaded.id};
+
+    if (contact.adrUUID == '') {
+      console.log('AdrUUID is empty');
+      const adresse: AdresseData = {...formValue['adresse']};
+      this.ds.createAdresse(adresse).subscribe();
+    } else {
+      console.log('AdrUUID is not empty');
+      const adresse: AdresseData = {...formValue['adresse'], version: this.adresseLoaded.version, id: this.adresseLoaded.id};
+      this.ds.updateAdresse(adresse).subscribe();
+    }
+
     this.ds.updateContact(contact).subscribe();
   }
 

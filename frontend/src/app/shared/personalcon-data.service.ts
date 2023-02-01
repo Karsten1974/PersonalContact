@@ -30,7 +30,15 @@ export class PersonalconDataService {
   }
 
   getAdresse(adrUUID: string): Observable<AdresseData> {
-    return this.dataStorage.getAdresse(adrUUID);
+    return this.http.get<AdresseData>(`${this.api}/adresse/${adrUUID}`);
+  }
+
+  createAdresse(adresse: AdresseData): Observable<AdresseData> {
+    return this.http.post<AdresseData>(`${this.api}/adresse`, adresse);
+  }
+
+  updateAdresse(adresse: AdresseData): Observable<any> {
+    return this.http.put(`${this.api}/adresse`, adresse, {responseType: 'text'});
   }
 
   getContacts(): Observable<ContactData[]> {
