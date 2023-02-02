@@ -11,10 +11,12 @@ import { PersonalconDataService } from '../../shared/personalcon-data.service';
 })
 export class AdresseDialogNeuComponent implements OnInit {
   adressenForm: FormGroup = this.fb.group({
-    brancheUUID: '1',
+    brancheUUID: '',
     name: [''],
     vorname: ['']
   });
+
+  brancheNeu = true;
 
   @Output() close = new EventEmitter<void>();
   @Input() branchen: ListItem[] = [];
@@ -39,6 +41,14 @@ export class AdresseDialogNeuComponent implements OnInit {
 
   onClose() {
     this.close.emit();
+  }
+
+  onBranche() {
+    const formValue = this.adressenForm.value;
+    const contact: ContactData = {...formValue};
+    if (contact.brancheUUID != '') {
+      this.brancheNeu = false;
+    }
   }
 
 }

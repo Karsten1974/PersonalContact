@@ -40,7 +40,7 @@
         </div>
 
         <br>
-        <button class="ui button" type="submit" >Speichern</button>
+        <button class="ui button" type="submit" [disabled]="!this.editMode">Speichern</button>
         <button class="ui button" type="button" (click)="onNeu()" >Neu</button>
       </form>
     </div>

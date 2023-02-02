@@ -6,7 +6,7 @@
       <!--div class="ui segment"-->
       <div class="field">
         <label>Branche</label>
-        <select class="ui compact selection dropdown" formControlName="brancheUUID">
+        <select class="ui compact selection dropdown" formControlName="brancheUUID" (click)="onBranche()">
           <option *ngFor="let a of branchen" [value]="a.id">{{ a.bezeichnung }}</option>
         </select>
       </div>
@@ -43,7 +43,7 @@
       </div-->
 
       <div style="text-align: right">
-        <button class="ui button" type="submit" >Speichern</button>
+        <button class="ui button" type="submit" [disabled]="this.brancheNeu" >Speichern</button>
         <button class="ui button" type="button" (click)="onClose()">Close</button>
       </div>
 

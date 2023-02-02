@@ -24,11 +24,13 @@ export class AdresseAdressenComponent implements OnInit {
     let adressenUUID = formValue['adrUUID'];
     console.log('AdresseAdressenComponent.adresseCB:' + adressenUUID);
 
-    let adrData: AdresseData = {strasse:'', id:'', version:0, ort:'',plz:'' };
-    this.ds.getAdresse(adressenUUID).subscribe(adr => {
-      this.adressenUpdate.adresseChanged$.next(adr);
-      adrData = adr;
-    });
+    if (adressenUUID != '') {
+      let adrData: AdresseData = {strasse:'', id:'', version:0, ort:'',plz:'' };
+      this.ds.getAdresse(adressenUUID).subscribe(adr => {
+        this.adressenUpdate.adresseChanged$.next(adr);
+        adrData = adr;
+      });
+    }
   }
 
 }
