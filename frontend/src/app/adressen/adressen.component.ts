@@ -159,14 +159,21 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
     if (contact.adrUUID == '') {
       console.log('AdrUUID is empty');
       const adresse: AdresseData = {...formValue['adresse']};
-      this.ds.createAdresse(adresse).subscribe(adr => {
-        if (adr.id != null) {
-          contact.adrUUID = adr.id;
-        }
 
+      if (adresse.strasse != '') {
+        this.ds.createAdresse(adresse).subscribe(adr => {
+          if (adr.id != null) {
+            contact.adrUUID = adr.id;
+          }
+
+          this.ds.updateContact(contact).subscribe();
+          this.router.navigate(['/adressen/', contact.id]); // sollte in subscribe rein
+        });
+      } else {
         this.ds.updateContact(contact).subscribe();
         this.router.navigate(['/adressen/', contact.id]); // sollte in subscribe rein
-      });
+      }
+
     } else {
       console.log('AdrUUID is not empty');
       const adresse: AdresseData = {...formValue['adresse'], version: this.adresseLoaded.version, id: this.adresseLoaded.id};

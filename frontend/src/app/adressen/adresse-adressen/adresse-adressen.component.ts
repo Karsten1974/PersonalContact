@@ -33,4 +33,9 @@ export class AdresseAdressenComponent implements OnInit {
     }
   }
 
+  onNeuAdresse() {
+    this.adressenForm.get('adrUUID')?.patchValue('');
+    let adrData: AdresseData = {strasse:'', id:'', version:0, ort:'',plz:'' };
+    this.adressenUpdate.adresseChanged$.next(adrData); // Daten für Adressen-Panel
+  }
 }
