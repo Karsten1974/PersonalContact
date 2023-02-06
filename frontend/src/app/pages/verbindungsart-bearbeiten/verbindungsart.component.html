@@ -1,0 +1,27 @@
+<div class="ui raised segment">
+
+  <div class="ui two column grid">
+
+    <div class="three wide column">
+      <verbindungsart-liste [verbindungsarten]="verbindungsarten"></verbindungsart-liste>
+    </div>
+
+    <div class="thirteen wide column">
+      <form class="ui form" (ngSubmit)="submitForm()">
+        <div class="ui two column grid">
+          <div class="column">
+            <verbindungsart-bearbeiten [verbindungsartForm]="verbindungsartForm"></verbindungsart-bearbeiten>
+          </div>
+        </div>
+
+        <br>
+        <button class="ui button" type="submit">Speichern</button>
+        <button class="ui button" type="button" (click)="onNeu()">Neu</button>
+        <button class="ui button" type="button" (click)="onDel()" [disabled]="!this.editMode">Del</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+

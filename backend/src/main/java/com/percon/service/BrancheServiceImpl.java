@@ -46,9 +46,8 @@ public class BrancheServiceImpl implements IBrancheService {
      * @see com.percon.service.IBrancheService#delete(java.lang.Long)
      */
     @Override
-    public void delete(Long id) {
-        // TODO Auto-generated method stub
-
+    public void delete(UUID id) {
+        brancheRepository.deleteById(id);
     }
 
     /* (non-Javadoc)

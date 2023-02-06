@@ -16,6 +16,12 @@ import { AdresseVerbindungsdatenComponent } from './adressen/adresse-verbindungs
 import { AdresseBeziehungenComponent } from './adressen/adresse-beziehungen/adresse-beziehungen.component';
 import { AdresseSuchenComponent } from './adressen/adresse-suchen/adresse-suchen.component';
 import { AdresseDialogNeuComponent } from './adressen/adresse-dialog-neu/adresse-dialog-neu.component';
+import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
+import { BrancheBearbeitenComponent } from './pages/branche-bearbeiten/components/branche-bearbeiten/branche-bearbeiten.component';
+import { BrancheListeComponent } from './pages/branche-bearbeiten/components/branche-liste/branche-liste.component';
+import { VerbindungsartBearbeitenComponent } from './pages/verbindungsart-bearbeiten/components/verbindungsart-bearbeiten/verbindungsart-bearbeiten.component';
+import { VerbindungsartListeComponent } from './pages/verbindungsart-bearbeiten/components/verbindungsart-liste/verbindungsart-liste.component';
+import { VerbindungsartComponent } from './pages/verbindungsart-bearbeiten/verbindungsart.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,13 @@ import { AdresseDialogNeuComponent } from './adressen/adresse-dialog-neu/adresse
     AdresseVerbindungsdatenComponent,
     AdresseBeziehungenComponent,
     AdresseSuchenComponent,
-    AdresseDialogNeuComponent
+    AdresseDialogNeuComponent,
+    BrancheComponent,
+    BrancheBearbeitenComponent,
+    BrancheListeComponent,
+    VerbindungsartBearbeitenComponent,
+    VerbindungsartListeComponent,
+    VerbindungsartComponent
   ],
   imports: [
     HttpClientModule,

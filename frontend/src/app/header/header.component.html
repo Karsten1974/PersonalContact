@@ -1,5 +1,8 @@
-<div class="ui two item menu">
+<div class="ui three item menu">
   <a class="item" [class.active]="selectedTab === eTabHeader.Adressen" (click)="onTabSelect(eTabHeader.Adressen)"
      [routerLink]="['/adressen']">Adressen</a>
-  <a class="item" [class.active]="selectedTab === eTabHeader.Stammdaten" (click)="onTabSelect(eTabHeader.Stammdaten)">Stammdaten</a>
+  <a class="item" [class.active]="selectedTab === eTabHeader.Branchen" (click)="onTabSelect(eTabHeader.Branchen)"
+     [routerLink]="['/branchen']">Branchen</a>
+  <a class="item" [class.active]="selectedTab === eTabHeader.Verbindungsarten" (click)="onTabSelect(eTabHeader.Verbindungsarten)"
+     [routerLink]="['/verbindungsart']">Verbindungsarten</a>
 </div>

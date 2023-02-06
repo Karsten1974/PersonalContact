@@ -22,7 +22,7 @@ export class PersonalconDataService {
   }
 
   getVerbindungsdatenArten(): Observable<ListItem[]> {
-    return this.dataStorage.getVerbindungsdatenArten();
+    return this.http.get<ListItem[]>(`${this.api}/verbindungsarten`);
   }
 
   getAdressen(): Observable<ListItem[]> {

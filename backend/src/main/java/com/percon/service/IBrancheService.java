@@ -8,7 +8,7 @@ import com.percon.dataaccess.model.Branche;
 public interface IBrancheService {
     Branche save(Branche branche);
     Branche load(UUID id);
-    void delete(Long id);
+    void delete(UUID id);
     Branche findByBrancheUUID(UUID brancheUUID);
     List<Branche> getBranche();
 }
