@@ -39,39 +39,35 @@ public class ContactController {
         List<ContactView> viewList = new ArrayList<ContactView>();
         
         List<Contact> contactList = contactService.getContact();
-        contactList.stream().map(t -> ContactMapper.toView(t)).forEach(viewList::add);
+        contactList.stream().map(t -> ContactMapper.INSTANCE.toView(t)).forEach(viewList::add);
         
         return viewList;
     }
     
     @PostMapping(path = "contact", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ContactView create(@Valid @RequestBody ContactCreateView view) {
-        Contact contact = new Contact();
-        contact.setId(null); //damit Neu Anlage
-        contact.setVersion(0);
+        Contact contact = ContactMapper.INSTANCE.toEntity(view);
         
         Branche branche = brancheService.load(view.getBrancheUUID());
         if (branche != null) {
             contact.setBranche(branche);
         }
         
-        ContactMapper.updateFromView(view, contact);
-        
-        return ContactMapper.toView(contactService.save(contact));
+        return ContactMapper.INSTANCE.toView(contactService.save(contact));
     }
     
     @PutMapping("contact")
     public void update(@Valid @RequestBody ContactView view) {
         Contact contact = contactService.load(view.getId());
         if (contact != null) {
+            Contact cct = ContactMapper.INSTANCE.toEntity(view);
+                    
             Branche branche = brancheService.load(view.getBrancheUUID());
             if (branche != null) {
-                contact.setBranche(branche);
+                cct.setBranche(branche);
             }
             
-            ContactMapper.updateFromView(view, contact);
-            
-            contactService.save(contact);
+            contactService.save(cct);
         }
     }
     
@@ -79,7 +75,7 @@ public class ContactController {
     public ContactView getContact(@PathVariable(name = "contactID", required = true) UUID contactID) {
         Contact contact = contactService.load(contactID);
         if (contact != null) {
-            return ContactMapper.toView(contact);
+            return ContactMapper.INSTANCE.toView(contact);
         }
         
         return null;
