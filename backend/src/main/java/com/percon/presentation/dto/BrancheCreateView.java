@@ -2,27 +2,13 @@ package com.percon.presentation.dto;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BrancheCreateView {
     
     @NotNull
     private String bezeichnung;
-    
-    public BrancheCreateView() {
-    }
-
-    /**
-     * @return the bezeichnung
-     */
-    public String getBezeichnung() {
-        return bezeichnung;
-    }
-
-    /**
-     * @param bezeichnung the bezeichnung to set
-     */
-    public void setBezeichnung(String bezeichnung) {
-        this.bezeichnung = bezeichnung;
-    }
-    
-
 }

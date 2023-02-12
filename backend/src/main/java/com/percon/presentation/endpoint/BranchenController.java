@@ -35,7 +35,7 @@ public class BranchenController {
         List<BrancheView> viewList = new ArrayList<BrancheView>();
         
         List<Branche> brancheList = brancheService.getBranche();
-        brancheList.stream().map(t -> BrancheMapper.toView(t)).forEach(viewList::add);
+        brancheList.stream().map(t -> BrancheMapper.INSTANCE.toView(t)).forEach(viewList::add);
         
         return viewList;
     }
@@ -44,9 +44,9 @@ public class BranchenController {
     public void update(@Valid @RequestBody BrancheView view) {
         Branche branche = brancheService.load(view.getId());
         if (branche != null) {
-            BrancheMapper.updateFromView(view, branche);
+            Branche bra = BrancheMapper.INSTANCE.toEntity(view);
 
-            brancheService.save(branche);
+            brancheService.save(bra);
         }
     }
 
@@ -54,7 +54,7 @@ public class BranchenController {
     public BrancheView getBranche(@PathVariable(name = "brancheUUID", required = true) UUID brancheUUID) {
         Branche branche = brancheService.load(brancheUUID);
         if (branche != null) {
-            return BrancheMapper.toView(branche);
+            return BrancheMapper.INSTANCE.toView(branche);
         }
 
         return null;
@@ -67,13 +67,9 @@ public class BranchenController {
     
     @PostMapping(path = "branche", consumes = { MediaType.APPLICATION_JSON_VALUE})
     public BrancheView create(@Valid @RequestBody BrancheCreateView view) {
-        Branche branche = new Branche();
-        branche.setId(null); //damit Neu Anlage
-        branche.setVersion(0);
+        Branche branche = BrancheMapper.INSTANCE.toEntity(view);
         
-        BrancheMapper.updateFromView(view, branche);
-        
-        return BrancheMapper.toView(brancheService.save(branche));
+        return BrancheMapper.INSTANCE.toView(brancheService.save(branche));
     }
 
 }
