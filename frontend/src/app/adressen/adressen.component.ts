@@ -29,7 +29,6 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
       ort: ''
 
     })
-
   });
 
   contactLoaded: ContactData  = {
@@ -123,7 +122,7 @@ export class AdressenComponent implements OnInit, OnChanges, OnDestroy {
         this.contactLoaded = tb;
 
         if (tb.adrUUID == null) { tb.adrUUID = '';}
-        this.adressenForm.patchValue(tb)
+        this.adressenForm.patchValue(tb);
 
         if (tb.adrUUID != '') {
           this.ds.getAdresse(tb.adrUUID).subscribe(adr => {
