@@ -22,19 +22,19 @@ export class PersonalconDataService {
   }
 
   getAdressen(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/adressenbezeichnungen`);
+    return this.http.get<ListItem[]>(`${this.api}/api/adresse/adressenbezeichnungen`);
   }
 
   getAdresse(adrUUID: string): Observable<AdresseData> {
-    return this.http.get<AdresseData>(`${this.api}/adresse/${adrUUID}`);
+    return this.http.get<AdresseData>(`${this.api}/api/adresse/${adrUUID}`);
   }
 
   createAdresse(adresse: AdresseData): Observable<AdresseData> {
-    return this.http.post<AdresseData>(`${this.api}/adresse`, adresse);
+    return this.http.post<AdresseData>(`${this.api}/api/adresse`, adresse);
   }
 
   updateAdresse(adresse: AdresseData): Observable<any> {
-    return this.http.put(`${this.api}/adresse`, adresse, {responseType: 'text'});
+    return this.http.put(`${this.api}/api/adresse`, adresse, {responseType: 'text'});
   }
 
   getContacts(): Observable<ContactData[]> {

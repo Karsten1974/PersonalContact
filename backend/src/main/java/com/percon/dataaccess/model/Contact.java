@@ -2,8 +2,10 @@ package com.percon.dataaccess.model;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,10 +27,10 @@ public class Contact {
     @Version
     private int version;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="branche_uuid")
     private Branche branche;
-    
+
     private UUID adrUUID;
     
     private UUID verbUUID;

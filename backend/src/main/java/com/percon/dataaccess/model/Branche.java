@@ -22,7 +22,7 @@ public class Branche {
     @Version
     private int version;
     
-    @Column(length = 25)
+    @Column(length = 25, unique = true)
     private String bezeichnung;
     
     public Branche() {

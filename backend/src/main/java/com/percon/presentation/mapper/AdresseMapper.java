@@ -1,8 +1,8 @@
 package com.percon.presentation.mapper;
 
 import com.percon.dataaccess.model.Adresse;
-import com.percon.presentation.dto.AdresseCreateView;
-import com.percon.presentation.dto.AdresseView;
+import com.percon.presentation.dto.AdresseCreateDto;
+import com.percon.presentation.dto.AdresseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,9 +11,9 @@ public interface AdresseMapper {
 
   AdresseMapper INSTANCE = Mappers.getMapper(AdresseMapper.class);
 
-  AdresseView toView(Adresse adresse);
+  AdresseDto toView(Adresse adresse);
 
-  Adresse toEntity(AdresseCreateView view);
+  Adresse toEntity(AdresseCreateDto view);
 
-  Adresse toEntity(AdresseView view);
+  Adresse toEntity(AdresseDto view);
 }
