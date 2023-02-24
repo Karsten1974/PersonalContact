@@ -7,54 +7,54 @@ import { AdresseData, ListItem, ContactData, VerbindungsData } from './data';
   providedIn: 'root'
 })
 export class PersonalconDataService {
-  private api = 'http://localhost:8080';
+  private basePath = '/api';
 
   bVirtDS = true;
 
   constructor(private http: HttpClient) {}
 
   getBranchen(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/branchen`);
+    return this.http.get<ListItem[]>(`${this.basePath}/branche`);
   }
 
   getVerbindungsdatenArten(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/verbindungsarten`);
+    return this.http.get<ListItem[]>(`${this.basePath}/verbindungsart`);
   }
 
   getAdressen(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/api/adresse/adressenbezeichnungen`);
+    return this.http.get<ListItem[]>(`${this.basePath}/adresse/adressenbezeichnungen`);
   }
 
   getAdresse(adrUUID: string): Observable<AdresseData> {
-    return this.http.get<AdresseData>(`${this.api}/api/adresse/${adrUUID}`);
+    return this.http.get<AdresseData>(`${this.basePath}/adresse/${adrUUID}`);
   }
 
   createAdresse(adresse: AdresseData): Observable<AdresseData> {
-    return this.http.post<AdresseData>(`${this.api}/api/adresse`, adresse);
+    return this.http.post<AdresseData>(`${this.basePath}/adresse`, adresse);
   }
 
   updateAdresse(adresse: AdresseData): Observable<any> {
-    return this.http.put(`${this.api}/api/adresse`, adresse, {responseType: 'text'});
+    return this.http.put(`${this.basePath}/adresse`, adresse, {responseType: 'text'});
   }
 
   getContacts(): Observable<ContactData[]> {
-    return this.http.get<ContactData[]>(`${this.api}/contacts`);
+    return this.http.get<ContactData[]>(`${this.basePath}/contact`);
   }
 
   createContact(contact: ContactData): Observable<ContactData> {
-    return this.http.post<ContactData>(`${this.api}/contact`, contact);
+    return this.http.post<ContactData>(`${this.basePath}/contact`, contact);
   }
 
   updateContact(contact: ContactData): Observable<any> {
     console.log('updateContact');
-    return this.http.put(`${this.api}/contact`, contact, {responseType: 'text'});
+    return this.http.put(`${this.basePath}/contact`, contact, {responseType: 'text'});
   }
 
   getContact(contactUUID: string): Observable<ContactData> {
-    return this.http.get<ContactData>(`${this.api}/contact/${contactUUID}`);
+    return this.http.get<ContactData>(`${this.basePath}/contact/${contactUUID}`);
   }
 
   getVerbindungsdaten(contactUUID: string): Observable<VerbindungsData[]> {
-    return this.http.get<VerbindungsData[]>(`${this.api}/verbindungen`);
+    return this.http.get<VerbindungsData[]>(`${this.basePath}/verbindung`);
   }
 }

@@ -1,29 +1,22 @@
 package com.percon.presentation.endpoint;
 
 import com.percon.dataaccess.model.Adresse;
+import com.percon.presentation.dto.AdresseBezeichnungDto;
 import com.percon.presentation.dto.AdresseCreateDto;
 import com.percon.presentation.dto.AdresseDto;
-import com.percon.presentation.dto.AdresseBezeichnungDto;
 import com.percon.presentation.mapper.AdresseMapper;
 import com.percon.service.AdresseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/adresse")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AdresseController {
 
   @Autowired

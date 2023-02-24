@@ -7,28 +7,28 @@ import { ListItem } from '../shared/data';
   providedIn: 'root'
 })
 export class BrancheService {
-  private api = 'http://localhost:8080';
+  private basePath = '/api';
 
   constructor(private http: HttpClient) { }
 
   getBranchen(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/branchen`);
+    return this.http.get<ListItem[]>(`${this.basePath}/branche`);
   }
 
   getBranche(brancheUUI: string): Observable<ListItem> {
-    return this.http.get<ListItem>(`${this.api}/branche/${brancheUUI}`);
+    return this.http.get<ListItem>(`${this.basePath}/branche/${brancheUUI}`);
   }
 
   createBranche(branche: ListItem): Observable<ListItem> {
-    return this.http.post<ListItem>(`${this.api}/branche`, branche);
+    return this.http.post<ListItem>(`${this.basePath}/branche`, branche);
   }
 
   updateBranche(branche: ListItem): Observable<any> {
-    return this.http.put(`${this.api}/branche`, branche, {responseType: 'text'});
+    return this.http.put(`${this.basePath}/branche`, branche, {responseType: 'text'});
   }
 
   deleteBranche(brancheUUI: string): Observable<any> {
-    return this.http.delete(`${this.api}/branche/${brancheUUI}`, {responseType: 'text'});
+    return this.http.delete(`${this.basePath}/branche/${brancheUUI}`, {responseType: 'text'});
   }
 
 }

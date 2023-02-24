@@ -7,27 +7,27 @@ import { ListItem } from '../shared/data';
   providedIn: 'root'
 })
 export class VerbindungsartService {
-  private api = 'http://localhost:8080';
+  private basePath = '/api';
 
   constructor(private http: HttpClient) { }
 
   getVerbindungsarten(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.api}/verbindungsarten`);
+    return this.http.get<ListItem[]>(`${this.basePath}/verbindungsart`);
   }
 
   getVerbindungsart(verbindungsartUUI: string): Observable<ListItem> {
-    return this.http.get<ListItem>(`${this.api}/verbindungsart/${verbindungsartUUI}`);
+    return this.http.get<ListItem>(`${this.basePath}/verbindungsart/${verbindungsartUUI}`);
   }
 
   createVerbindungsart(verbindungsart: ListItem): Observable<ListItem> {
-    return this.http.post<ListItem>(`${this.api}/verbindungsart`, verbindungsart);
+    return this.http.post<ListItem>(`${this.basePath}/verbindungsart`, verbindungsart);
   }
 
   updateVerbindungsart(verbindungsart: ListItem): Observable<any> {
-    return this.http.put(`${this.api}/verbindungsart`, verbindungsart, {responseType: 'text'});
+    return this.http.put(`${this.basePath}/verbindungsart`, verbindungsart, {responseType: 'text'});
   }
 
   deleteVerbindungsart(verbindungsartUUI: string): Observable<any> {
-    return this.http.delete(`${this.api}/verbindungsart/${verbindungsartUUI}`, {responseType: 'text'});
+    return this.http.delete(`${this.basePath}/verbindungsart/${verbindungsartUUI}`, {responseType: 'text'});
   }
 }

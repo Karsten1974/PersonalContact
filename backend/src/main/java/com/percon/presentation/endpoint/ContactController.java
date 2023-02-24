@@ -4,28 +4,20 @@ import com.percon.dataaccess.model.Branche;
 import com.percon.dataaccess.model.Contact;
 import com.percon.presentation.dto.ContactCreateView;
 import com.percon.presentation.dto.ContactView;
+import com.percon.presentation.mapper.ContactMapper;
 import com.percon.service.IBrancheService;
 import com.percon.service.IContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.percon.presentation.mapper.ContactMapper;
-
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/api/contact")
 public class ContactController {
     
     @Autowired
@@ -34,7 +26,7 @@ public class ContactController {
     @Autowired
     private IBrancheService brancheService;
     
-    @GetMapping("contacts")
+    @GetMapping
     public List<ContactView> getContacts() {
         List<ContactView> viewList = new ArrayList<ContactView>();
         
@@ -44,7 +36,7 @@ public class ContactController {
         return viewList;
     }
     
-    @PostMapping(path = "contact", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ContactView create(@Valid @RequestBody ContactCreateView view) {
         Contact contact = ContactMapper.INSTANCE.toEntity(view);
         
@@ -56,7 +48,7 @@ public class ContactController {
         return ContactMapper.INSTANCE.toView(contactService.save(contact));
     }
     
-    @PutMapping("contact")
+    @PutMapping
     public void update(@Valid @RequestBody ContactView view) {
         Contact contact = contactService.load(view.getId());
         if (contact != null) {
@@ -71,7 +63,7 @@ public class ContactController {
         }
     }
     
-    @GetMapping("contact/{contactID}")
+    @GetMapping("/{contactID}")
     public ContactView getContact(@PathVariable(name = "contactID", required = true) UUID contactID) {
         Contact contact = contactService.load(contactID);
         if (contact != null) {
