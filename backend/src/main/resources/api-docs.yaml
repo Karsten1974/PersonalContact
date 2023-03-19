@@ -1,0 +1,535 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/verbindungsart:
+    get:
+      tags:
+      - verbindungsart-controller
+      operationId: getVerbindungsarten
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VerbindungsartView'
+    put:
+      tags:
+      - verbindungsart-controller
+      operationId: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerbindungsartView'
+        required: true
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - verbindungsart-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerbindungsartCreateView'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VerbindungsartView'
+  /api/verbindung:
+    get:
+      tags:
+      - verbindung-controller
+      operationId: getVerbindungen
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VerbindungView'
+    put:
+      tags:
+      - verbindung-controller
+      operationId: update_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerbindungView'
+        required: true
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - verbindung-controller
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerbindungCreateView'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VerbindungView'
+  /api/contact:
+    get:
+      tags:
+      - contact-controller
+      operationId: getContacts
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactView'
+    put:
+      tags:
+      - contact-controller
+      operationId: update_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactView'
+        required: true
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - contact-controller
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateView'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactView'
+  /api/branche:
+    get:
+      tags:
+      - branchen-controller
+      operationId: getBranchen
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BrancheView'
+    put:
+      tags:
+      - branchen-controller
+      operationId: update_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrancheView'
+        required: true
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - branchen-controller
+      operationId: create_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrancheCreateView'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrancheView'
+  /api/adresse:
+    put:
+      tags:
+      - adresse-controller
+      operationId: update_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdresseDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - adresse-controller
+      operationId: create_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdresseCreateDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: uuid
+  /api/verbindungsart/{verbindungsartUUID}:
+    get:
+      tags:
+      - verbindungsart-controller
+      operationId: getVerbindungsart
+      parameters:
+      - name: verbindungsartUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VerbindungsartView'
+    delete:
+      tags:
+      - verbindungsart-controller
+      operationId: delete
+      parameters:
+      - name: verbindungsartUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/verbindung/{verbindungUUID}:
+    get:
+      tags:
+      - verbindung-controller
+      operationId: getVerbindungsart_1
+      parameters:
+      - name: verbindungUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VerbindungView'
+    delete:
+      tags:
+      - verbindung-controller
+      operationId: delete_1
+      parameters:
+      - name: verbindungUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/contact/{contactID}:
+    get:
+      tags:
+      - contact-controller
+      operationId: getContact
+      parameters:
+      - name: contactID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ContactView'
+  /api/branche/{brancheUUID}:
+    get:
+      tags:
+      - branchen-controller
+      operationId: getBranche
+      parameters:
+      - name: brancheUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrancheView'
+    delete:
+      tags:
+      - branchen-controller
+      operationId: delete_2
+      parameters:
+      - name: brancheUUID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/adresse/{adressenID}:
+    get:
+      tags:
+      - adresse-controller
+      operationId: getAdressen
+      parameters:
+      - name: adressenID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdresseDto'
+  /api/adresse/adressenbezeichnungen:
+    get:
+      tags:
+      - adresse-controller
+      operationId: getAdressenBezeichnung
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdresseBezeichnungDto'
+components:
+  schemas:
+    VerbindungsartView:
+      required:
+      - bezeichnung
+      - id
+      type: object
+      properties:
+        bezeichnung:
+          type: string
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+    VerbindungView:
+      required:
+      - id
+      - verbindungsdatenArtUUID
+      type: object
+      properties:
+        verbindungsdatenArtUUID:
+          type: string
+          format: uuid
+        reihenfolge:
+          type: integer
+          format: int32
+        verbindungsdaten:
+          type: string
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+    ContactView:
+      required:
+      - brancheUUID
+      - id
+      type: object
+      properties:
+        brancheUUID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        vorname:
+          type: string
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+        bemerkung:
+          type: string
+        todesprio:
+          type: string
+        todesBemerkung:
+          type: string
+        adrUUID:
+          type: string
+          format: uuid
+        verbUUID:
+          type: string
+          format: uuid
+    BrancheView:
+      required:
+      - bezeichnung
+      - id
+      type: object
+      properties:
+        bezeichnung:
+          type: string
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+    AdresseDto:
+      required:
+      - id
+      - ort
+      - plz
+      - strasse
+      type: object
+      properties:
+        strasse:
+          maxLength: 50
+          minLength: 0
+          type: string
+        plz:
+          type: string
+        ort:
+          type: string
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+    VerbindungsartCreateView:
+      required:
+      - bezeichnung
+      type: object
+      properties:
+        bezeichnung:
+          type: string
+    VerbindungCreateView:
+      required:
+      - verbindungsdatenArtUUID
+      type: object
+      properties:
+        verbindungsdatenArtUUID:
+          type: string
+          format: uuid
+        reihenfolge:
+          type: integer
+          format: int32
+        verbindungsdaten:
+          type: string
+    ContactCreateView:
+      required:
+      - brancheUUID
+      type: object
+      properties:
+        brancheUUID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        vorname:
+          type: string
+    BrancheCreateView:
+      required:
+      - bezeichnung
+      type: object
+      properties:
+        bezeichnung:
+          type: string
+    AdresseCreateDto:
+      required:
+      - ort
+      - plz
+      - strasse
+      type: object
+      properties:
+        strasse:
+          maxLength: 50
+          minLength: 0
+          type: string
+        plz:
+          type: string
+        ort:
+          type: string
+    AdresseBezeichnungDto:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int32
+        id:
+          type: string
+          format: uuid
+        bezeichnung:
+          type: string
