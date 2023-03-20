@@ -1,20 +1,17 @@
 package com.percon.presentation.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import com.percon.dataaccess.model.Branche;
-import com.percon.presentation.dto.BrancheCreateView;
-import com.percon.presentation.dto.BrancheView;
+import com.percon.presentation.dto.BrancheCreateDto;
+import com.percon.presentation.dto.BrancheDto;
 
 @Mapper(componentModel = "spring")
 public interface BrancheMapper {
     
-    BrancheMapper INSTANCE = Mappers.getMapper(BrancheMapper.class);
+    BrancheDto toDto(Branche branche);
 
-    BrancheView toView(Branche branche);
+    Branche toEntity(BrancheCreateDto view);
 
-    Branche toEntity(BrancheCreateView view);
-
-    Branche toEntity(BrancheView view);
+    Branche toEntity(BrancheDto view);
 }

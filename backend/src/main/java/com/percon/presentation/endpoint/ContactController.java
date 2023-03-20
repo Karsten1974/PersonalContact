@@ -5,8 +5,10 @@ import com.percon.dataaccess.model.Contact;
 import com.percon.presentation.dto.ContactCreateView;
 import com.percon.presentation.dto.ContactView;
 import com.percon.presentation.mapper.ContactMapper;
-import com.percon.service.IBrancheService;
+import com.percon.service.BrancheService;
 import com.percon.service.IContactService;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +20,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/contact")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ContactController {
     
     @Autowired
     private IContactService contactService;
     
-    @Autowired
-    private IBrancheService brancheService;
+    private final @NonNull BrancheService brancheService;
     
     @GetMapping
     public List<ContactView> getContacts() {
@@ -40,7 +42,7 @@ public class ContactController {
     public ContactView create(@Valid @RequestBody ContactCreateView view) {
         Contact contact = ContactMapper.INSTANCE.toEntity(view);
         
-        Branche branche = brancheService.load(view.getBrancheUUID());
+        Branche branche = brancheService.findById(view.getBrancheUUID());
         if (branche != null) {
             contact.setBranche(branche);
         }
@@ -54,7 +56,7 @@ public class ContactController {
         if (contact != null) {
             Contact cct = ContactMapper.INSTANCE.toEntity(view);
                     
-            Branche branche = brancheService.load(view.getBrancheUUID());
+            Branche branche = brancheService.findById(view.getBrancheUUID());
             if (branche != null) {
                 cct.setBranche(branche);
             }

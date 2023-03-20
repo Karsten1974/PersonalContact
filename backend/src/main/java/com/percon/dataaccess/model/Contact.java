@@ -1,16 +1,10 @@
 package com.percon.dataaccess.model;
 
+import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Version;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Contact {
-    
+
     @GeneratedValue @Id
     private UUID id;
 
@@ -31,25 +25,29 @@ public class Contact {
     @JoinColumn(name="branche_uuid")
     private Branche branche;
 
-    private UUID adrUUID;
-    
-    private UUID verbUUID;
-    
+    @Size(max = 50)
     @Column(length = 50)
     private String name;
-    
+
+    @Size(max = 50)
     @Column(length = 50)
     private String vorname;
-    
+
+    @Size(max = 50)
     @Column(length = 50)
     private String bemerkung;
-    
+
+    @Size(max = 50)
     @Column(length = 50)
     private String todesprio;
-    
+
+    @Size(max = 50)
     @Column(length = 50)
     private String todesBemerkung;
-    
-    public Contact() {
-    }
+
+    @Embedded
+    private Adresse adresse;
+
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "contact")
+    private List<Verbindung> verbindungList;
 }

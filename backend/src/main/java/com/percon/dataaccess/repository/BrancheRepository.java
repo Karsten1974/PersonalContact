@@ -1,5 +1,6 @@
 package com.percon.dataaccess.repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,4 +11,5 @@ import com.percon.dataaccess.model.Branche;
 
 @Repository
 public interface BrancheRepository extends CrudRepository<Branche, UUID> {
+    List<Branche> findAll();
 }

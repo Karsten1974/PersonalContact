@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BrancheView extends BrancheCreateView {
+public class BrancheDto extends BrancheCreateDto {
 
     private int version;
 

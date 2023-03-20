@@ -2,37 +2,26 @@ package com.percon.dataaccess.model;
 
 import java.util.Objects;
 import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Embeddable
 @Getter
 @Setter
 public class Adresse {
 
-  @GeneratedValue
-  @Id
-  private UUID id;
-
-  @Version
-  private int version;
-
-  @NotBlank
   @Size(max = 50)
-  @Column(length = 50, nullable = false)
+  @Column(length = 50)
   private String strasse;
 
   @Size(max = 5)
   @Column(length = 5)
   private String plz;
 
+  @Size(max = 50)
   @Column(length = 50)
   private String ort;
 
@@ -45,11 +34,11 @@ public class Adresse {
       return false;
     }
     final Adresse adresse = (Adresse) o;
-    return id.equals(adresse.id);
+    return plz.equals(adresse.plz) && strasse.equals(adresse.strasse);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(plz+strasse);
   }
 }

@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
+import com.percon.dataaccess.enumeration.Verbindungsart;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,8 @@ public class VerbindungCreateView {
     
     @NotNull
     private UUID verbindungsdatenArtUUID;
+
+    private Verbindungsart verbindungsart;
 
     private int reihenfolge;
     
