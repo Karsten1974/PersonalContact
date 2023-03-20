@@ -2,11 +2,11 @@ package com.percon.presentation.endpoint;
 
 import com.percon.dataaccess.model.Branche;
 import com.percon.dataaccess.model.Contact;
-import com.percon.presentation.dto.ContactCreateView;
-import com.percon.presentation.dto.ContactView;
+import com.percon.presentation.dto.ContactCreateDto;
+import com.percon.presentation.dto.ContactDto;
 import com.percon.presentation.mapper.ContactMapper;
 import com.percon.service.BrancheService;
-import com.percon.service.IContactService;
+import com.percon.service.ContactService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,53 +23,54 @@ import java.util.UUID;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ContactController {
     
-    @Autowired
-    private IContactService contactService;
+    private final @NonNull ContactService contactService;
     
     private final @NonNull BrancheService brancheService;
+
+    private final @NonNull ContactMapper mapper;
     
     @GetMapping
-    public List<ContactView> getContacts() {
-        List<ContactView> viewList = new ArrayList<ContactView>();
+    public List<ContactDto> getContacts() {
+        List<ContactDto> viewList = new ArrayList<ContactDto>();
         
-        List<Contact> contactList = contactService.getContact();
-        contactList.stream().map(t -> ContactMapper.INSTANCE.toView(t)).forEach(viewList::add);
+        List<Contact> contactList = contactService.findAll();
+        contactList.stream().map(t -> mapper.toDto(t)).forEach(viewList::add);
         
         return viewList;
     }
     
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ContactView create(@Valid @RequestBody ContactCreateView view) {
-        Contact contact = ContactMapper.INSTANCE.toEntity(view);
+    public @Valid UUID create(@Valid @RequestBody ContactCreateDto dto) {
+        Contact contact = mapper.toEntity(dto);
         
-        Branche branche = brancheService.findById(view.getBrancheUUID());
+        Branche branche = brancheService.findById(dto.getBrancheUUID());
         if (branche != null) {
             contact.setBranche(branche);
         }
         
-        return ContactMapper.INSTANCE.toView(contactService.save(contact));
+        return contactService.attach(contact).getId();
     }
     
     @PutMapping
-    public void update(@Valid @RequestBody ContactView view) {
-        Contact contact = contactService.load(view.getId());
+    public void update(@Valid @RequestBody ContactDto dto) {
+        Contact contact = contactService.findById(dto.getId());
         if (contact != null) {
-            Contact cct = ContactMapper.INSTANCE.toEntity(view);
+            Contact cct = mapper.toEntity(dto);
                     
-            Branche branche = brancheService.findById(view.getBrancheUUID());
+            Branche branche = brancheService.findById(dto.getBrancheUUID());
             if (branche != null) {
                 cct.setBranche(branche);
             }
             
-            contactService.save(cct);
+            contactService.attach(cct);
         }
     }
     
     @GetMapping("/{contactID}")
-    public ContactView getContact(@PathVariable(name = "contactID", required = true) UUID contactID) {
-        Contact contact = contactService.load(contactID);
+    public ContactDto getContact(@PathVariable(name = "contactID", required = true) UUID contactID) {
+        Contact contact = contactService.findById(contactID);
         if (contact != null) {
-            return ContactMapper.INSTANCE.toView(contact);
+            return mapper.toDto(contact);
         }
         
         return null;

@@ -2,30 +2,37 @@ package com.percon.presentation.dto;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ContactView extends ContactCreateView {
+public class ContactDto extends ContactCreateDto {
 
     private int version;
 
     @NotNull
     private UUID id;
-    
-    private String bemerkung;
-    
-    private String todesprio;
-    
-    private String todesBemerkung;
-    
-    private UUID adrUUID;
-    
-    private UUID verbUUID;
 
-    public ContactView() {
-    }
+    @Size(max = 50)
+    private String bemerkung;
+
+    @Size(max = 50)
+    private String todesprio;
+
+    @Size(max = 50)
+    private String todesBemerkung;
+
+    @Size(max = 50)
+    private String strasse;
+
+    @Size(max = 5)
+    private String plz;
+
+    @Size(max = 50)
+    private String ort;
 }

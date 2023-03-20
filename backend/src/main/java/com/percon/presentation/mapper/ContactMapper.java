@@ -1,27 +1,30 @@
 package com.percon.presentation.mapper;
 
+import com.percon.dataaccess.model.Contact;
+import com.percon.presentation.dto.ContactCreateDto;
+import com.percon.presentation.dto.ContactDto;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.factory.Mappers;
-
-import com.percon.dataaccess.model.Contact;
-import com.percon.presentation.dto.ContactCreateView;
-import com.percon.presentation.dto.ContactView;
 
 @Mapper(componentModel = "spring")
 public interface ContactMapper {
     
-    ContactMapper INSTANCE = Mappers.getMapper(ContactMapper.class);
+    @Mapping(source = "adresse.strasse", target = "strasse")
+    @Mapping(source = "adresse.plz", target = "plz")
+    @Mapping(source = "adresse.ort", target = "ort")
+    ContactDto toDto(Contact contact);
 
-    ContactView toView(Contact contact);
+    Contact toEntity(ContactCreateDto view);
 
-    Contact toEntity(ContactCreateView view);
-
-    Contact toEntity(ContactView view);
+    @Mapping(source = "strasse", target = "adresse.strasse")
+    @Mapping(source = "plz", target = "adresse.plz")
+    @Mapping(source = "ort", target = "adresse.ort")
+    Contact toEntity(ContactDto view);
     
     @AfterMapping
-    default void toView(@MappingTarget ContactView view, Contact contact) {
+    default void toDto(@MappingTarget ContactDto view, Contact contact) {
         view.setBrancheUUID(contact.getBranche().getId());
     }
 }
