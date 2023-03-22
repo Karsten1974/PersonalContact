@@ -1,6 +1,7 @@
 package com.percon.dataaccess.model;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.*;
@@ -48,6 +49,6 @@ public class Contact {
     @Embedded
     private Adresse adresse;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "contact")
-    private List<Verbindung> verbindungList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
+    private Set<Verbindung> verbindungen = new LinkedHashSet<>();;
 }

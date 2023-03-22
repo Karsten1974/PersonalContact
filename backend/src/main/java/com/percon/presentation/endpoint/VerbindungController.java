@@ -1,8 +1,8 @@
 package com.percon.presentation.endpoint;
 
 import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.VerbindungCreateView;
-import com.percon.presentation.dto.VerbindungView;
+import com.percon.presentation.dto.VerbindungCreateDto;
+import com.percon.presentation.dto.VerbindungDto;
 import com.percon.presentation.mapper.VerbindungMapper;
 import com.percon.service.IVerbindungService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class VerbindungController {
     private IVerbindungService verbindungService;
     
     @GetMapping
-    public List<VerbindungView> getVerbindungen() {
-      List<VerbindungView> viewList = new ArrayList<VerbindungView>();
+    public List<VerbindungDto> getVerbindungen() {
+      List<VerbindungDto> viewList = new ArrayList<VerbindungDto>();
 
       List<Verbindung> verbindungList = verbindungService.getVerbindungen();
       verbindungList.stream().map(t -> VerbindungMapper.INSTANCE.toView(t)).forEach(viewList::add);
@@ -32,7 +32,7 @@ public class VerbindungController {
     }
 
     @PutMapping
-    public void update(@Valid @RequestBody VerbindungView view) {
+    public void update(@Valid @RequestBody VerbindungDto view) {
       Verbindung verbindung = verbindungService.load(view.getId());
       if (verbindung != null) {
         Verbindung verb = VerbindungMapper.INSTANCE.toEntity(view);
@@ -42,7 +42,7 @@ public class VerbindungController {
     }
 
     @GetMapping("/{verbindungUUID}")
-    public VerbindungView getVerbindungsart(@PathVariable(name = "verbindungUUID", required = true) UUID verbindungUUID) {
+    public VerbindungDto getVerbindungsart(@PathVariable(name = "verbindungUUID", required = true) UUID verbindungUUID) {
         Verbindung verbindung = verbindungService.load(verbindungUUID);
       if (verbindung != null) {
         return VerbindungMapper.INSTANCE.toView(verbindung);
@@ -57,7 +57,7 @@ public class VerbindungController {
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE})
-    public VerbindungView create(@Valid @RequestBody VerbindungCreateView view) {
+    public VerbindungDto create(@Valid @RequestBody VerbindungCreateDto view) {
       Verbindung verbindung = VerbindungMapper.INSTANCE.toEntity(view);
 
       return VerbindungMapper.INSTANCE.toView(verbindungService.save(verbindung));

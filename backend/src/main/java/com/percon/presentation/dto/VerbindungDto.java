@@ -9,13 +9,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class VerbindungView extends VerbindungCreateView  {
+public class VerbindungDto extends VerbindungCreateDto {
     
     private int version;
 
     @NotNull
     private UUID id;
-
-    public VerbindungView() {
-    }
 }

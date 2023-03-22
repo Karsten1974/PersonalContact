@@ -2,6 +2,7 @@ package com.percon.presentation.endpoint;
 
 import com.percon.dataaccess.model.Branche;
 import com.percon.dataaccess.model.Contact;
+import com.percon.dataaccess.model.Verbindung;
 import com.percon.presentation.dto.ContactCreateDto;
 import com.percon.presentation.dto.ContactDto;
 import com.percon.presentation.mapper.ContactMapper;

@@ -1,8 +1,9 @@
 package com.percon.presentation.dto;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,4 +36,10 @@ public class ContactDto extends ContactCreateDto {
 
     @Size(max = 50)
     private String ort;
+
+    public void addVView(VerbindungDto verbDto) {
+        verbindungen.add(verbDto);
+    }
+
+    private Set<VerbindungDto> verbindungen = new LinkedHashSet<>();
 }

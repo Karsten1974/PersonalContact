@@ -1,20 +1,23 @@
 package com.percon.presentation.mapper;
 
+import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.VerbindungCreateView;
-import com.percon.presentation.dto.VerbindungView;
+import com.percon.presentation.dto.VerbindungCreateDto;
+import com.percon.presentation.dto.VerbindungDto;
 
-@Mapper(componentModel = "spring")
+import java.util.Set;
+
+@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface VerbindungMapper {
     
     VerbindungMapper INSTANCE = Mappers.getMapper(VerbindungMapper.class);
     
-    VerbindungView toView(Verbindung verbindung);
+    VerbindungDto toView(Verbindung verbindung);
 
-    Verbindung toEntity(VerbindungCreateView view);
+    Verbindung toEntity(VerbindungCreateDto view);
 
-    Verbindung toEntity(VerbindungView view);
+    Verbindung toEntity(VerbindungDto view);
 }
