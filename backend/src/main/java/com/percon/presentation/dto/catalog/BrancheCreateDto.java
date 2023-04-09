@@ -1,4 +1,4 @@
-package com.percon.presentation.dto;
+package com.percon.presentation.dto.catalog;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

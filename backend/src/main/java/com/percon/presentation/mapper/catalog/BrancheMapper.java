@@ -1,10 +1,10 @@
-package com.percon.presentation.mapper;
+package com.percon.presentation.mapper.catalog;
 
 import org.mapstruct.Mapper;
 
-import com.percon.dataaccess.model.Branche;
-import com.percon.presentation.dto.BrancheCreateDto;
-import com.percon.presentation.dto.BrancheDto;
+import com.percon.dataaccess.model.catalog.Branche;
+import com.percon.presentation.dto.catalog.BrancheCreateDto;
+import com.percon.presentation.dto.catalog.BrancheDto;
 
 @Mapper(componentModel = "spring")
 public interface BrancheMapper {

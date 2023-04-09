@@ -1,4 +1,4 @@
-package com.percon.presentation.dto;
+package com.percon.presentation.dto.catalog;
 
 import java.util.UUID;
 
@@ -9,8 +9,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class VerbindungDto extends VerbindungCreateDto {
-    
+public class BrancheDto extends BrancheCreateDto {
+
     private int version;
 
     @NotNull

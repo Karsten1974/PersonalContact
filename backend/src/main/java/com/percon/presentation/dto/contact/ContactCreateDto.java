@@ -1,4 +1,4 @@
-package com.percon.presentation.dto;
+package com.percon.presentation.dto.contact;
 
 import java.util.UUID;
 

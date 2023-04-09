@@ -1,13 +1,12 @@
-package com.percon.presentation.endpoint;
+package com.percon.presentation.endpoint.contact;
 
-import com.percon.dataaccess.model.Branche;
-import com.percon.dataaccess.model.Contact;
-import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.ContactCreateDto;
-import com.percon.presentation.dto.ContactDto;
-import com.percon.presentation.mapper.ContactMapper;
-import com.percon.service.BrancheService;
-import com.percon.service.ContactService;
+import com.percon.dataaccess.model.catalog.Branche;
+import com.percon.dataaccess.model.contact.Contact;
+import com.percon.presentation.dto.contact.ContactCreateDto;
+import com.percon.presentation.dto.contact.ContactDto;
+import com.percon.presentation.mapper.contact.ContactMapper;
+import com.percon.service.catalog.BrancheService;
+import com.percon.service.contact.ContactService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

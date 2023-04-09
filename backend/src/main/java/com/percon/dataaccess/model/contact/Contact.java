@@ -1,4 +1,4 @@
-package com.percon.dataaccess.model;
+package com.percon.dataaccess.model.contact;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+import com.percon.dataaccess.model.catalog.Branche;
 import lombok.Getter;
 import lombok.Setter;
 

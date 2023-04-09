@@ -1,7 +1,7 @@
-package com.percon.service;
+package com.percon.service.contact;
 
-import com.percon.dataaccess.model.Contact;
-import com.percon.dataaccess.repository.ContactRepository;
+import com.percon.dataaccess.model.contact.Contact;
+import com.percon.dataaccess.repository.contact.ContactRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;

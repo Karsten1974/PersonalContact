@@ -1,8 +1,8 @@
-package com.percon.service;
+package com.percon.service.catalog;
 
-import com.percon.dataaccess.model.Branche;
-import com.percon.dataaccess.repository.BrancheRepository;
-import java.util.ArrayList;
+import com.percon.dataaccess.model.catalog.Branche;
+import com.percon.dataaccess.repository.catalog.BrancheRepository;
+
 import java.util.List;
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.percon.dataaccess.model;
+package com.percon.dataaccess.model.catalog;
 
 import java.util.UUID;
 
@@ -27,7 +27,4 @@ public class Branche {
     
     @Column(length = 25, unique = true)
     private String bezeichnung;
-    
-    public Branche() {
-    }
 }

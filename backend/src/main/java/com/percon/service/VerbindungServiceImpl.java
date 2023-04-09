@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.percon.dataaccess.model.Verbindung;
+import com.percon.dataaccess.model.contact.Verbindung;
 import com.percon.dataaccess.repository.VerbindungRepository;
 
 import lombok.NonNull;

@@ -4,11 +4,9 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.VerbindungCreateDto;
-import com.percon.presentation.dto.VerbindungDto;
-
-import java.util.Set;
+import com.percon.dataaccess.model.contact.Verbindung;
+import com.percon.presentation.dto.contact.VerbindungCreateDto;
+import com.percon.presentation.dto.contact.VerbindungDto;
 
 @Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface VerbindungMapper {

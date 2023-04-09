@@ -1,10 +1,11 @@
-package com.percon.presentation.mapper;
+package com.percon.presentation.mapper.contact;
 
-import com.percon.dataaccess.model.Contact;
-import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.ContactCreateDto;
-import com.percon.presentation.dto.ContactDto;
-import com.percon.presentation.dto.VerbindungDto;
+import com.percon.dataaccess.model.contact.Contact;
+import com.percon.dataaccess.model.contact.Verbindung;
+import com.percon.presentation.dto.contact.ContactCreateDto;
+import com.percon.presentation.dto.contact.ContactDto;
+import com.percon.presentation.dto.contact.VerbindungDto;
+import com.percon.presentation.mapper.VerbindungMapper;
 import org.mapstruct.*;
 
 import java.util.Set;

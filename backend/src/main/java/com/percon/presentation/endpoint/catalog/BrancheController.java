@@ -1,10 +1,10 @@
-package com.percon.presentation.endpoint;
+package com.percon.presentation.endpoint.catalog;
 
-import com.percon.dataaccess.model.Branche;
-import com.percon.presentation.dto.BrancheCreateDto;
-import com.percon.presentation.dto.BrancheDto;
-import com.percon.presentation.mapper.BrancheMapper;
-import com.percon.service.BrancheService;
+import com.percon.dataaccess.model.catalog.Branche;
+import com.percon.presentation.dto.catalog.BrancheCreateDto;
+import com.percon.presentation.dto.catalog.BrancheDto;
+import com.percon.presentation.mapper.catalog.BrancheMapper;
+import com.percon.service.catalog.BrancheService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

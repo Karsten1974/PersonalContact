@@ -1,4 +1,4 @@
-package com.percon.dataaccess.model;
+package com.percon.dataaccess.model.contact;
 
 import java.util.UUID;
 

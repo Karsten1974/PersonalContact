@@ -1,8 +1,8 @@
 package com.percon.presentation.endpoint;
 
-import com.percon.dataaccess.model.Verbindung;
-import com.percon.presentation.dto.VerbindungCreateDto;
-import com.percon.presentation.dto.VerbindungDto;
+import com.percon.dataaccess.model.contact.Verbindung;
+import com.percon.presentation.dto.contact.VerbindungCreateDto;
+import com.percon.presentation.dto.contact.VerbindungDto;
 import com.percon.presentation.mapper.VerbindungMapper;
 import com.percon.service.IVerbindungService;
 import org.springframework.beans.factory.annotation.Autowired;
