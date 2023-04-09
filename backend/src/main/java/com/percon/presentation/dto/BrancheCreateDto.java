@@ -10,6 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BrancheCreateDto {
+
+    @NotBlank
+    @NotNull
+    @Size(max=2)
+    private String fachCode;
     
     @NotBlank
     @NotNull

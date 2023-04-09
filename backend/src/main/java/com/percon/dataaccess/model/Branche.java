@@ -21,6 +21,9 @@ public class Branche {
     
     @Version
     private int version;
+
+    @Column(length = 2, unique = true)
+    private String fachCode;
     
     @Column(length = 25, unique = true)
     private String bezeichnung;

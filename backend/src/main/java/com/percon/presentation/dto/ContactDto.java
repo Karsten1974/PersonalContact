@@ -37,9 +37,5 @@ public class ContactDto extends ContactCreateDto {
     @Size(max = 50)
     private String ort;
 
-    public void addVView(VerbindungDto verbDto) {
-        verbindungen.add(verbDto);
-    }
-
     private Set<VerbindungDto> verbindungen = new LinkedHashSet<>();
 }
