@@ -135,7 +135,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Generator für Frontend ausgeschaltet
+			<!-- Generator für Frontend. Generiert nur wenn api-docs.yaml sich ändert -->
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
@@ -145,6 +145,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
+							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
 							<inputSpec>${project.basedir}/src/main/resources/api-docs.yaml</inputSpec>
 							<generatorName>typescript-angular</generatorName>
 							<apiPackage>com.percon.openapi.api</apiPackage>
@@ -154,7 +155,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			-->
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
