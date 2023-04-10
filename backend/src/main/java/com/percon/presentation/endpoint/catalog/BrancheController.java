@@ -55,6 +55,16 @@ public class BrancheController {
         return null;
     }
 
+    @GetMapping("/fachCode/{fachCode}")
+    public BrancheDto getBrancheByFachCode(@PathVariable(name = "fachCode", required = true) String fachCode) {
+        Branche branche = brancheService.findByFachCode(fachCode);
+        if (branche != null) {
+            return mapper.toDto(branche);
+        }
+
+        return null;
+    }
+
     @DeleteMapping("/{brancheUUID}")
     public void delete(@PathVariable(name = "brancheUUID", required = true) UUID brancheUUID) {
         brancheService.delete(brancheUUID);

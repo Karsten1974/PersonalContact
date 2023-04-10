@@ -12,4 +12,5 @@ import com.percon.dataaccess.model.catalog.Branche;
 @Repository
 public interface BrancheRepository extends CrudRepository<Branche, UUID> {
     List<Branche> findAll();
+    List<Branche> findByFachCode(String fachCode);
 }

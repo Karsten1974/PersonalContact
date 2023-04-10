@@ -7,7 +7,6 @@ import java.util.UUID;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-import com.percon.dataaccess.model.catalog.Branche;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,9 +22,11 @@ public class Contact {
     @Version
     private int version;
     
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="branche_uuid")
-    private Branche branche;
+    @Column(length = 2)
+    private String brancheFachCode;
+
+    @Column(length = 15)
+    private String brancheBezeichnung;
 
     @Size(max = 50)
     @Column(length = 50)

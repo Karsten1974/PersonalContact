@@ -30,6 +30,15 @@ public class BrancheService {
         return brancheRepository.findById(id).orElseThrow();
     }
 
+    public @NotNull Branche findByFachCode(String fachCode) {
+        List<Branche> list = brancheRepository.findByFachCode(fachCode);
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+
+        return null;
+    }
+
     public void delete(UUID id) {
         brancheRepository.deleteById(id);
     }

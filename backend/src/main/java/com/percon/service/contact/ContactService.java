@@ -31,5 +31,8 @@ public class ContactService {
     public List<Contact> findAll() {
         return contactRepository.findAll();
     }
-    
+
+    public void delete(UUID id) {
+        contactRepository.deleteById(id);
+    }
 }

@@ -25,6 +25,6 @@ public class Branche {
     @Column(length = 2, unique = true)
     private String fachCode;
     
-    @Column(length = 25, unique = true)
+    @Column(length = 15, unique = true)
     private String bezeichnung;
 }

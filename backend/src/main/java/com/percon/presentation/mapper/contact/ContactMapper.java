@@ -27,7 +27,6 @@ public interface ContactMapper {
     
     @AfterMapping
     default void toDto(@MappingTarget ContactDto dto, Contact contact) {
-        dto.setBrancheUUID(contact.getBranche().getId());
         dto.setVerbindungen(toDtosVerbindungSet(contact.getVerbindungen()));
     }
 

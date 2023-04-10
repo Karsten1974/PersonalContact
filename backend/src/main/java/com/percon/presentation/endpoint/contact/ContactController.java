@@ -1,11 +1,9 @@
 package com.percon.presentation.endpoint.contact;
 
-import com.percon.dataaccess.model.catalog.Branche;
 import com.percon.dataaccess.model.contact.Contact;
 import com.percon.presentation.dto.contact.ContactCreateDto;
 import com.percon.presentation.dto.contact.ContactDto;
 import com.percon.presentation.mapper.contact.ContactMapper;
-import com.percon.service.catalog.BrancheService;
 import com.percon.service.contact.ContactService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +23,6 @@ public class ContactController {
     
     private final @NonNull ContactService contactService;
     
-    private final @NonNull BrancheService brancheService;
-
     private final @NonNull ContactMapper mapper;
     
     @GetMapping
@@ -43,11 +39,6 @@ public class ContactController {
     public @Valid UUID create(@Valid @RequestBody ContactCreateDto dto) {
         Contact contact = mapper.toEntity(dto);
         
-        Branche branche = brancheService.findById(dto.getBrancheUUID());
-        if (branche != null) {
-            contact.setBranche(branche);
-        }
-        
         return contactService.attach(contact).getId();
     }
     
@@ -57,11 +48,6 @@ public class ContactController {
         if (contact != null) {
             Contact cct = mapper.toEntity(dto);
                     
-            Branche branche = brancheService.findById(dto.getBrancheUUID());
-            if (branche != null) {
-                cct.setBranche(branche);
-            }
-            
             contactService.attach(cct);
         }
     }
@@ -74,6 +60,11 @@ public class ContactController {
         }
         
         return null;
+    }
+
+    @DeleteMapping("/{contactID}")
+    public void delete(@PathVariable(name = "contactID", required = true) UUID contactID) {
+        contactService.delete(contactID);
     }
 
 }
