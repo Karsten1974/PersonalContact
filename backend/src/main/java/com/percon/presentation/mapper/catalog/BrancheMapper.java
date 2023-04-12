@@ -1,17 +1,17 @@
 package com.percon.presentation.mapper.catalog;
 
+import com.percon.dataaccess.model.catalog.BrancheEntity;
 import org.mapstruct.Mapper;
 
-import com.percon.dataaccess.model.catalog.Branche;
 import com.percon.presentation.dto.catalog.BrancheCreateDto;
 import com.percon.presentation.dto.catalog.BrancheDto;
 
 @Mapper(componentModel = "spring")
 public interface BrancheMapper {
     
-    BrancheDto toDto(Branche branche);
+    BrancheDto toDto(BrancheEntity branche);
 
-    Branche toEntity(BrancheCreateDto view);
+    BrancheEntity toEntity(BrancheCreateDto view);
 
-    Branche toEntity(BrancheDto view);
+    BrancheEntity toEntity(BrancheDto view);
 }

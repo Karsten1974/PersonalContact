@@ -9,14 +9,14 @@ import lombok.Setter;
 @Embeddable
 @Getter
 @Setter
-public class Adresse {
+public class AdresseEmbeddable {
 
   @Size(max = 50)
   @Column(length = 50)
   private String strasse;
 
-  @Size(max = 5)
-  @Column(length = 5)
+  @Size(min = 5, max = 5)
+  @Column(length = 5, nullable = true)
   private String plz;
 
   @Size(max = 50)
@@ -31,8 +31,8 @@ public class Adresse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    final Adresse adresse = (Adresse) o;
-    return plz.equals(adresse.plz) && strasse.equals(adresse.strasse);
+    final AdresseEmbeddable adresseEmbeddable = (AdresseEmbeddable) o;
+    return plz.equals(adresseEmbeddable.plz) && strasse.equals(adresseEmbeddable.strasse);
   }
 
   @Override

@@ -1,15 +1,14 @@
 package com.percon.service.contact;
 
-import com.percon.dataaccess.model.contact.Contact;
+import com.percon.dataaccess.model.contact.ContactEntity;
 import com.percon.dataaccess.repository.contact.ContactRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,16 +18,16 @@ public class ContactService {
     
     private final @NonNull ContactRepository contactRepository;
 
-    public Contact attach(Contact contact) {
+    public ContactEntity attach(ContactEntity contact) {
         var attachContact = contactRepository.save(contact);
         return attachContact;
     }
 
-    public @NotNull Contact findById(UUID id) {
-        return contactRepository.findById(id).orElseThrow();
+    public Optional<ContactEntity> findById(UUID id) {
+        return contactRepository.findById(id);
     }
 
-    public List<Contact> findAll() {
+    public Iterable<ContactEntity> findAll() {
         return contactRepository.findAll();
     }
 

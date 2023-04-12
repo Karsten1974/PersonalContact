@@ -1,16 +1,14 @@
 package com.percon.dataaccess.repository.catalog;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import com.percon.dataaccess.model.catalog.BrancheEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.percon.dataaccess.model.catalog.Branche;
-
 
 @Repository
-public interface BrancheRepository extends CrudRepository<Branche, UUID> {
-    List<Branche> findAll();
-    List<Branche> findByFachCode(String fachCode);
+public interface BrancheRepository extends CrudRepository<BrancheEntity, UUID> {
+    Optional<BrancheEntity> findByFachCode(String fachCode);
 }

@@ -11,10 +11,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
+@Entity(name="contact")
 @Getter
 @Setter
-public class Contact {
+public class ContactEntity {
 
     @GeneratedValue @Id
     private UUID id;
@@ -49,8 +49,8 @@ public class Contact {
     private String todesBemerkung;
 
     @Embedded
-    private Adresse adresse;
+    private AdresseEmbeddable adresse;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
-    private Set<Verbindung> verbindungen = new LinkedHashSet<>();;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact", orphanRemoval = true)
+    private Set<VerbindungEntity> verbindungen = new LinkedHashSet<>();;
 }

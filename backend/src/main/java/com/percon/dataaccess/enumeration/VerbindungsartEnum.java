@@ -2,7 +2,7 @@ package com.percon.dataaccess.enumeration;
 
 import lombok.Getter;
 @Getter
-public enum Verbindungsart {
+public enum VerbindungsartEnum {
     TELEFON("Telefon"),
     MOBIL("Mobil"),
     EMAIL("eMail")
@@ -10,7 +10,7 @@ public enum Verbindungsart {
 
     private String art;
 
-    Verbindungsart(String art) {
+    VerbindungsartEnum(String art) {
         this.art = art;
     }
 }

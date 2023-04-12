@@ -84,7 +84,7 @@
 		</dependency>
 
 
-		<!-- Object-Object Mapper: Compile Time Processor  -->
+		<!-- Object-Object Mapper: Compile Time Annotation Post-Processor  -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
@@ -105,16 +105,6 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.openapitools</groupId>
-					<artifactId>openapi-generator-maven-plugin</artifactId>
-					<version>6.4.0</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -130,27 +120,6 @@
 									<directory>${project.parent.basedir}/frontend/dist/contact-gui</directory>
 								</resource>
 							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Generator für Frontend. Generiert nur wenn api-docs.yaml sich ändert -->
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
-							<inputSpec>${project.basedir}/src/main/resources/api-docs.yaml</inputSpec>
-							<generatorName>typescript-angular</generatorName>
-							<apiPackage>com.percon.openapi.api</apiPackage>
-							<modelPackage>com.percon.openapi.dto</modelPackage>
-							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 						</configuration>
 					</execution>
 				</executions>

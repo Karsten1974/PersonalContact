@@ -1,14 +1,13 @@
 package com.percon.service.catalog;
 
-import com.percon.dataaccess.model.catalog.Branche;
+import com.percon.dataaccess.model.catalog.BrancheEntity;
 import com.percon.dataaccess.repository.catalog.BrancheRepository;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,29 +20,24 @@ public class BrancheService {
 
     private final @NonNull BrancheRepository brancheRepository;
 
-    public Branche attach(Branche branche) {
+    public BrancheEntity attach(BrancheEntity branche) {
         var attachBranche = brancheRepository.save(branche);
         return attachBranche;
     }
 
-    public @NotNull Branche findById(UUID id) {
-        return brancheRepository.findById(id).orElseThrow();
+    public Optional<BrancheEntity> findById(UUID id) {
+        return brancheRepository.findById(id);
     }
 
-    public @NotNull Branche findByFachCode(String fachCode) {
-        List<Branche> list = brancheRepository.findByFachCode(fachCode);
-        if (list != null && list.size() > 0) {
-            return list.get(0);
-        }
-
-        return null;
+    public Optional<BrancheEntity> findByFachCode(String fachCode) {
+        return brancheRepository.findByFachCode(fachCode);
     }
 
     public void delete(UUID id) {
         brancheRepository.deleteById(id);
     }
 
-    public List<Branche> findAll() {
+    public Iterable<BrancheEntity> findAll() {
         return brancheRepository.findAll();
     }
 

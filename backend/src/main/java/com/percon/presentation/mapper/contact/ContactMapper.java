@@ -1,11 +1,10 @@
 package com.percon.presentation.mapper.contact;
 
-import com.percon.dataaccess.model.contact.Contact;
-import com.percon.dataaccess.model.contact.Verbindung;
+import com.percon.dataaccess.model.contact.ContactEntity;
+import com.percon.dataaccess.model.contact.VerbindungEntity;
 import com.percon.presentation.dto.contact.ContactCreateDto;
 import com.percon.presentation.dto.contact.ContactDto;
 import com.percon.presentation.dto.contact.VerbindungDto;
-import com.percon.presentation.mapper.VerbindungMapper;
 import org.mapstruct.*;
 
 import java.util.Set;
@@ -16,29 +15,29 @@ public interface ContactMapper {
     @Mapping(source = "adresse.strasse", target = "strasse")
     @Mapping(source = "adresse.plz", target = "plz")
     @Mapping(source = "adresse.ort", target = "ort")
-    ContactDto toDto(Contact contact);
+    ContactDto toDto(ContactEntity contactEntity);
 
-    Contact toEntity(ContactCreateDto dto);
+    ContactEntity toEntity(ContactCreateDto dto);
 
     @Mapping(source = "strasse", target = "adresse.strasse")
     @Mapping(source = "plz", target = "adresse.plz")
     @Mapping(source = "ort", target = "adresse.ort")
-    Contact toEntity(ContactDto view);
+    ContactEntity toEntity(ContactDto view);
     
     @AfterMapping
-    default void toDto(@MappingTarget ContactDto dto, Contact contact) {
+    default void toDto(@MappingTarget ContactDto dto, ContactEntity contact) {
         dto.setVerbindungen(toDtosVerbindungSet(contact.getVerbindungen()));
     }
 
     @AfterMapping
-    default void toEntity(@MappingTarget Contact contact, ContactDto dto) {
+    default void toEntity(@MappingTarget ContactEntity contact, ContactDto dto) {
         contact.setVerbindungen(toEntitysVerbindungSet(dto.getVerbindungen()));
         if (contact.getVerbindungen() != null) {
             contact.getVerbindungen().forEach(verbindung -> verbindung.setContact(contact));
         }
     }
 
-    Set<Verbindung> toEntitysVerbindungSet(Set<VerbindungDto> dtos);
+    Set<VerbindungEntity> toEntitysVerbindungSet(Set<VerbindungDto> dtos);
 
-    Set<VerbindungDto> toDtosVerbindungSet(Set<Verbindung> verbindungs);
+    Set<VerbindungDto> toDtosVerbindungSet(Set<VerbindungEntity> verbindungs);
 }

@@ -5,14 +5,14 @@ import java.util.UUID;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-import com.percon.dataaccess.enumeration.Verbindungsart;
+import com.percon.dataaccess.enumeration.VerbindungsartEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name="verbindung")
 @Getter
 @Setter
-public class Verbindung {
+public class VerbindungEntity {
 
     @GeneratedValue
     @Id
@@ -21,11 +21,11 @@ public class Verbindung {
     @Version
     private int version;
 
-    @ManyToOne
-    private Contact contact;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private ContactEntity contact;
 
     @Enumerated(EnumType.STRING)
-    private Verbindungsart verbindungsart;
+    private VerbindungsartEnum verbindungsart;
     
     private int reihenfolge;
 

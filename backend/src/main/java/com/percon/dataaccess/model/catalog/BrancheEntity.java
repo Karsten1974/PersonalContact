@@ -11,10 +11,10 @@ import javax.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name="branche")
 @Getter
 @Setter
-public class Branche {
+public class BrancheEntity {
     
     @GeneratedValue @Id
     private UUID id;
