@@ -1,34 +1,35 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListItem } from '../shared/data';
+import {BrancheControllerService} from "../base/generated/services/branche-controller.service";
+import {BrancheDto} from "../base/generated/models/branche-dto";
+import {BrancheCreateDto} from "../base/generated/models/branche-create-dto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BrancheService {
-  private basePath = '/api';
+  constructor(private bs: BrancheControllerService) { }
 
-  constructor(private http: HttpClient) { }
-
-  getBranchen(): Observable<ListItem[]> {
-    return this.http.get<ListItem[]>(`${this.basePath}/branche`);
+  getBranchen(): Observable<BrancheDto[]> {
+    return this.bs.getBranchen();
   }
 
-  getBranche(brancheUUI: string): Observable<ListItem> {
-    return this.http.get<ListItem>(`${this.basePath}/branche/${brancheUUI}`);
+  getBranche(brancheUUID: string): Observable<BrancheDto> {
+    return this.bs.getBranche(  {brancheUUID: brancheUUID});
   }
 
-  createBranche(branche: ListItem): Observable<ListItem> {
-    return this.http.post<ListItem>(`${this.basePath}/branche`, branche);
+  createBranche(branche: BrancheCreateDto): Observable<string> {
+    let myBranche = {...branche, fachCode: branche.bezeichnung.substring(0,2)};
+    return this.bs.create1({body: myBranche});
   }
 
-  updateBranche(branche: ListItem): Observable<any> {
-    return this.http.put(`${this.basePath}/branche`, branche, {responseType: 'text'});
+  updateBranche(branche: BrancheDto): Observable<any> {
+    let myBranche = {...branche, fachCode: branche.bezeichnung.substring(0,2)};
+    return this.bs.update1({body: myBranche});
   }
 
-  deleteBranche(brancheUUI: string): Observable<any> {
-    return this.http.delete(`${this.basePath}/branche/${brancheUUI}`, {responseType: 'text'});
+  deleteBranche(brancheUUID: string): Observable<any> {
+    return this.bs.delete1({brancheUUID: brancheUUID});
   }
 
 }

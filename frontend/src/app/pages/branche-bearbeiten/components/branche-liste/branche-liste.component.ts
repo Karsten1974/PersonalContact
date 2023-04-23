@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListItem } from '../../../../shared/data';
+import {BrancheDto} from "../../../../base/generated/models/branche-dto";
 
 @Component({
   selector: 'branche-liste',
@@ -8,7 +8,7 @@ import { ListItem } from '../../../../shared/data';
   styleUrls: ['./branche-liste.component.css']
 })
 export class BrancheListeComponent implements OnInit {
-  @Input() branchen: ListItem[] = [];
+  @Input() branchen: BrancheDto[] = [];
 
   constructor(private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {

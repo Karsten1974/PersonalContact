@@ -1,12 +1,13 @@
-import { ListItem } from '../../shared/data';
+import {BrancheDto} from "../../base/generated/models/branche-dto";
 
 export class BrancheFactory {
 
-  static empty(): ListItem {
+  static empty(): BrancheDto {
     return {
       version: 0,
       id: '',
-      bezeichnung: ''
+      bezeichnung: '',
+      fachCode: ''
     };
   }
 }

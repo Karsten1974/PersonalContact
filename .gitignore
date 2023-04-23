@@ -4,3 +4,4 @@
 *.iml
 *.ipr
 /Datenbank/
+/frontend/api-docs.json

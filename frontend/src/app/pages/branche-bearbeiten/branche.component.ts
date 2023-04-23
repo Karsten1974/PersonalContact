@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrancheService } from '../../backend-api/branche.service';
 import { BrancheFactory } from '../../core/factory/branche-factory';
-import { ListItem } from '../../shared/data';
+import {BrancheDto} from "../../base/generated/models/branche-dto";
+import {BrancheCreateDto} from "../../base/generated/models/branche-create-dto";
 
 @Component({
   selector: 'branche',
@@ -15,9 +16,9 @@ export class BrancheComponent implements OnInit {
     bezeichnung: ['']
   });
 
-  brancheLoaded: ListItem = BrancheFactory.empty();
+  brancheLoaded: BrancheDto = BrancheFactory.empty();
 
-  branchen: ListItem[] = [];
+  branchen: BrancheDto[] = [];
 
   brancheUUID: string = '';
   editMode = false;
@@ -39,7 +40,7 @@ export class BrancheComponent implements OnInit {
   }
 
   private initForm() {
-    this.ds.getBranchen().subscribe((res:ListItem[]) => this.branchen = res);
+    this.ds.getBranchen().subscribe(res => this.branchen = res);
 
     if (this.editMode) {
       this.ds.getBranche(this.brancheUUID).subscribe(t => {
@@ -54,14 +55,14 @@ export class BrancheComponent implements OnInit {
     const formValue = this.branchenForm.value;
 
     if (this.editMode) {
-      const branche: ListItem = {...formValue, version: this.brancheLoaded.version, id: this.brancheLoaded.id};
+      const branche: BrancheDto = {...formValue, version: this.brancheLoaded.version, id: this.brancheLoaded.id};
       this.ds.updateBranche(branche).subscribe(() => {
         this.router.navigate(['/branche/', branche.id]);
       });
     } else {
-      const branche: ListItem = {...formValue};
+      const branche: BrancheCreateDto = {...formValue};
       this.ds.createBranche(branche).subscribe(t => {
-        this.router.navigate(['/branche/', t.id]);
+        this.router.navigate(['/branche/', t]);
       });
     }
   }

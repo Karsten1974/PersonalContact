@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @Validated
@@ -30,7 +27,7 @@ public class BrancheController {
 
     private final @NonNull BrancheMapper mapper;
     
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<BrancheDto> getBranchen() {
         List<BrancheDto> dtoList = new ArrayList<>();
         
@@ -40,7 +37,7 @@ public class BrancheController {
         return dtoList;
     }
 
-    @PutMapping
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public void update(@Valid @NotNull @RequestBody BrancheDto dto) {
         Optional<BrancheEntity> branche = brancheService.findById(dto.getId());
         if (branche.isPresent()) {
@@ -50,7 +47,7 @@ public class BrancheController {
         }
     }
 
-    @GetMapping("/{brancheUUID}")
+    @GetMapping(value = "/{brancheUUID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BrancheDto> getBranche(@PathVariable(name = "brancheUUID", required = true) UUID brancheUUID) {
         Optional<BrancheEntity> branche = brancheService.findById(brancheUUID);
 
@@ -61,7 +58,7 @@ public class BrancheController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/fachCode/{fachCode}")
+    @GetMapping(value = "/fachCode/{fachCode}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BrancheDto> getBrancheByFachCode(@PathVariable(name = "fachCode", required = true) String fachCode) {
         Optional<BrancheEntity> branche = brancheService.findByFachCode(fachCode);
         if (branche.isPresent()) {
@@ -71,12 +68,12 @@ public class BrancheController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{brancheUUID}")
+    @DeleteMapping(value = "/{brancheUUID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable(name = "brancheUUID", required = true) UUID brancheUUID) {
         brancheService.delete(brancheUUID);
     }
     
-    @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
     public @Valid UUID create(@Valid @RequestBody BrancheCreateDto dto) {
         BrancheEntity branche = mapper.toEntity(dto);
         
