@@ -1,4 +1,6 @@
-<div class="ui three item menu">
+<div class="ui four item menu">
+  <a class="item" [class.active]="selectedTab === eTabHeader.UX" (click)="onTabSelect(eTabHeader.UX)"
+     [routerLink]="['/verwalten']">UX</a>
   <a class="item" [class.active]="selectedTab === eTabHeader.Adressen" (click)="onTabSelect(eTabHeader.Adressen)"
      [routerLink]="['/adressen']">Adressen</a>
   <a class="item" [class.active]="selectedTab === eTabHeader.Branchen" (click)="onTabSelect(eTabHeader.Branchen)"

@@ -18,6 +18,10 @@ export class BrancheService {
     return this.bs.getBranche(  {brancheUUID: brancheUUID});
   }
 
+  getBrancheByFachCode(fachCode: string): Observable<BrancheDto> {
+    return this.bs.getBrancheByFachCode(  {fachCode: fachCode});
+  }
+
   createBranche(branche: BrancheCreateDto): Observable<string> {
     let myBranche = {...branche, fachCode: branche.bezeichnung.substring(0,2)};
     return this.bs.create1({body: myBranche});

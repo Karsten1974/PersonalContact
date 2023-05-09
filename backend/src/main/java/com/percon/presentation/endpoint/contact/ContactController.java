@@ -29,8 +29,8 @@ public class ContactController {
     private final @NonNull ContactService contactService;
     
     private final @NonNull ContactMapper mapper;
-    
-    @GetMapping
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ContactDto> getContacts() {
         List<ContactDto> viewList = new ArrayList<ContactDto>();
         
@@ -40,7 +40,7 @@ public class ContactController {
         return viewList;
     }
     
-    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
     public @Valid UUID create(@Valid @RequestBody ContactCreateDto dto) {
         ContactEntity contact = mapper.toEntity(dto);
         
@@ -57,7 +57,7 @@ public class ContactController {
         }
     }
     
-    @GetMapping("/{contactID}")
+    @GetMapping(value = "/{contactID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ContactDto> getContact(@PathVariable(name = "contactID", required = true) UUID contactID) {
         Optional<ContactEntity> contact = contactService.findById(contactID);
         if (contact.isPresent()) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 export enum TabHeader {
-  Adressen=1, Branchen=2, Verbindungsarten
+  Adressen=1, Branchen=2, Verbindungsarten=3, UX=4
 }
 
 @Component({

@@ -1,0 +1,31 @@
+<div class="modal-box ui segment">
+  <div class="ui raised segment">
+
+    <form class="ui form" (ngSubmit)="submitFormSpeichern()" [formGroup]="contactForm">
+
+      <div class="field">
+        <label>Branche</label>
+        <select class="ui compact selection dropdown" formControlName="branche" (click)="onBranche()">
+          <option *ngFor="let a of branchen" [value]="a.id">{{ a.bezeichnung }}</option>
+        </select>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" formControlName="name" placeholder="Name">
+        </div>
+        <div class="field">
+          <label>Vorname</label>
+          <input type="text" formControlName="vorname" placeholder="Vorname">
+        </div>
+      </div>
+
+      <div style="text-align: right">
+        <button class="ui button" type="submit" [disabled]="this.brancheNeu" >Speichern</button>
+        <button class="ui button" type="button" (click)="onClose()">Close</button>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -22,6 +22,10 @@ import { BrancheListeComponent } from './pages/branche-bearbeiten/components/bra
 import { VerbindungsartBearbeitenComponent } from './pages/verbindungsart-bearbeiten/components/verbindungsart-bearbeiten/verbindungsart-bearbeiten.component';
 import { VerbindungsartListeComponent } from './pages/verbindungsart-bearbeiten/components/verbindungsart-liste/verbindungsart-liste.component';
 import { VerbindungsartComponent } from './pages/verbindungsart-bearbeiten/verbindungsart.component';
+import { ContactVerwaltenComponent } from './pages/contact-verwalten/contact-verwalten.component';
+import { ContactDialogNeuComponent } from './pages/contact-verwalten/components/contact-dialog-neu/contact-dialog-neu.component';
+import { ContactDialogAdresseComponent } from './pages/contact-verwalten/components/contact-dialog-adresse/contact-dialog-adresse.component';
+import { ContactListComponent } from './pages/contact-verwalten/components/contact-list/contact-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { VerbindungsartComponent } from './pages/verbindungsart-bearbeiten/verbi
     BrancheListeComponent,
     VerbindungsartBearbeitenComponent,
     VerbindungsartListeComponent,
-    VerbindungsartComponent
+    VerbindungsartComponent,
+    ContactVerwaltenComponent,
+    ContactDialogNeuComponent,
+    ContactDialogAdresseComponent,
+    ContactListComponent
   ],
   imports: [
     HttpClientModule,

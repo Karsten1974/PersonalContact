@@ -1,0 +1,70 @@
+<div class="ui raised segment">
+
+  <contact-dialog-neu *ngIf="phaseDialoNeuanlage == 1" (close)="onNeuClose($event)"></contact-dialog-neu>
+  <contact-dialog-adresse *ngIf="phaseDialoNeuanlage == 2" (close)="onAdresseClose()" [contactId]="this.contactId"></contact-dialog-adresse>
+
+  <div class="ui two column grid">
+
+    <div class="three wide column">
+    </div>
+
+    <div class="thirteen wide column">
+
+      <form class="ui form">
+        <div class="ui two column grid">
+          <div class="column">
+            <div class="ui raised segment">
+
+              <div class="fields">
+                <div class="five wide field">
+
+                  <div class="ui compact menu">
+                    <div class="ui simple dropdown item">
+                      Menue
+                      <i class="dropdown icon"></i>
+                      <div class="menu">
+                        <div class="item" (click)="onNeu()">Neu</div>
+                        <div class="item">Branche</div>
+                        <div class="item">Optionen</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="five wide field">
+                  <button class="ui button" type="button" (click)="onNeu()">Neu</button>
+                </div>
+              </div>
+
+              <div class="fields">
+                <div class="five wide field">
+                  <input type="text" placeholder="Suche...">
+                </div>
+                <div class="five wide field">
+                  <button class="ui button" type="button">suchen</button>
+                </div>
+              </div>
+
+              <div class="fields">
+                <div class="five wide field">
+                  <button class="ui button" type="button">filter</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="ui two column grid">
+  <div class="three wide column">
+  </div>
+  <div class="ten wide column">
+    <contact-list [contacts]="contacts"></contact-list>
+  </div>
+</div>

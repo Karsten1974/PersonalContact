@@ -1,0 +1,16 @@
+<div class="ui raised segment">
+
+  <div class="ui middle aligned selection divided list" *ngFor="let ct of contacts">
+
+    <div class="item">
+      <div class="content">
+        <div class="header">{{ct.name}}, {{ct.vorname}}</div>
+        <div class="metadata">
+          {{ct.ort}} {{telefon(ct)}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

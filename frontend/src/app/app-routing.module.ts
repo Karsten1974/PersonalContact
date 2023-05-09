@@ -4,6 +4,7 @@ import { AdressenComponent } from './adressen/adressen.component';
 import { HomeComponent } from './home/home.component';
 import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
 import { VerbindungsartComponent } from './pages/verbindungsart-bearbeiten/verbindungsart.component';
+import {ContactVerwaltenComponent} from "./pages/contact-verwalten/contact-verwalten.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },{
+    path: 'verwalten',
+    component: ContactVerwaltenComponent
   },
   {
     path: 'adressen',
