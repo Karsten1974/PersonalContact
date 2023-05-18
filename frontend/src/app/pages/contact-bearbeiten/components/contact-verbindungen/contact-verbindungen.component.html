@@ -1,0 +1,48 @@
+<div class="ui raised segment">
+  <div class="ui two column grid">
+    <div class="column three wide">
+      <label class="ui grey label">Verbindungsdaten:</label>
+    </div>
+
+    <div class="column thirteen wide">
+
+      <div *ngIf="!verbindungenEdit; else noVerbindungenEdit">
+        <div class="fields">
+          <div class="five wide field">
+            <div class="ui two column grid">
+              <div class="column">{{verbindungDaten(contact, 'EMAIL')}}</div>
+              <div class="column right aligned">
+                <i class="pencil icon" (click)="onBearbeiten()"></i>
+              </div>
+            </div>
+          </div>
+          <div class="five wide field">
+            <div class="ui two column grid">
+              <div class="column">{{verbindungDaten(contact, 'TELEFON')}}</div>
+              <div class="column">{{verbindungDaten(contact, 'MOBIL')}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noVerbindungenEdit>
+        <div class="ui raised segment">
+          <form class="ui form" [formGroup]="verbindungForm">
+
+            <div class="fields">
+              <input type="text" formControlName="email" placeholder="EMail">
+            </div>
+            <div class="fields">
+              <input type="text" formControlName="telefon" placeholder="Telefon">
+              <input type="text" formControlName="mobil" placeholder="Mobil">
+            </div>
+
+            <i class="close icon" (click)="onCancel()"></i>
+            <i class="check icon" (click)="onSpeichern()"></i>
+          </form>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

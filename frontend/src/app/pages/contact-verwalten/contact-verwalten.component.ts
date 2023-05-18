@@ -38,5 +38,6 @@ export class ContactVerwaltenComponent implements OnInit {
 
   onAdresseClose() {
     this.phaseDialoNeuanlage = 0;
+    this.initForm();
   }
 }

@@ -1,0 +1,82 @@
+<div class="ui raised segment">
+  <div class="ui two column grid">
+    <div class="column three wide">
+    </div>
+
+    <div class="column thirteen wide">
+      <div *ngIf="!zusatzEdit; else noZusatzEdit">
+        <div class="fields">
+          <div class="five wide field">
+            <div class="ui two column grid">
+              <div class="column">hier später Gebutsdatum</div>
+              <div class="column right aligned">
+                <i class="pencil icon" (click)="onBearbeiten()"></i>
+              </div>
+            </div>
+          </div>
+          <div class="five wide field">
+            {{contact.bemerkung}}
+          </div>
+
+          <div class="five wide field" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+            <br>
+            Todesprio: {{contact.todesprio}}
+          </div>
+          <div class="five wide field" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+            {{contact.todesBemerkung}}
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noZusatzEdit>
+        <div class="ui raised segment">
+          <form class="ui form" [formGroup]="zusatzForm">
+
+            <div class="fields">
+              <input type="text" formControlName="bemerkung" placeholder="Bemerkung">
+            </div>
+
+            <br>
+            <div class="fields">
+              <label class="ui grey label">Todesliste</label>
+            </div>
+            <div class="field">
+              <label>Prio</label>
+              <div class="ui radio checkbox">
+                <input type="radio" formControlName="todesprio" name="todesprio" value="0">
+                <label>keine</label>
+              </div>
+            </div>
+            <div class="inline fields">
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" formControlName="todesprio" name="todesprio" value="9">
+                  <label>hoch</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" formControlName="todesprio" name="todesprio" value="4">
+                  <label>mittel</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" formControlName="todesprio" name="todesprio" value="1">
+                  <label>niederig</label>
+                </div>
+              </div>
+            </div>
+            <div class="fields">
+              <input type="text" formControlName="todesBemerkung" placeholder="Todesbemerkung">
+            </div>
+
+            <i class="close icon" (click)="onCancel()"></i>
+            <i class="check icon" (click)="onSpeichern()"></i>
+          </form>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

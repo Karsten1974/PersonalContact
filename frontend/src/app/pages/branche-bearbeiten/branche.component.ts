@@ -78,4 +78,8 @@ export class BrancheComponent implements OnInit {
       });
     }
   }
+
+  onZurueck() {
+    this.router.navigate(['/verwalten']);
+  }
 }

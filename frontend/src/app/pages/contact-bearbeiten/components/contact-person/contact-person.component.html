@@ -1,0 +1,63 @@
+<div class="ui raised segment">
+  <div class="ui two column grid">
+    <div class="column three wide">
+      <label class="ui grey label">Person:</label>
+    </div>
+
+    <div class="column thirteen wide">
+
+      <div *ngIf="!personEdit; else noPersonEdit">
+        <div class="fields">
+          <div class="five wide field">
+            <div class="ui two column grid">
+              <div class="column">
+                {{contact.brancheBezeichnung}}
+              </div>
+              <div class="column right aligned">
+                <i class="pencil icon" (click)="onBearbeiten()"></i>
+              </div>
+            </div>
+          </div>
+          <div class="five wide field">
+            {{contact.vorname}} {{contact.name}}
+          </div>
+          <div class="five wide field">
+            {{contact.strasse}}
+          </div>
+          <div class="five wide field">
+            {{contact.plz}} {{contact.ort}}
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noPersonEdit>
+        <div class="ui raised segment">
+          <form class="ui form" [formGroup]="personForm">
+
+            <div class="fields">
+              <select class="ui compact selection dropdown" formControlName="brancheFachCode" (click)="onBranche()">
+                <option *ngFor="let a of branchen" [value]="a.fachCode">{{ a.bezeichnung }}</option>
+              </select>
+            </div>
+
+            <div class="fields">
+              <input type="text" formControlName="vorname" placeholder="Vorname">
+              <input type="text" formControlName="name" placeholder="Name">
+            </div>
+            <div class="fields">
+              <input type="text" formControlName="strasse" placeholder="Strasse">
+            </div>
+            <div class="fields">
+              <input type="text" formControlName="plz" placeholder="Plz">
+              <input type="text" formControlName="ort" placeholder="Ort">
+            </div>
+
+            <i class="close icon" (click)="onCancel()"></i>
+            <i class="check icon" (click)="onSpeichern()"></i>
+          </form>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

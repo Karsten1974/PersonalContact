@@ -26,6 +26,10 @@ import { ContactVerwaltenComponent } from './pages/contact-verwalten/contact-ver
 import { ContactDialogNeuComponent } from './pages/contact-verwalten/components/contact-dialog-neu/contact-dialog-neu.component';
 import { ContactDialogAdresseComponent } from './pages/contact-verwalten/components/contact-dialog-adresse/contact-dialog-adresse.component';
 import { ContactListComponent } from './pages/contact-verwalten/components/contact-list/contact-list.component';
+import { ContactBearbeitenComponent } from './pages/contact-bearbeiten/contact-bearbeiten.component';
+import { ContactPersonComponent } from './pages/contact-bearbeiten/components/contact-person/contact-person.component';
+import { ContactVerbindungenComponent } from './pages/contact-bearbeiten/components/contact-verbindungen/contact-verbindungen.component';
+import { ContactZusatzComponent } from './pages/contact-bearbeiten/components/contact-zusatz/contact-zusatz.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { ContactListComponent } from './pages/contact-verwalten/components/conta
     ContactVerwaltenComponent,
     ContactDialogNeuComponent,
     ContactDialogAdresseComponent,
-    ContactListComponent
+    ContactListComponent,
+    ContactBearbeitenComponent,
+    ContactPersonComponent,
+    ContactVerbindungenComponent,
+    ContactZusatzComponent
   ],
   imports: [
     HttpClientModule,

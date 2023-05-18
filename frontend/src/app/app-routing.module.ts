@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
 import { VerbindungsartComponent } from './pages/verbindungsart-bearbeiten/verbindungsart.component';
 import {ContactVerwaltenComponent} from "./pages/contact-verwalten/contact-verwalten.component";
+import {ContactBearbeitenComponent} from "./pages/contact-bearbeiten/contact-bearbeiten.component";
 
 const routes: Routes = [
   {
@@ -18,8 +19,13 @@ const routes: Routes = [
   },{
     path: 'verwalten',
     component: ContactVerwaltenComponent
-  },
-  {
+  },{
+    path: 'bearbeiten',
+    component: ContactBearbeitenComponent
+  },{
+    path: 'bearbeiten/:contactUUID',
+    component: ContactBearbeitenComponent
+  }, {
     path: 'adressen',
     component: AdressenComponent
   },
