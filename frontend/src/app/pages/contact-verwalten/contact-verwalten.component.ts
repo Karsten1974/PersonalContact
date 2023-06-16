@@ -8,9 +8,10 @@ import {ContactDto} from "../../base/generated/models/contact-dto";
   styleUrls: ['./contact-verwalten.component.css']
 })
 export class ContactVerwaltenComponent implements OnInit {
-  phaseDialoNeuanlage: number = 0;
   contacts: ContactDto[] = [];
   contactId: string = '';
+  dialogNeu: boolean = false;
+  dialogAdresse: boolean = false;
 
   constructor(private cs: ContactService) { }
 
@@ -23,21 +24,24 @@ export class ContactVerwaltenComponent implements OnInit {
   }
 
   onNeu() {
-    this.phaseDialoNeuanlage = 1;
+    this.dialogNeu = true;
   }
 
   onNeuClose(contactId: string) {
     if (contactId != '') {
-      this.phaseDialoNeuanlage = 2;
+      this.dialogNeu = false;
+      this.dialogAdresse = true;
       this.contactId = contactId;
     } else {
-      this.phaseDialoNeuanlage = 0;
+      this.dialogNeu = false;
+      this.dialogAdresse = false;
       this.contactId = '';
     }
   }
 
   onAdresseClose() {
-    this.phaseDialoNeuanlage = 0;
+    this.dialogNeu = false;
+    this.dialogAdresse = false;
     this.initForm();
   }
 }

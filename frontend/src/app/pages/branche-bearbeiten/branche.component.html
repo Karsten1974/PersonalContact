@@ -1,24 +1,24 @@
-<div class="ui raised segment">
+<div class="shadow-3 p-3">
 
-  <div class="ui two column grid">
+  <div class="grid">
 
-    <div class="three wide column">
+    <div class="col-2">
       <branche-liste [branchen]="branchen"></branche-liste>
     </div>
 
-    <div class="thirteen wide column">
-      <form class="ui form" (ngSubmit)="submitForm()">
-        <div class="ui two column grid">
-          <div class="column">
+    <div class="col-5">
+      <form class="ml-3" (ngSubmit)="submitForm()">
+        <div class="flex flex-column">
+          <div class="field">
             <branche-bearbeiten [branchenForm]="branchenForm"></branche-bearbeiten>
           </div>
+          <div class="mt-3 card flex flex-wrap gap-3">
+            <p-button label="Speichern" type="submit"></p-button>
+            <p-button label="Neu" (click)="onNeu()"></p-button>
+            <p-button label="Del" (click)="onDel()" [disabled]="!this.editMode"></p-button>
+            <p-button label="Zurueck" (click)="onZurueck()"></p-button>
+          </div>
         </div>
-
-        <br>
-        <button class="ui button" type="submit">Speichern</button>
-        <button class="ui button" type="button" (click)="onNeu()">Neu</button>
-        <button class="ui button" type="button" (click)="onDel()" [disabled]="!this.editMode">Del</button>
-        <button class="ui button" type="button" (click)="onZurueck()">Zurueck</button>
       </form>
     </div>
 

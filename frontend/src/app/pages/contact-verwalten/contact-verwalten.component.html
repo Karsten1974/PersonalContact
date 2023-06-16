@@ -1,22 +1,28 @@
-<div class="ui raised segment">
+<div class="shadow-3 p-3">
 
-  <contact-dialog-neu *ngIf="phaseDialoNeuanlage == 1" (close)="onNeuClose($event)"></contact-dialog-neu>
-  <contact-dialog-adresse *ngIf="phaseDialoNeuanlage == 2" (close)="onAdresseClose()" [contactId]="this.contactId"></contact-dialog-adresse>
+  <p-dialog header="Neu Anlage" [(visible)]="dialogNeu" [style]="{width: '750px'}" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
+    <contact-dialog-neu (close)="onNeuClose($event)"></contact-dialog-neu>
+  </p-dialog>
+  <p-dialog header="Weitere Angaben" [(visible)]="dialogAdresse" [style]="{width: '750px'}" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
+    <contact-dialog-adresse (close)="onAdresseClose()" [contactId]="this.contactId"></contact-dialog-adresse>
+  </p-dialog>
 
-  <div class="ui two column grid">
 
-    <div class="three wide column">
+
+  <div class="grid">
+
+    <div class="col-2">
     </div>
 
-    <div class="thirteen wide column">
+    <div class="col-10">
 
-      <form class="ui form">
-        <div class="ui two column grid">
-          <div class="column">
-            <div class="ui raised segment">
+      <form class="ml-3">
+        <div class="grid">
+          <div class="col-6">
+            <div class="shadow-3 p-3">
 
-              <div class="fields">
-                <div class="five wide field">
+              <div class="formgrid grid">
+                <div class="field col-4">
 
                   <div class="ui compact menu">
                     <div class="ui simple dropdown item">
@@ -31,23 +37,23 @@
                   </div>
 
                 </div>
-                <div class="five wide field">
-                  <button class="ui button" type="button" (click)="onNeu()">Neu</button>
+                <div class="field col-4">
+                  <p-button label="Neu" (click)="onNeu()"></p-button>
                 </div>
               </div>
 
-              <div class="fields">
-                <div class="five wide field">
-                  <input type="text" placeholder="Suche...">
+              <div class="formgrid grid">
+                <div class="field col-4">
+                  <input type="text" pInputText placeholder="Suche...">
                 </div>
-                <div class="five wide field">
-                  <button class="ui button" type="button">suchen</button>
+                <div class="field col-4">
+                  <p-button label="suchen"></p-button>
                 </div>
               </div>
 
-              <div class="fields">
-                <div class="five wide field">
-                  <button class="ui button" type="button">filter</button>
+              <div class="field flex">
+                <div class="field col-4">
+                  <p-button label="filter"></p-button>
                 </div>
               </div>
 
@@ -61,10 +67,10 @@
   </div>
 
 </div>
-<div class="ui two column grid">
-  <div class="three wide column">
+<div class="grid">
+  <div class="col-2">
   </div>
-  <div class="ten wide column">
+  <div class="col-5">
     <contact-list [contacts]="contacts"></contact-list>
   </div>
 </div>

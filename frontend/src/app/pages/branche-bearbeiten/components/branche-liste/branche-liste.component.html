@@ -1,11 +1,6 @@
-<div class="ui raised segment">
-  <div class="ui segment">
-    <div class="ui middle aligned selection divided list" *ngFor="let a of branchen">
-      <div class="item">
-        <div class="content">
-          <a class="header" [routerLink]="['/branche/', a.id]">{{ a.bezeichnung }}</a>
-        </div>
-      </div>
-    </div>
+<div class="shadow-3 p-3">
+  <div class="p-listbox">
+      <p-listbox [options]="branchen" [(ngModel)]="selectedBranche" optionLabel="bezeichnung" [routerLink]="['/branche/', selectedBranche.id]">
+      </p-listbox>
   </div>
 </div>

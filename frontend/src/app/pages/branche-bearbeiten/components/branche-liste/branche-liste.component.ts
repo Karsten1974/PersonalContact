@@ -9,11 +9,14 @@ import {BrancheDto} from "../../../../base/generated/models/branche-dto";
 })
 export class BrancheListeComponent implements OnInit {
   @Input() branchen: BrancheDto[] = [];
+  selectedBranche: BrancheDto;
 
   constructor(private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+    this.selectedBranche = {bezeichnung: "", fachCode: "", id: ""};
   }
 
   ngOnInit(): void {

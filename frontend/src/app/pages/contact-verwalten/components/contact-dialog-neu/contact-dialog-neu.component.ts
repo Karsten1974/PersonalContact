@@ -16,11 +16,11 @@ export class ContactDialogNeuComponent implements OnInit {
     name: [''],
     vorname: ['']
   });
-  brancheNeu = true;
+
   selBranche: BrancheDto = {
     version: 0,
     id: '',
-    fachCode: '',
+    fachCode: 'toBeSave',
     bezeichnung: ''
   };
 
@@ -39,6 +39,7 @@ export class ContactDialogNeuComponent implements OnInit {
   }
 
   submitFormSpeichern() {
+    /*
     const formValue = this.contactForm.value;
     const contact: ContactCreateDto = {
       brancheFachCode: '',
@@ -55,18 +56,21 @@ export class ContactDialogNeuComponent implements OnInit {
     this.cs.createContact(contact).subscribe(res => {
       this.close.emit(res);
     });
+    */
+
+    this.close.emit("1");
   }
 
   onClose() {
     this.close.emit('');
   }
 
-  onBranche() {
+  /*onBranche() {
     const formValue = this.contactForm.value;
     this.bs.getBranche(formValue['branche']).subscribe(res => this.selBranche = res);
     if (this.selBranche.fachCode != '') {
       this.brancheNeu = false;
     }
-  }
+  }*/
 
 }

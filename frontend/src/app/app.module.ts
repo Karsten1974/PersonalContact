@@ -16,6 +16,13 @@ import { ContactBearbeitenComponent } from './pages/contact-bearbeiten/contact-b
 import { ContactPersonComponent } from './pages/contact-bearbeiten/components/contact-person/contact-person.component';
 import { ContactVerbindungenComponent } from './pages/contact-bearbeiten/components/contact-verbindungen/contact-verbindungen.component';
 import { ContactZusatzComponent } from './pages/contact-bearbeiten/components/contact-zusatz/contact-zusatz.component';
+import {DialogModule} from "primeng/dialog";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {InputTextModule} from "primeng/inputtext";
+import {ListboxModule} from "primeng/listbox";
+import {ButtonModule} from "primeng/button";
+import {DropdownModule} from "primeng/dropdown";
+import {TieredMenuModule} from "primeng/tieredmenu";
 
 @NgModule({
   declarations: [
@@ -37,7 +44,13 @@ import { ContactZusatzComponent } from './pages/contact-bearbeiten/components/co
     BrowserModule,
     AppRoutingModule,
     FormsModule, //adresse-dialog-neu benötigt FormsModule
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    ListboxModule,
+    ButtonModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

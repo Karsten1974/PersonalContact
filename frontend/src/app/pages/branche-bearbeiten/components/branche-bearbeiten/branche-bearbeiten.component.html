@@ -1,11 +1,9 @@
-<div class="ui raised segment">
-  <form class="ui form" [formGroup]="branchenForm">
+<div class="shadow-3 p-3">
+  <form class="mr-3" [formGroup]="branchenForm">
 
-    <div class="two fields">
-      <div class="field">
-        <label>Branche</label>
-        <input type="text" formControlName="bezeichnung" placeholder="Name">
-      </div>
+    <div class="field flex flex-column">
+      <label for="branchefield">Branche</label>
+      <input id="branchefield" class="pr-8" type="text" pInputText formControlName="bezeichnung" placeholder="Name">
     </div>
 
   </form>

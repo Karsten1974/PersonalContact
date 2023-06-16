@@ -9,7 +9,10 @@ import {VerbindungDto} from "../../../../base/generated/models/verbindung-dto";
 })
 export class ContactListComponent implements OnInit {
   @Input() contacts: ContactDto[] = [];
-  constructor() { }
+  selectedContactDto: ContactDto;
+  constructor() {
+    this.selectedContactDto = {brancheBezeichnung: "", brancheFachCode: "", id: ""};
+  }
 
   ngOnInit(): void {
   }

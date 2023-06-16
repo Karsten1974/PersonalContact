@@ -1,16 +1,16 @@
-<div class="ui raised segment">
+<div class="shadow-3 p-3">
 
-  <div class="ui middle aligned selection divided list" *ngFor="let ct of contacts">
-
-    <div class="item" [routerLink]="['/bearbeiten/', ct.id]">
-      <div class="content">
-        <div class="header">{{ct.name}}, {{ct.vorname}}</div>
-        <div class="metadata">
+  <p-listbox [options]="contacts" [(ngModel)]="selectedContactDto" [routerLink]="['/bearbeiten/', selectedContactDto.id]">
+    <ng-template let-ct pTemplate="item">
+      <div class="flex flex-column">
+        <div class="field mb-0 text-base font-medium">
+          {{ct.name}}, {{ct.vorname}}
+        </div>
+        <div class="field mb-0 text-sm" style="color: grey">
           {{ct.ort}} {{telefon(ct)}}
         </div>
       </div>
-    </div>
-
-  </div>
+    </ng-template>
+  </p-listbox>
 
 </div>
