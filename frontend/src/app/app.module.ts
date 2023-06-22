@@ -23,6 +23,7 @@ import {ListboxModule} from "primeng/listbox";
 import {ButtonModule} from "primeng/button";
 import {DropdownModule} from "primeng/dropdown";
 import {TieredMenuModule} from "primeng/tieredmenu";
+import {AppLayoutModule} from "./layout/app.layout.module";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {TieredMenuModule} from "primeng/tieredmenu";
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    AppLayoutModule,
     FormsModule, //adresse-dialog-neu benötigt FormsModule
     ReactiveFormsModule,
     DialogModule,

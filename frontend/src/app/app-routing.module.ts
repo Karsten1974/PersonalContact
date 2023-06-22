@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
 import {ContactVerwaltenComponent} from "./pages/contact-verwalten/contact-verwalten.component";
 import {ContactBearbeitenComponent} from "./pages/contact-bearbeiten/contact-bearbeiten.component";
+import {AppLayoutComponent} from "./layout/app.layout.component";
 
 const routes: Routes = [
   {
@@ -11,22 +12,34 @@ const routes: Routes = [
     pathMatch: 'full'
   },{
     path: 'home',
-    component: ContactVerwaltenComponent
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: ContactVerwaltenComponent }
+    ]
   },{
     path: 'verwalten',
-    component: ContactVerwaltenComponent
-  },{
-    path: 'bearbeiten',
-    component: ContactBearbeitenComponent
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: ContactVerwaltenComponent }
+    ]
   },{
     path: 'bearbeiten/:contactUUID',
-    component: ContactBearbeitenComponent
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: ContactBearbeitenComponent }
+    ]
   },{
     path: 'branchen',
-    component: BrancheComponent
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: BrancheComponent }
+    ]
   },{
     path: 'branche/:brancheUUID',
-    component: BrancheComponent
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: BrancheComponent }
+    ]
   }
 ];
 
