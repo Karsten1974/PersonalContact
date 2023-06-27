@@ -4,6 +4,7 @@ import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
 import {ContactVerwaltenComponent} from "./pages/contact-verwalten/contact-verwalten.component";
 import {ContactBearbeitenComponent} from "./pages/contact-bearbeiten/contact-bearbeiten.component";
 import {AppLayoutComponent} from "./layout/app.layout.component";
+import {ContactAnlegenComponent} from "./pages/contact-anlegen/contact-anlegen.component";
 
 const routes: Routes = [
   {
@@ -39,6 +40,12 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children:[
       { path: '', component: BrancheComponent }
+    ]
+  },{
+    path: 'contact',
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: ContactAnlegenComponent }
     ]
   }
 ];

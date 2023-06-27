@@ -1,14 +1,5 @@
 <div class="shadow-3 p-3">
 
-  <p-dialog header="Neu Anlage" [(visible)]="dialogNeu" [style]="{width: '750px'}" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
-    <contact-dialog-neu (close)="onNeuClose($event)"></contact-dialog-neu>
-  </p-dialog>
-  <p-dialog header="Weitere Angaben" [(visible)]="dialogAdresse" [style]="{width: '750px'}" [modal]="true" [draggable]="false" [resizable]="false" styleClass="p-fluid">
-    <contact-dialog-adresse (close)="onAdresseClose()" [contactId]="this.contactId"></contact-dialog-adresse>
-  </p-dialog>
-
-
-
   <div class="grid">
 
     <div class="col-2">
@@ -29,16 +20,12 @@
                       Menue
                       <i class="dropdown icon"></i>
                       <div class="menu">
-                        <div class="item" (click)="onNeu()">Neu</div>
                         <div class="item" [routerLink]="['/branchen']">Branche</div>
                         <div class="item">Optionen</div>
                       </div>
                     </div>
                   </div>
 
-                </div>
-                <div class="field col-4">
-                  <p-button label="Neu" (click)="onNeu()"></p-button>
                 </div>
               </div>
 

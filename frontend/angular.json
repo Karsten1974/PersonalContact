@@ -18,17 +18,17 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/assets/layout/styles/layout/layout.scss",
               "node_modules/semantic-ui-css/semantic.css",
-              "node_modules/primeng/resources/themes/mdc-light-indigo/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.min.css",
+              "src/styles.scss",
               "src/styles.css"
             ],
             "scripts": []

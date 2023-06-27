@@ -1,3 +1,4 @@
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,8 +10,6 @@ import { BrancheComponent } from './pages/branche-bearbeiten/branche.component';
 import { BrancheBearbeitenComponent } from './pages/branche-bearbeiten/components/branche-bearbeiten/branche-bearbeiten.component';
 import { BrancheListeComponent } from './pages/branche-bearbeiten/components/branche-liste/branche-liste.component';
 import { ContactVerwaltenComponent } from './pages/contact-verwalten/contact-verwalten.component';
-import { ContactDialogNeuComponent } from './pages/contact-verwalten/components/contact-dialog-neu/contact-dialog-neu.component';
-import { ContactDialogAdresseComponent } from './pages/contact-verwalten/components/contact-dialog-adresse/contact-dialog-adresse.component';
 import { ContactListComponent } from './pages/contact-verwalten/components/contact-list/contact-list.component';
 import { ContactBearbeitenComponent } from './pages/contact-bearbeiten/contact-bearbeiten.component';
 import { ContactPersonComponent } from './pages/contact-bearbeiten/components/contact-person/contact-person.component';
@@ -24,6 +23,7 @@ import {ButtonModule} from "primeng/button";
 import {DropdownModule} from "primeng/dropdown";
 import {TieredMenuModule} from "primeng/tieredmenu";
 import {AppLayoutModule} from "./layout/app.layout.module";
+import { ContactAnlegenComponent } from './pages/contact-anlegen/contact-anlegen.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +32,12 @@ import {AppLayoutModule} from "./layout/app.layout.module";
     BrancheBearbeitenComponent,
     BrancheListeComponent,
     ContactVerwaltenComponent,
-    ContactDialogNeuComponent,
-    ContactDialogAdresseComponent,
     ContactListComponent,
     ContactBearbeitenComponent,
     ContactPersonComponent,
     ContactVerbindungenComponent,
-    ContactZusatzComponent
+    ContactZusatzComponent,
+    ContactAnlegenComponent
   ],
   imports: [
     HttpClientModule,
