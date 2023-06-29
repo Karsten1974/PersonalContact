@@ -10,7 +10,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./contact-bearbeiten.component.css']
 })
 export class ContactBearbeitenComponent implements OnInit {
-  clickZusatz = false;
   contact: ContactDto = {
     version: 0,
     id: '',
@@ -37,10 +36,6 @@ export class ContactBearbeitenComponent implements OnInit {
     if (pContactUUID != null) {
       this.cs.getContact(pContactUUID).subscribe(res => this.contact = res);
     }
-  }
-
-  onClickZusatz() {
-    this.clickZusatz = !this.clickZusatz;
   }
 
   onZurueck() {

@@ -1,82 +1,76 @@
-<div class="ui raised segment">
-  <div class="ui two column grid">
-    <div class="column three wide">
-    </div>
+<div class="grid">
+  <div class="col-12">
 
-    <div class="column thirteen wide">
-      <div *ngIf="!zusatzEdit; else noZusatzEdit">
-        <div class="fields">
-          <div class="five wide field">
-            <div class="ui two column grid">
-              <div class="column">hier später Gebutsdatum</div>
-              <div class="column right aligned">
-                <i class="pencil icon" (click)="onBearbeiten()"></i>
-              </div>
-            </div>
-          </div>
-          <div class="five wide field">
-            {{contact.bemerkung}}
-          </div>
+    <div *ngIf="!zusatzEdit; else noZusatzEdit">
+      <div class="col-12 p-3">
 
-          <div class="five wide field" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
-            <br>
-            Todesprio: {{contact.todesprio}}
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="text-700 font-medium mb-3">hier später Gebutsdatum</span>
           </div>
-          <div class="five wide field" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
-            {{contact.todesBemerkung}}
+          <div class="flex align-items-center justify-content-center">
+            <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
           </div>
         </div>
+
+        <div class="text-800 font-medium">
+          {{contact.bemerkung}}
+        </div>
+
+        <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+          <br>
+          Todesprio: {{contact.todesprio}}
+        </div>
+        <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+          {{contact.todesBemerkung}}
+        </div>
+
       </div>
-
-      <ng-template #noZusatzEdit>
-        <div class="ui raised segment">
-          <form class="ui form" [formGroup]="zusatzForm">
-
-            <div class="fields">
-              <input type="text" formControlName="bemerkung" placeholder="Bemerkung">
-            </div>
-
-            <br>
-            <div class="fields">
-              <label class="ui grey label">Todesliste</label>
-            </div>
-            <div class="field">
-              <label>Prio</label>
-              <div class="ui radio checkbox">
-                <input type="radio" formControlName="todesprio" name="todesprio" value="0">
-                <label>keine</label>
-              </div>
-            </div>
-            <div class="inline fields">
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" formControlName="todesprio" name="todesprio" value="9">
-                  <label>hoch</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" formControlName="todesprio" name="todesprio" value="4">
-                  <label>mittel</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" formControlName="todesprio" name="todesprio" value="1">
-                  <label>niederig</label>
-                </div>
-              </div>
-            </div>
-            <div class="fields">
-              <input type="text" formControlName="todesBemerkung" placeholder="Todesbemerkung">
-            </div>
-
-            <i class="close icon" (click)="onCancel()"></i>
-            <i class="check icon" (click)="onSpeichern()"></i>
-          </form>
-        </div>
-      </ng-template>
-
     </div>
+
+    <ng-template #noZusatzEdit>
+      <div class="shadow-3 p-3">
+        <form class="p-fluid p-formgrid grid" [formGroup]="zusatzForm">
+          <div class="field col-12">
+            <input pInputText type="text" formControlName="bemerkung" placeholder="Bemerkung"/>
+          </div>
+
+          <div class="field col-12">
+            <label class="font-medium bg-gray-100 border-round p-1">Todesliste</label>
+          </div>
+
+          <div class="field col-12 -mt-4">
+            <label class="font-bold">Prio</label>
+            <div class="flex align-items-center">
+              <p-radioButton formControlName="todesprio" name="todesprio" id="rkeine" value="0"></p-radioButton>
+              <label for="rkeine" class="ml-2">keine</label>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap mb-3 ml-2">
+            <div class="flex align-items-center">
+              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rhoch" value="9"></p-radioButton>
+              <label for="rhoch" class="mx-2">hoch</label>
+            </div>
+            <div class="flex align-items-center">
+              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rmittel" value="4"></p-radioButton>
+              <label for="rmittel" class="mx-2">mittel</label>
+            </div>
+            <div class="flex align-items-center">
+              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rniedrig" value="1"></p-radioButton>
+              <label for="rniedrig" class="mx-2">niederig</label>
+            </div>
+          </div>
+
+          <div class="field col-12">
+            <input pInputText type="text" formControlName="todesBemerkung" placeholder="Todesbemerkung"/>
+          </div>
+
+          <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+          <i class="pi pi-check" (click)="onSpeichern()"></i>
+        </form>
+      </div>
+    </ng-template>
+
   </div>
 </div>

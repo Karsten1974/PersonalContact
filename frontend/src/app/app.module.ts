@@ -24,6 +24,8 @@ import {DropdownModule} from "primeng/dropdown";
 import {TieredMenuModule} from "primeng/tieredmenu";
 import {AppLayoutModule} from "./layout/app.layout.module";
 import { ContactAnlegenComponent } from './pages/contact-anlegen/contact-anlegen.component';
+import {PanelModule} from "primeng/panel";
+import {RadioButtonModule} from "primeng/radiobutton";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ContactAnlegenComponent } from './pages/contact-anlegen/contact-anlegen
     InputTextModule,
     ListboxModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    PanelModule,
+    RadioButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

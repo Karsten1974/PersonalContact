@@ -1,63 +1,61 @@
-<div class="ui raised segment">
-  <div class="ui two column grid">
-    <div class="column three wide">
-      <label class="ui grey label">Person:</label>
-    </div>
+<div class="grid">
+  <div class="col-12">
 
-    <div class="column thirteen wide">
+    <div *ngIf="!personEdit; else noPersonEdit">
+      <div class="card p-fluid">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="font-medium bg-gray-100 border-round p-2 mb-3">Person:</span>
+          </div>
+          <div class="flex align-items-center justify-content-center">
+            <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
+          </div>
+        </div>
+        <div class="text-800 font-medium">
+          {{contact.brancheBezeichnung}}
+        </div>
 
-      <div *ngIf="!personEdit; else noPersonEdit">
-        <div class="fields">
-          <div class="five wide field">
-            <div class="ui two column grid">
-              <div class="column">
-                {{contact.brancheBezeichnung}}
-              </div>
-              <div class="column right aligned">
-                <i class="pencil icon" (click)="onBearbeiten()"></i>
-              </div>
-            </div>
-          </div>
-          <div class="five wide field">
-            {{contact.vorname}} {{contact.name}}
-          </div>
-          <div class="five wide field">
-            {{contact.strasse}}
-          </div>
-          <div class="five wide field">
-            {{contact.plz}} {{contact.ort}}
-          </div>
+        <div class="text-800 font-medium my-1">
+          {{contact.vorname}} {{contact.name}}
+        </div>
+        <div class="text-800 font-medium">
+          {{contact.strasse}}
+        </div>
+        <div class="text-800 font-medium mt-1">
+          {{contact.plz}} {{contact.ort}}
         </div>
       </div>
-
-      <ng-template #noPersonEdit>
-        <div class="ui raised segment">
-          <form class="ui form" [formGroup]="personForm">
-
-            <div class="fields">
-              <select class="ui compact selection dropdown" formControlName="brancheFachCode" (click)="onBranche()">
-                <option *ngFor="let a of branchen" [value]="a.fachCode">{{ a.bezeichnung }}</option>
-              </select>
-            </div>
-
-            <div class="fields">
-              <input type="text" formControlName="vorname" placeholder="Vorname">
-              <input type="text" formControlName="name" placeholder="Name">
-            </div>
-            <div class="fields">
-              <input type="text" formControlName="strasse" placeholder="Strasse">
-            </div>
-            <div class="fields">
-              <input type="text" formControlName="plz" placeholder="Plz">
-              <input type="text" formControlName="ort" placeholder="Ort">
-            </div>
-
-            <i class="close icon" (click)="onCancel()"></i>
-            <i class="check icon" (click)="onSpeichern()"></i>
-          </form>
-        </div>
-      </ng-template>
-
     </div>
+
+    <ng-template #noPersonEdit>
+      <div class="shadow-3 p-3">
+        <form class="card p-fluid p-formgrid grid" [formGroup]="personForm">
+
+          <div class="field col-12">
+            <p-dropdown [options]="branchen" formControlName="brancheFachCode" optionLabel="bezeichnung" (click)="onBranche()"></p-dropdown>
+          </div>
+
+          <div class="field col-12 md:col-6">
+            <input pInputText type="text" formControlName="vorname" placeholder="Vorname">
+          </div>
+          <div class="field col-12 md:col-6">
+            <input pInputText type="text" formControlName="name" placeholder="Name">
+          </div>
+          <div class="field col-12">
+            <input pInputText type="text" formControlName="strasse" placeholder="Strasse">
+          </div>
+          <div class="field col-12 md:col-6">
+            <input pInputText type="text" formControlName="plz" placeholder="Plz">
+          </div>
+          <div class="field col-12 md:col-6">
+            <input pInputText type="text" formControlName="ort" placeholder="Ort">
+          </div>
+
+          <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+          <i class="pi pi-check" (click)="onSpeichern()"></i>
+        </form>
+      </div>
+    </ng-template>
+
   </div>
 </div>

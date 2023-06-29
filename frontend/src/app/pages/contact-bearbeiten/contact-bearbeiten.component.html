@@ -1,30 +1,17 @@
-<div class="ui raised segment">
-  <div class="ui two column grid">
-    <div class="column three wide">
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <contact-person [contact]="contact"></contact-person>
+    <contact-verbindungen [contact]="contact"></contact-verbindungen>
+
+    <div class="card p-fluid">
+      <p-panel header="Sonstiges" [toggleable]="true" [collapsed]="true" class="line-height-3 m-0">
+        <contact-zusatz [contact]="contact"></contact-zusatz>
+      </p-panel>
     </div>
 
-    <div class="thirteen wide column">
-      <div class="ui two column grid">
-
-        <div class="column">
-          <contact-person [contact]="contact"></contact-person>
-          <contact-verbindungen [contact]="contact"></contact-verbindungen>
-
-          <div class="ui accordion">
-            <div class="title" [class.active]="clickZusatz" (click)="onClickZusatz()">
-              <i class="dropdown icon"></i>
-              Sonstiges
-            </div>
-            <contact-zusatz [contact]="contact" class="content" [class.active]="clickZusatz"></contact-zusatz>
-          </div>
-
-          <div class="ui segment">
-            <button class="ui button" type="button" (click)="onZurueck()">Zurueck</button>
-          </div>
-
-        </div>
-      </div>
-
+    <div class="flex flex-wrap gap-2">
+      <button pButton pRipple type="button" label="Zurueck" class="p-button-secondary" (click)="onZurueck()"></button>
     </div>
+
   </div>
 </div>
