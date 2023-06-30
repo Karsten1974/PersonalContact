@@ -29,26 +29,26 @@
 
     <ng-template #noPersonEdit>
       <div class="shadow-3 p-3">
-        <form class="card p-fluid p-formgrid grid" [formGroup]="personForm">
+        <form class="card p-fluid p-formgrid grid">
 
           <div class="field col-12">
-            <p-dropdown [options]="branchen" formControlName="brancheFachCode" optionLabel="bezeichnung" (click)="onBranche()"></p-dropdown>
+            <p-dropdown [options]="branchen" name="branche" optionLabel="bezeichnung" [(ngModel)]="selBranche"></p-dropdown>
           </div>
 
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="vorname" placeholder="Vorname">
+            <input pInputText type="text" name="vorname" placeholder="Vorname" [(ngModel)]="contact.vorname">
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="name" placeholder="Name">
+            <input pInputText type="text" name="name" placeholder="Name" [(ngModel)]="contact.name">
           </div>
           <div class="field col-12">
-            <input pInputText type="text" formControlName="strasse" placeholder="Strasse">
+            <input pInputText type="text" name="strasse" placeholder="Strasse" [(ngModel)]="contact.strasse">
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="plz" placeholder="Plz">
+            <input pInputText type="text" name="plz" placeholder="Plz" [(ngModel)]="contact.plz">
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="ort" placeholder="Ort">
+            <input pInputText type="text" name="ort" placeholder="Ort" [(ngModel)]="contact.ort">
           </div>
 
           <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>

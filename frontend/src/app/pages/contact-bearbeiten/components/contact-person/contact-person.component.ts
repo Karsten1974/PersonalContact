@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {ContactDto} from "../../../../base/generated/models/contact-dto";
 import {ContactService} from "../../../../backend-api/contact.service";
 import {BrancheDto} from "../../../../base/generated/models/branche-dto";
@@ -11,14 +10,6 @@ import {BrancheService} from "../../../../backend-api/branche.service";
   styleUrls: ['./contact-person.component.css']
 })
 export class ContactPersonComponent implements OnInit {
-  personForm: FormGroup = this.fb.group({
-    brancheFachCode: '',
-    name: [''],
-    vorname: [''],
-    strasse: [''],
-    plz: [''],
-    ort: ['']
-  });
   selBranche: BrancheDto = {
     version: 0,
     id: '',
@@ -34,7 +25,7 @@ export class ContactPersonComponent implements OnInit {
     brancheBezeichnung: ''
   };
 
-  constructor(private fb: FormBuilder, private bs: BrancheService, private cs: ContactService) { }
+  constructor(private bs: BrancheService, private cs: ContactService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -45,13 +36,8 @@ export class ContactPersonComponent implements OnInit {
   }
 
   onBearbeiten() {
-    this.personForm.patchValue(this.contact);
+    this.bs.getBrancheByFachCode(this.contact.brancheFachCode).subscribe(res => this.selBranche = res);
     this.personEdit = true;
-  }
-
-  onBranche() {
-    const formValue = this.personForm.value;
-    this.bs.getBrancheByFachCode(formValue['brancheFachCode']).subscribe(res => this.selBranche = res);
   }
 
   onCancel() {
@@ -59,8 +45,6 @@ export class ContactPersonComponent implements OnInit {
   }
 
   onSpeichern() {
-    const formValue = this.personForm.value;
-
     this.cs.getContact(this.contact.id).subscribe(res => {
 
       let saveContact: ContactDto = {
@@ -68,11 +52,11 @@ export class ContactPersonComponent implements OnInit {
         'version': res.version,
         'brancheFachCode': res.brancheFachCode,
         'brancheBezeichnung': res.brancheBezeichnung,
-        'name': formValue['name'],
-        'vorname': formValue['vorname'],
-        'strasse': formValue['strasse'],
-        'plz': formValue['plz'],
-        'ort': formValue['ort'],
+        'name': this.contact.name,
+        'vorname': this.contact.vorname,
+        'strasse': this.contact.strasse,
+        'plz': this.contact.plz,
+        'ort': this.contact.ort,
         'bemerkung': res.bemerkung,
         'todesprio': res.todesprio,
         'todesBemerkung': res.todesBemerkung,
