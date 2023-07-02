@@ -24,6 +24,12 @@ const routes: Routes = [
       { path: '', component: ContactVerwaltenComponent }
     ]
   },{
+    path: 'verwalten/:contactUUID',
+    component: AppLayoutComponent,
+    children:[
+      { path: '', component: ContactVerwaltenComponent }
+    ]
+  },{
     path: 'bearbeiten/:contactUUID',
     component: AppLayoutComponent,
     children:[

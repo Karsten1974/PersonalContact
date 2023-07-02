@@ -1,16 +1,52 @@
-<div class="shadow-3 p-3">
+<div class="grid">
 
-  <p-listbox [options]="contacts" [(ngModel)]="selectedContactDto" [routerLink]="['/bearbeiten/', selectedContactDto.id]">
-    <ng-template let-ct pTemplate="item">
-      <div class="flex flex-column">
-        <div class="field mb-0 text-base font-medium">
-          {{ct.name}}, {{ct.vorname}}
-        </div>
-        <div class="field mb-0 text-sm" style="color: grey">
-          {{ct.ort}} {{telefon(ct)}}
-        </div>
-      </div>
-    </ng-template>
-  </p-listbox>
+  <div class="col-12">
+    <div class="card">
+      <p-dataView #dv [value]="contacts" [paginator]="true" [rows]="9" [layout]="this.layout">
+        <ng-template pTemplate="header">
+          <div class="flex justify-content-end">
+            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+          </div>
+        </ng-template>
+
+        <ng-template let-ct pTemplate="listItem">
+          <div class="col-12 mySelect" [routerLink]="['/bearbeiten/', ct.id]">
+            <div class="flex flex-column md:flex-row align-items-center p-3 w-full">
+
+              <div class= "flex-1 flex flex-column text-left">
+                <div class="font-bold text-2xl">
+                  {{ct.name}}, {{ct.vorname}}
+                </div>
+                <div class="text-2xl font-semibold" style="color: grey">
+                  {{ct.strasse}} * {{ct.ort}}
+                </div>
+              </div>
+
+              <div class="flex flex-row md:flex-column justify-content-between w-full md:w-auto align-items-center md:align-items-end mt-5 md:mt-0">
+                <div class="text-2xl font-semibold mb-2 align-self-center md:align-self-end">{{telefon(ct, "MOBIL")}}</div>
+                <div class="text-2xl font-semibold mb-2 align-self-center md:align-self-end">{{telefon(ct, "TELEFON")}}</div>
+              </div>
+
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template let-ct pTemplate="gridItem">
+          <div class="col-12 mySelect md:col-4" [routerLink]="['/bearbeiten/', ct.id]">
+            <div class="card m-3 border-1 surface-border">
+              <div class="flex flex-column text-left mb-3">
+                <div class="text-2xl font-bold">{{ct.name}}, {{ct.vorname}}</div>
+                <div class="text-2xl font-semibold">{{ct.strasse}} * {{ct.ort}}</div>
+                <div class="text-xl mb-2">{{telefon(ct, "MOBIL")}}</div>
+                <div class="text-xl mb-2">{{telefon(ct, "TELEFON")}}</div>
+                <div class="text-xl mb-2">{{telefon(ct, "EMAIL")}}</div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </p-dataView>
+    </div>
+  </div>
 
 </div>

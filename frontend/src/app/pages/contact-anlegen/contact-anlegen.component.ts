@@ -6,6 +6,7 @@ import {VerbindungDto} from "../../base/generated/models/verbindung-dto";
 import {NgForm} from "@angular/forms";
 import {ContactCreateDto} from "../../base/generated/models/contact-create-dto";
 import {ContactService} from "../../backend-api/contact.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'contact-anlegen',
@@ -20,7 +21,7 @@ export class ContactAnlegenComponent implements OnInit {
   contact: ContactDto = {brancheBezeichnung: "", brancheFachCode: "", id: ""};
   verbindungen = {telefon: "", mobil: "", email: ""};
 
-  constructor(private bs: BrancheService, private cs: ContactService) {}
+  constructor(private bs: BrancheService, private cs: ContactService, private router: Router) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -93,6 +94,7 @@ export class ContactAnlegenComponent implements OnInit {
 
       this.cs.updateContact(contact).subscribe(res => {
         this.contactForm.reset();
+        this.router.navigate(['/verwalten/', contactId]);
       });
     });
   }

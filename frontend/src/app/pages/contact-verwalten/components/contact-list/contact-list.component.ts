@@ -9,19 +9,17 @@ import {VerbindungDto} from "../../../../base/generated/models/verbindung-dto";
 })
 export class ContactListComponent implements OnInit {
   @Input() contacts: ContactDto[] = [];
-  selectedContactDto: ContactDto;
-  constructor() {
-    this.selectedContactDto = {brancheBezeichnung: "", brancheFachCode: "", id: ""};
-  }
+  @Input() layout: string = "list";
+  constructor() {}
 
   ngOnInit(): void {
   }
 
-  telefon(ct: ContactDto): string | undefined {
+  telefon(ct: ContactDto, art: string): string | undefined {
     let verb: Array<VerbindungDto> | undefined = ct.verbindungen;
     if (verb) {
       for (let vb of verb) {
-        if (vb.verbindungsart == 'TELEFON') {
+        if (vb.verbindungsart == art) {
           return vb.verbindungsdaten;
         }
       }

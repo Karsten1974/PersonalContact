@@ -21,11 +21,11 @@ import {InputTextModule} from "primeng/inputtext";
 import {ListboxModule} from "primeng/listbox";
 import {ButtonModule} from "primeng/button";
 import {DropdownModule} from "primeng/dropdown";
-import {TieredMenuModule} from "primeng/tieredmenu";
 import {AppLayoutModule} from "./layout/app.layout.module";
 import { ContactAnlegenComponent } from './pages/contact-anlegen/contact-anlegen.component';
 import {PanelModule} from "primeng/panel";
 import {RadioButtonModule} from "primeng/radiobutton";
+import {DataViewModule} from "primeng/dataview";
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ import {RadioButtonModule} from "primeng/radiobutton";
     ButtonModule,
     DropdownModule,
     PanelModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DataViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
