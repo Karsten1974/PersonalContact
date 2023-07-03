@@ -26,4 +26,8 @@ export class ContactService {
     return this.cs.update({body: contact});
   }
 
+  deleteContact(contactID: string): Observable<any> {
+    return this.cs.delete({contactID: contactID});
+  }
+
 }

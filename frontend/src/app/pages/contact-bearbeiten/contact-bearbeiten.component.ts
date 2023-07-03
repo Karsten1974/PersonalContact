@@ -41,4 +41,10 @@ export class ContactBearbeitenComponent implements OnInit {
   onZurueck() {
     this.router.navigate(['/verwalten']);
   }
+
+  onDel() {
+    this.cs.deleteContact(this.contact.id).subscribe(() => {
+      this.router.navigate(['/verwalten/'])
+    });
+  }
 }
