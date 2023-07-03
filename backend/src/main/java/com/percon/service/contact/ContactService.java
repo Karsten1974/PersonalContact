@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -29,6 +31,10 @@ public class ContactService {
 
     public Iterable<ContactEntity> findAll() {
         return contactRepository.findAll();
+    }
+
+    public Optional<Iterable<ContactEntity>> findBySearch(String strSearch) {
+        return contactRepository.findBySearch(strSearch);
     }
 
     public void delete(UUID id) {

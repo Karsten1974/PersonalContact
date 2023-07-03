@@ -1,6 +1,7 @@
 package com.percon.presentation.endpoint.contact;
 
 import com.percon.dataaccess.model.contact.ContactEntity;
+import com.percon.dataaccess.repository.contact.ContactRepository;
 import com.percon.presentation.dto.contact.ContactCreateDto;
 import com.percon.presentation.dto.contact.ContactDto;
 import com.percon.presentation.mapper.contact.ContactMapper;
@@ -15,10 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @Validated
@@ -64,6 +62,20 @@ public class ContactController {
             return ResponseEntity.ok(mapper.toDto(contact.get()));
         }
         
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping(value = "/search/{search}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ContactDto>> getContatsBySearch(@PathVariable(name = "search") String strSearch) {
+        List<ContactDto> viewList = new ArrayList<ContactDto>();
+
+        Optional<Iterable<ContactEntity>> contactfindBySearch = contactService.findBySearch(strSearch);
+        if (contactfindBySearch.isPresent()) {
+            List<ContactEntity> contactList = (List<ContactEntity>) contactfindBySearch.get();
+            contactList.stream().map(t -> mapper.toDto(t)).forEach(viewList::add);
+            return ResponseEntity.ok(viewList);
+        }
+
         return ResponseEntity.notFound().build();
     }
 

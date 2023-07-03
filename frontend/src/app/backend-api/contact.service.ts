@@ -30,4 +30,8 @@ export class ContactService {
     return this.cs.delete({contactID: contactID});
   }
 
+  getContatsBySearch(search: string): Observable<Array<ContactDto>> {
+    return this.cs.getContatsBySearch({search: search});
+  }
+
 }

@@ -14,10 +14,10 @@
 
               <div class="formgrid grid">
                 <div class="field col-4">
-                  <input type="text" pInputText placeholder="Suche...">
+                  <input type="text" pInputText name="suche" placeholder="Suche..." [(ngModel)]="suche">
                 </div>
                 <div class="field col-4">
-                  <p-button label="suchen"></p-button>
+                  <p-button label="suchen" (click)="onSearch()"></p-button>
                 </div>
               </div>
 

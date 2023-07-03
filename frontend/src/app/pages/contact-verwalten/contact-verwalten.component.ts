@@ -11,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ContactVerwaltenComponent implements OnInit {
   contacts: ContactDto[] = [];
   layout: string = "list";
+  suche: string = "";
 
   constructor(private cs: ContactService, private route: ActivatedRoute) {}
 
@@ -33,6 +34,17 @@ export class ContactVerwaltenComponent implements OnInit {
       this.cs.getContacts().subscribe(res => this.contacts = res);
       this.layout = "list";
     }
+  }
+
+  onSearch() {
+    if (this.suche != '') {
+      this.cs.getContatsBySearch(this.suche).subscribe(res => this.contacts = res);
+      this.layout = "list";
+    } else {
+      this.cs.getContacts().subscribe(res => this.contacts = res);
+      this.layout = "list";
+    }
+
   }
 
 }

@@ -285,4 +285,57 @@ export class ContactControllerService extends BaseService {
     );
   }
 
+  /**
+   * Path part for operation getContatsBySearch
+   */
+  static readonly GetContatsBySearchPath = '/api/contact/search/{search}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getContatsBySearch()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getContatsBySearch$Response(params: {
+    search: string;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<ContactDto>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, ContactControllerService.GetContatsBySearchPath, 'get');
+    if (params) {
+      rb.path('search', params.search, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ContactDto>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getContatsBySearch$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getContatsBySearch(params: {
+    search: string;
+  },
+  context?: HttpContext
+
+): Observable<Array<ContactDto>> {
+
+    return this.getContatsBySearch$Response(params,context).pipe(
+      map((r: StrictHttpResponse<Array<ContactDto>>) => r.body as Array<ContactDto>)
+    );
+  }
+
 }
