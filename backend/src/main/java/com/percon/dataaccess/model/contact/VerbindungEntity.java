@@ -3,6 +3,7 @@ package com.percon.dataaccess.model.contact;
 import java.util.UUID;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.percon.dataaccess.enumeration.VerbindungsartEnum;
@@ -24,6 +25,7 @@ public class VerbindungEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private ContactEntity contact;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private VerbindungsartEnum verbindungsart;
     

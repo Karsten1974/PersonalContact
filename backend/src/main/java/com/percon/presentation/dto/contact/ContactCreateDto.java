@@ -12,15 +12,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContactCreateDto {
-    
+
     @NotBlank
     @NotNull
-    @Size(max=2)
+    @Size(min = 2, max = 2)
     private String brancheFachCode;
 
     @NotBlank
     @NotNull
-    @Size(max=15)
+    @Size(max = 15)
     private String brancheBezeichnung;
 
     @Size(max = 50)

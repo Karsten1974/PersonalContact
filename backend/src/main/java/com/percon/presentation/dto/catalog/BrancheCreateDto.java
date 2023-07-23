@@ -13,11 +13,11 @@ public class BrancheCreateDto {
 
     @NotBlank
     @NotNull
-    @Size(max=2)
+    @Size(min = 2, max = 2)
     private String fachCode;
     
     @NotBlank
     @NotNull
-    @Size(max=15)
+    @Size(max = 15)
     private String bezeichnung;
 }

@@ -1,10 +1,14 @@
 package com.percon.dataaccess.model.contact;
 
-import java.util.Objects;
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Embeddable
 @Getter
@@ -16,6 +20,7 @@ public class AdresseEmbeddable {
   private String strasse;
 
   @Size(min = 5, max = 5)
+  @Min(value = 1000) @Max(value = 99999)
   @Column(length = 5, nullable = true)
   private String plz;
 

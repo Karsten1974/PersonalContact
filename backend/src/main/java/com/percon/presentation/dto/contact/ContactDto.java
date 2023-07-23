@@ -4,6 +4,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -31,11 +34,13 @@ public class ContactDto extends ContactCreateDto {
     @Size(max = 50)
     private String strasse;
 
-    @Size(max = 5)
+    @Size(min = 5, max = 5)
+    @Min(value = 1000) @Max(value = 99999)
     private String plz;
 
     @Size(max = 50)
     private String ort;
 
+    @Valid
     private Set<VerbindungDto> verbindungen = new LinkedHashSet<>();
 }
