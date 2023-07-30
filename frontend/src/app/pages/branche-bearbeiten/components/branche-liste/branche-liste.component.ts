@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {BrancheDto} from "../../../../base/generated/models/branche-dto";
+import {BrancheDto} from "../../../../backend-api/models/branche-dto";
 
 @Component({
   selector: 'branche-liste',

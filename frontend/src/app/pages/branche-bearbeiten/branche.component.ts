@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrancheService } from '../../backend-api/branche.service';
+import { BrancheService } from '../../shared/service/branche.service';
 import { BrancheFactory } from '../../core/factory/branche-factory';
-import {BrancheDto} from "../../base/generated/models/branche-dto";
-import {BrancheCreateDto} from "../../base/generated/models/branche-create-dto";
+import {BrancheDto} from "../../backend-api/models/branche-dto";
+import {BrancheCreateDto} from "../../backend-api/models/branche-create-dto";
 
 @Component({
   selector: 'branche',

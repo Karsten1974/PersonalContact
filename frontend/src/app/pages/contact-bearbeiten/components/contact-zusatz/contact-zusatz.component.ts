@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ContactDto} from "../../../../base/generated/models/contact-dto";
-import {ContactService} from "../../../../backend-api/contact.service";
+import {ContactDto} from "../../../../backend-api/models/contact-dto";
+import {ContactService} from "../../../../shared/service/contact.service";
 
 @Component({
   selector: 'contact-zusatz',

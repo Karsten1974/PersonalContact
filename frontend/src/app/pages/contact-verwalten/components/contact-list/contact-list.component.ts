@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ContactDto} from "../../../../base/generated/models/contact-dto";
-import {VerbindungDto} from "../../../../base/generated/models/verbindung-dto";
+import {ContactDto} from "../../../../backend-api/models/contact-dto";
+import {VerbindungDto} from "../../../../backend-api/models/verbindung-dto";
 
 @Component({
   selector: 'contact-list',

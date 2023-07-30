@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ContactControllerService} from "../base/generated/services/contact-controller.service";
+import {ContactControllerService} from "../../backend-api/services/contact-controller.service";
 import {Observable} from "rxjs";
-import {ContactDto} from "../base/generated/models/contact-dto";
-import {ContactCreateDto} from "../base/generated/models/contact-create-dto";
+import {ContactDto} from "../../backend-api/models/contact-dto";
+import {ContactCreateDto} from "../../backend-api/models/contact-create-dto";
 
 @Injectable({
   providedIn: 'root'

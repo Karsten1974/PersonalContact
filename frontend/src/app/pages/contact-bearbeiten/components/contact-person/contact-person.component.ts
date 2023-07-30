@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ContactDto} from "../../../../base/generated/models/contact-dto";
-import {ContactService} from "../../../../backend-api/contact.service";
-import {BrancheDto} from "../../../../base/generated/models/branche-dto";
-import {BrancheService} from "../../../../backend-api/branche.service";
+import {ContactDto} from "../../../../backend-api/models/contact-dto";
+import {ContactService} from "../../../../shared/service/contact.service";
+import {BrancheDto} from "../../../../backend-api/models/branche-dto";
+import {BrancheService} from "../../../../shared/service/branche.service";
 
 @Component({
   selector: 'contact-person',

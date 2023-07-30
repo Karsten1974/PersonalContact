@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ContactDto} from "../../base/generated/models/contact-dto";
-import {ContactService} from "../../backend-api/contact.service";
+import {ContactDto} from "../../backend-api/models/contact-dto";
+import {ContactService} from "../../shared/service/contact.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 

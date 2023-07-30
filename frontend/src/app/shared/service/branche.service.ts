@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {BrancheControllerService} from "../base/generated/services/branche-controller.service";
-import {BrancheDto} from "../base/generated/models/branche-dto";
-import {BrancheCreateDto} from "../base/generated/models/branche-create-dto";
+import {BrancheControllerService} from "../../backend-api/services/branche-controller.service";
+import {BrancheDto} from "../../backend-api/models/branche-dto";
+import {BrancheCreateDto} from "../../backend-api/models/branche-create-dto";
 
 @Injectable({
   providedIn: 'root'

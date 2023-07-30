@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {BrancheDto} from "../../base/generated/models/branche-dto";
-import {BrancheService} from "../../backend-api/branche.service";
-import {ContactDto} from "../../base/generated/models/contact-dto";
-import {VerbindungDto} from "../../base/generated/models/verbindung-dto";
+import {BrancheDto} from "../../backend-api/models/branche-dto";
+import {BrancheService} from "../../shared/service/branche.service";
+import {ContactDto} from "../../backend-api/models/contact-dto";
+import {VerbindungDto} from "../../backend-api/models/verbindung-dto";
 import {NgForm} from "@angular/forms";
-import {ContactCreateDto} from "../../base/generated/models/contact-create-dto";
-import {ContactService} from "../../backend-api/contact.service";
+import {ContactCreateDto} from "../../backend-api/models/contact-create-dto";
+import {ContactService} from "../../shared/service/contact.service";
 import {Router} from "@angular/router";
 
 @Component({

@@ -1,4 +1,4 @@
-import {BrancheDto} from "../../base/generated/models/branche-dto";
+import {BrancheDto} from "../../backend-api/models/branche-dto";
 
 export class BrancheFactory {
 
