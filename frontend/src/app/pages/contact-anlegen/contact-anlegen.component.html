@@ -33,7 +33,7 @@
 
           <div class="field col-12 md:col-3">
             <label htmlFor="plz">Plz</label>
-            <input pInputText id="plz" name="plz" type="text" [(ngModel)]="contact.plz"/>
+            <p-inputNumber mode="decimal" inputId="plz" name="plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
           </div>
           <div class="field col-12 md:col-9">
             <label htmlFor="ort">Ort</label>

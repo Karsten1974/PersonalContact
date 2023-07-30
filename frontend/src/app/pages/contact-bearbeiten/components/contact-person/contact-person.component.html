@@ -29,7 +29,7 @@
 
     <ng-template #noPersonEdit>
       <div class="shadow-3 p-3">
-        <form class="card p-fluid p-formgrid grid">
+        <form #personForm="ngForm" class="card p-fluid p-formgrid grid">
 
           <div class="field col-12">
             <p-dropdown [options]="branchen" name="branche" optionLabel="bezeichnung" [(ngModel)]="selBranche"></p-dropdown>
@@ -39,20 +39,23 @@
             <input pInputText type="text" name="vorname" placeholder="Vorname" [(ngModel)]="contact.vorname">
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" name="name" placeholder="Name" [(ngModel)]="contact.name">
+            <input pInputText type="text" name="name" required placeholder="Name" [(ngModel)]="contact.name">
           </div>
           <div class="field col-12">
             <input pInputText type="text" name="strasse" placeholder="Strasse" [(ngModel)]="contact.strasse">
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" name="plz" placeholder="Plz" [(ngModel)]="contact.plz">
+            <p-inputNumber mode="decimal" inputId="plz" name="plz" placeholder="Plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
           </div>
           <div class="field col-12 md:col-6">
             <input pInputText type="text" name="ort" placeholder="Ort" [(ngModel)]="contact.ort">
           </div>
 
           <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
-          <i class="pi pi-check" (click)="onSpeichern()"></i>
+          <i class="pi pi-check" (click)="onSpeichern()" *ngIf="!personForm.invalid; else noPersonEditSave"></i>
+          <ng-template #noPersonEditSave>
+            <i class="pi pi-check" style="color:red"></i>
+          </ng-template>
         </form>
       </div>
     </ng-template>

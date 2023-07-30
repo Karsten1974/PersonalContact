@@ -26,6 +26,8 @@ import { ContactAnlegenComponent } from './pages/contact-anlegen/contact-anlegen
 import {PanelModule} from "primeng/panel";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {DataViewModule} from "primeng/dataview";
+import {InputNumberModule} from "primeng/inputnumber";
+import { PlzValidatorDirective } from './shared/validator/plz-validator.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {DataViewModule} from "primeng/dataview";
     ContactPersonComponent,
     ContactVerbindungenComponent,
     ContactZusatzComponent,
-    ContactAnlegenComponent
+    ContactAnlegenComponent,
+    PlzValidatorDirective
   ],
   imports: [
     HttpClientModule,
@@ -56,7 +59,8 @@ import {DataViewModule} from "primeng/dataview";
     DropdownModule,
     PanelModule,
     RadioButtonModule,
-    DataViewModule
+    DataViewModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
