@@ -1,5 +1,6 @@
 package com.percon.presentation.dto.contact;
 
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -21,6 +22,8 @@ public class ContactDto extends ContactCreateDto {
 
     @NotNull
     private UUID id;
+
+    private Date geburtstag;
 
     @Size(max = 50)
     private String bemerkung;

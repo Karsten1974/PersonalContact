@@ -21,6 +21,7 @@ export class ContactBearbeitenComponent implements OnInit {
     strasse: '',
     vorname: '',
     brancheFachCode: '',
+    geburtstag: '',
     bemerkung: '',
     todesBemerkung: '',
     todesprio: ''

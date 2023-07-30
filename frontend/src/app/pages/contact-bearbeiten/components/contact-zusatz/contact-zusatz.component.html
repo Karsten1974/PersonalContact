@@ -6,7 +6,7 @@
 
         <div class="flex justify-content-between mb-3">
           <div>
-            <span class="text-700 font-medium mb-3">hier später Gebutsdatum</span>
+            <span class="text-700 font-medium mb-3"><i class="pi pi-user mr-3"></i>{{contact.geburtstag | date: 'mediumDate'}}</span>
           </div>
           <div class="flex align-items-center justify-content-center">
             <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
@@ -31,6 +31,10 @@
     <ng-template #noZusatzEdit>
       <div class="shadow-3 p-3">
         <form class="p-fluid p-formgrid grid" [formGroup]="zusatzForm">
+          <div class="field col-12">
+            <p-calendar placeholder="Geburtstag" dateFormat="dd.mm.yy" formControlName="geburtstag"></p-calendar>
+          </div>
+
           <div class="field col-12">
             <textarea pInputTextarea rows="3" cols="30" placeholder="Bemerkung" formControlName="bemerkung" ></textarea>
           </div>

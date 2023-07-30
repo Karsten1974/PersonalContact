@@ -51,7 +51,7 @@ export class ContactVerbindungenComponent implements OnInit {
     return "";
   }
 
-  setzeVerbindungDaten(verb: Array<VerbindungDto>, verbArt?: 'TELEFON' | 'MOBIL' | 'EMAIL', wert?: string) {
+  setzeVerbindungDaten(verb: Array<VerbindungDto>, verbArt: 'TELEFON' | 'MOBIL' | 'EMAIL', wert?: string) {
     let bFound = false;
     for (let vb of verb) {
       if (vb.verbindungsart === verbArt) {

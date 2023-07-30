@@ -5,6 +5,7 @@ export interface ContactDto {
   bemerkung?: string;
   brancheBezeichnung: string;
   brancheFachCode: string;
+  geburtstag?: string;
   id: string;
   name?: string;
   ort?: string;

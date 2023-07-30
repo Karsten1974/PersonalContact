@@ -30,6 +30,10 @@ export class ContactZusatzComponent implements OnInit {
 
   onBearbeiten() {
     this.zusatzForm.patchValue(this.contact);
+    this.zusatzForm.patchValue( {
+      geburtstag:  this.contact.geburtstag ? new Date(this.contact.geburtstag) : null}
+    );
+
     this.zusatzEdit = true;
   }
 
@@ -51,6 +55,7 @@ export class ContactZusatzComponent implements OnInit {
         'strasse': res.strasse,
         'plz': res.plz,
         'ort': res.ort,
+        'geburtstag': formValue['geburtstag'].toISOString(),
         'bemerkung': formValue['bemerkung'],
         'todesprio': formValue['todesprio'],
         'todesBemerkung': formValue['todesBemerkung'],
