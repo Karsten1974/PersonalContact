@@ -28,6 +28,7 @@ import {RadioButtonModule} from "primeng/radiobutton";
 import {DataViewModule} from "primeng/dataview";
 import {InputNumberModule} from "primeng/inputnumber";
 import { PlzValidatorDirective } from './shared/validator/plz-validator.directive';
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PlzValidatorDirective } from './shared/validator/plz-validator.directiv
     PanelModule,
     RadioButtonModule,
     DataViewModule,
-    InputNumberModule
+    InputNumberModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
