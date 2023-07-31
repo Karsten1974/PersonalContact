@@ -23,15 +23,9 @@ public interface ContactMapper {
     @Mapping(source = "plz", target = "adresse.plz")
     @Mapping(source = "ort", target = "adresse.ort")
     ContactEntity toEntity(ContactDto view);
-    
-    @AfterMapping
-    default void toDto(@MappingTarget ContactDto dto, ContactEntity contact) {
-        dto.setVerbindungen(toDtosVerbindungSet(contact.getVerbindungen()));
-    }
 
     @AfterMapping
     default void toEntity(@MappingTarget ContactEntity contact, ContactDto dto) {
-        contact.setVerbindungen(toEntitysVerbindungSet(dto.getVerbindungen()));
         if (contact.getVerbindungen() != null) {
             contact.getVerbindungen().forEach(verbindung -> verbindung.setContact(contact));
         }

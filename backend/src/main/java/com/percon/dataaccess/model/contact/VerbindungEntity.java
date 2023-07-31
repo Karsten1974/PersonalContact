@@ -22,7 +22,7 @@ public class VerbindungEntity {
     @Version
     private int version;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ContactEntity contact;
 
     @NotNull

@@ -58,6 +58,6 @@ public class ContactEntity {
     private AdresseEmbeddable adresse;
 
     @Valid
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact", orphanRemoval = true)
-    private Set<VerbindungEntity> verbindungen = new LinkedHashSet<>();;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "contact", orphanRemoval = true)
+    private Set<VerbindungEntity> verbindungen = new LinkedHashSet<>();
 }
