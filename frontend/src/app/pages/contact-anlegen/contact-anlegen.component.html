@@ -20,16 +20,17 @@
       <div grid-card cardBezeichnung="Adresse">
         <div class="field col-12">
           <label htmlFor="strasse">Strasse</label>
-          <input pInputText id="strasse" name="strass" type="text" [(ngModel)]="contact.strasse"/>
+          <input-text idName="strasse" [(myModel)]="contact.strasse"/>
         </div>
 
         <div class="field col-12 md:col-3">
           <label htmlFor="plz">Plz</label>
           <p-inputNumber mode="decimal" inputId="plz" name="plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
+          <!--input-number idName="plz" [(myModel)]="contact.plz"></input-number-->
         </div>
         <div class="field col-12 md:col-9">
           <label htmlFor="ort">Ort</label>
-          <input pInputText id="ort" name="ort" type="text" [(ngModel)]="contact.ort"/>
+          <input-text idName="ort" [(myModel)]="contact.ort"/>
         </div>
       </div>
     </grid-column>

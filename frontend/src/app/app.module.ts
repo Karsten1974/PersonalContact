@@ -30,8 +30,8 @@ import {InputNumberModule} from "primeng/inputnumber";
 import { PlzValidatorDirective } from './shared/validator/plz-validator.directive';
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {CalendarModule} from "primeng/calendar";
-//import { InputTextComponent } from './shared/components/input-text/input-text.component';
-//import { InputNumberComponent } from './shared/components/input-number/input-number.component';
+import { InputTextComponent } from './shared/components/input-text/input-text.component';
+import { InputNumberComponent } from './shared/components/input-number/input-number.component';
 import { GridColumnComponent } from './shared/components/grid-column/grid-column.component';
 import { GridCardComponent } from './shared/components/grid-card/grid-card.component';
 
@@ -49,8 +49,8 @@ import { GridCardComponent } from './shared/components/grid-card/grid-card.compo
     ContactZusatzComponent,
     ContactAnlegenComponent,
     PlzValidatorDirective,
-    //InputTextComponent,
-    //InputNumberComponent,
+    InputTextComponent,
+    InputNumberComponent,
     GridColumnComponent,
     GridCardComponent
   ],
