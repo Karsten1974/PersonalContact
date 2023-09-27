@@ -34,6 +34,7 @@ import { InputTextComponent } from './shared/components/input-text/input-text.co
 import { InputNumberComponent } from './shared/components/input-number/input-number.component';
 import { GridColumnComponent } from './shared/components/grid-column/grid-column.component';
 import { GridCardComponent } from './shared/components/grid-card/grid-card.component';
+import { InputPlzComponent } from './shared/components/input-plz/input-plz.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { GridCardComponent } from './shared/components/grid-card/grid-card.compo
     InputTextComponent,
     InputNumberComponent,
     GridColumnComponent,
-    GridCardComponent
+    GridCardComponent,
+    InputPlzComponent
   ],
   imports: [
     HttpClientModule,
