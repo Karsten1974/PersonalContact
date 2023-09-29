@@ -9,6 +9,7 @@ export class InputTextComponent {
   @Input() myModel: any; //muss myModel heissen. ngModel geht nicht
   @Output() myModelChange = new EventEmitter<any>();
   @Input() idName?: string;
+  @Input() placeholder?: string;
 
   ngChangeEvent(text:any) {
     this.myModelChange.emit(text);

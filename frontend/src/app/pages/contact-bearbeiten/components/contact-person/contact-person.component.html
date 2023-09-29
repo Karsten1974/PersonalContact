@@ -36,19 +36,19 @@
           </div>
 
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" name="vorname" placeholder="Vorname" [(ngModel)]="contact.vorname">
+            <input-text idName="vorname" placeholder="Vorname" [(myModel)]="contact.vorname"/>
           </div>
           <div class="field col-12 md:col-6">
             <input pInputText type="text" name="name" required placeholder="Name" [(ngModel)]="contact.name">
           </div>
           <div class="field col-12">
-            <input pInputText type="text" name="strasse" placeholder="Strasse" [(ngModel)]="contact.strasse">
+            <input-text idName="strasse" placeholder="Strasse" [(myModel)]="contact.strasse"/>
           </div>
           <div class="field col-12 md:col-6">
             <p-inputNumber mode="decimal" inputId="plz" name="plz" placeholder="Plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
           </div>
           <div class="field col-12 md:col-6">
-            <input pInputText type="text" name="ort" placeholder="Ort" [(ngModel)]="contact.ort">
+            <input-text idName="ort" placeholder="Ort" [(myModel)]="contact.ort"/>
           </div>
 
           <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
