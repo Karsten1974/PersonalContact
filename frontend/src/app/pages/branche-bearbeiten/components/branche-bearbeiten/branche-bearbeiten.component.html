@@ -1,10 +1,8 @@
-<div class="shadow-3 p-3">
-  <form class="mr-3" [formGroup]="branchenForm">
-
-    <div class="field flex flex-column">
-      <label for="branchefield">Branche</label>
-      <input id="branchefield" class="pr-8" type="text" pInputText formControlName="bezeichnung" placeholder="Name">
+<form [formGroup]="branchenForm">
+    <div grid-card>
+      <div class="field col-12">
+        <label for="branchefield">Branche</label>
+        <input id="branchefield" class="pr-8" type="text" pInputText formControlName="bezeichnung" placeholder="Name">
+      </div>
     </div>
-
-  </form>
-</div>
+</form>

@@ -1,64 +1,56 @@
-<div class="grid">
-  <div class="col-12">
-
-    <div *ngIf="!personEdit; else noPersonEdit">
-      <div class="card p-fluid">
-        <div class="flex justify-content-between mb-3">
-          <div>
-            <span class="font-medium bg-gray-100 border-round p-2 mb-3">Person:</span>
-          </div>
-          <div class="flex align-items-center justify-content-center">
-            <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
-          </div>
-        </div>
-        <div class="text-800 font-medium">
-          {{contact.brancheBezeichnung}}
-        </div>
-
-        <div class="text-800 font-medium my-1">
-          {{contact.vorname}} {{contact.name}}
-        </div>
-        <div class="text-800 font-medium">
-          {{contact.strasse}}
-        </div>
-        <div class="text-800 font-medium mt-1">
-          {{contact.plz}} {{contact.ort}}
-        </div>
+<div *ngIf="!personEdit; else doPersonEdit">
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="font-medium bg-gray-100 border-round p-2 mb-3">Person:</span>
+      </div>
+      <div class="flex align-items-center justify-content-center">
+        <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
       </div>
     </div>
+    <div class="text-800 font-medium">
+      {{contact.brancheBezeichnung}}
+    </div>
 
-    <ng-template #noPersonEdit>
-      <div class="shadow-3 p-3">
-        <form #personForm="ngForm" class="card p-fluid p-formgrid grid">
-
-          <div class="field col-12">
-            <p-dropdown [options]="branchen" name="branche" optionLabel="bezeichnung" [(ngModel)]="selBranche"></p-dropdown>
-          </div>
-
-          <div class="field col-12 md:col-6">
-            <input-text idName="vorname" placeholder="Vorname" [(myModel)]="contact.vorname"/>
-          </div>
-          <div class="field col-12 md:col-6">
-            <input pInputText type="text" name="name" required placeholder="Name" [(ngModel)]="contact.name">
-          </div>
-          <div class="field col-12">
-            <input-text idName="strasse" placeholder="Strasse" [(myModel)]="contact.strasse"/>
-          </div>
-          <div class="field col-12 md:col-6">
-            <p-inputNumber mode="decimal" inputId="plz" name="plz" placeholder="Plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
-          </div>
-          <div class="field col-12 md:col-6">
-            <input-text idName="ort" placeholder="Ort" [(myModel)]="contact.ort"/>
-          </div>
-
-          <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
-          <i class="pi pi-check" (click)="onSpeichern()" *ngIf="!personForm.invalid; else noPersonEditSave"></i>
-          <ng-template #noPersonEditSave>
-            <i class="pi pi-check" style="color:red"></i>
-          </ng-template>
-        </form>
-      </div>
-    </ng-template>
-
-  </div>
+    <div class="text-800 font-medium my-1">
+      {{contact.vorname}} {{contact.name}}
+    </div>
+    <div class="text-800 font-medium">
+      {{contact.strasse}}
+    </div>
+    <div class="text-800 font-medium mt-1">
+      {{contact.plz}} {{contact.ort}}
+    </div>
 </div>
+
+<ng-template #doPersonEdit>
+  <div class="shadow-3 p-3">
+    <form #personForm="ngForm" class="card p-fluid p-formgrid grid">
+
+      <div class="field col-12">
+        <p-dropdown [options]="branchen" name="branche" optionLabel="bezeichnung" [(ngModel)]="selBranche"></p-dropdown>
+      </div>
+
+      <div class="field col-12 md:col-6">
+        <input-text idName="vorname" placeholder="Vorname" [(myModel)]="contact.vorname"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <input pInputText type="text" name="name" required placeholder="Name" [(ngModel)]="contact.name">
+      </div>
+      <div class="field col-12">
+        <input-text idName="strasse" placeholder="Strasse" [(myModel)]="contact.strasse"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <p-inputNumber mode="decimal" inputId="plz" name="plz" placeholder="Plz" plzValidate [useGrouping]="false" [(ngModel)]="contact.plz"> </p-inputNumber>
+      </div>
+      <div class="field col-12 md:col-6">
+        <input-text idName="ort" placeholder="Ort" [(myModel)]="contact.ort"/>
+      </div>
+
+      <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+      <i class="pi pi-check" (click)="onSpeichern()" *ngIf="!personForm.invalid; else noPersonEditSave"></i>
+      <ng-template #noPersonEditSave>
+        <i class="pi pi-check" style="color:red"></i>
+      </ng-template>
+    </form>
+  </div>
+</ng-template>

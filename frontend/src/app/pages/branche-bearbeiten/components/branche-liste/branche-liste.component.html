@@ -1,5 +1,5 @@
-<div class="shadow-3 p-3">
-  <div class="p-listbox">
+<div grid-card>
+  <div class="field col-12">
       <p-listbox [options]="branchen" [(ngModel)]="selectedBranche" optionLabel="bezeichnung" [routerLink]="['/branche/', selectedBranche.id]">
       </p-listbox>
   </div>

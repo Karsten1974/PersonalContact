@@ -1,80 +1,74 @@
-<div class="grid">
-  <div class="col-12">
+<div *ngIf="!zusatzEdit; else doZusatzEdit">
+  <div class="col-12 p-3">
 
-    <div *ngIf="!zusatzEdit; else noZusatzEdit">
-      <div class="col-12 p-3">
-
-        <div class="flex justify-content-between mb-3">
-          <div>
-            <span class="text-700 font-medium mb-3"><i class="pi pi-user mr-3"></i>{{contact.geburtstag | date: 'mediumDate'}}</span>
-          </div>
-          <div class="flex align-items-center justify-content-center">
-            <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
-          </div>
-        </div>
-
-        <div class="text-800 font-medium">
-          {{contact.bemerkung}}
-        </div>
-
-        <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
-          <br>
-          Todesprio: {{contact.todesprio}}
-        </div>
-        <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
-          {{contact.todesBemerkung}}
-        </div>
-
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="text-700 font-medium mb-3"><i class="pi pi-user mr-3"></i>{{contact.geburtstag | date: 'mediumDate'}}</span>
+      </div>
+      <div class="flex align-items-center justify-content-center">
+        <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
       </div>
     </div>
 
-    <ng-template #noZusatzEdit>
-      <div class="shadow-3 p-3">
-        <form class="p-fluid p-formgrid grid" [formGroup]="zusatzForm">
-          <div class="field col-12">
-            <p-calendar placeholder="Geburtstag" dateFormat="dd.mm.yy" formControlName="geburtstag"></p-calendar>
-          </div>
+    <div class="text-800 font-medium">
+      {{contact.bemerkung}}
+    </div>
 
-          <div class="field col-12">
-            <textarea pInputTextarea rows="3" cols="30" placeholder="Bemerkung" formControlName="bemerkung" ></textarea>
-          </div>
-
-          <div class="field col-12">
-            <label class="font-medium bg-gray-100 border-round p-1">Todesliste</label>
-          </div>
-
-          <div class="field col-12 -mt-4">
-            <label class="font-bold">Prio</label>
-            <div class="flex align-items-center">
-              <p-radioButton formControlName="todesprio" name="todesprio" id="rkeine" value="0"></p-radioButton>
-              <label for="rkeine" class="ml-2">keine</label>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap mb-3 ml-2">
-            <div class="flex align-items-center">
-              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rhoch" value="9"></p-radioButton>
-              <label for="rhoch" class="mx-2">hoch</label>
-            </div>
-            <div class="flex align-items-center">
-              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rmittel" value="4"></p-radioButton>
-              <label for="rmittel" class="mx-2">mittel</label>
-            </div>
-            <div class="flex align-items-center">
-              <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rniedrig" value="1"></p-radioButton>
-              <label for="rniedrig" class="mx-2">niederig</label>
-            </div>
-          </div>
-
-          <div class="field col-12">
-            <input pInputText type="text" formControlName="todesBemerkung" placeholder="Todesbemerkung"/>
-          </div>
-
-          <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
-          <i class="pi pi-check" (click)="onSpeichern()"></i>
-        </form>
-      </div>
-    </ng-template>
+    <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+      <br>
+      Todesprio: {{contact.todesprio}}
+    </div>
+    <div class="text-800 font-medium" *ngIf="contact.todesprio != null && contact.todesprio != '0'">
+      {{contact.todesBemerkung}}
+    </div>
 
   </div>
 </div>
+
+<ng-template #doZusatzEdit>
+  <div class="shadow-3 p-3">
+    <form class="p-fluid p-formgrid grid" [formGroup]="zusatzForm">
+      <div class="field col-12">
+        <p-calendar placeholder="Geburtstag" dateFormat="dd.mm.yy" formControlName="geburtstag"></p-calendar>
+      </div>
+
+      <div class="field col-12">
+        <textarea pInputTextarea rows="3" cols="30" placeholder="Bemerkung" formControlName="bemerkung" ></textarea>
+      </div>
+
+      <div class="field col-12">
+        <label class="font-medium bg-gray-100 border-round p-1">Todesliste</label>
+      </div>
+
+      <div class="field col-12 -mt-4">
+        <label class="font-bold">Prio</label>
+        <div class="flex align-items-center">
+          <p-radioButton formControlName="todesprio" name="todesprio" id="rkeine" value="0"></p-radioButton>
+          <label for="rkeine" class="ml-2">keine</label>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mb-3 ml-2">
+        <div class="flex align-items-center">
+          <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rhoch" value="9"></p-radioButton>
+          <label for="rhoch" class="mx-2">hoch</label>
+        </div>
+        <div class="flex align-items-center">
+          <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rmittel" value="4"></p-radioButton>
+          <label for="rmittel" class="mx-2">mittel</label>
+        </div>
+        <div class="flex align-items-center">
+          <p-radioButton type="radio" formControlName="todesprio" name="todesprio" id="rniedrig" value="1"></p-radioButton>
+          <label for="rniedrig" class="mx-2">niederig</label>
+        </div>
+      </div>
+
+      <div class="field col-12">
+        <input pInputText type="text" formControlName="todesBemerkung" placeholder="Todesbemerkung"/>
+      </div>
+
+      <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+      <i class="pi pi-check" (click)="onSpeichern()"></i>
+    </form>
+  </div>
+</ng-template>

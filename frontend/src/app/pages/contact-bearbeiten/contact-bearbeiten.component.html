@@ -1,7 +1,13 @@
 <div class="grid">
-  <div class="col-12 md:col-6">
-    <contact-person [contact]="contact"></contact-person>
-    <contact-verbindungen [contact]="contact"></contact-verbindungen>
+  <grid-column>
+
+    <div class="card p-fluid">
+      <contact-person [contact]="contact"></contact-person>
+    </div>
+
+    <div class="card p-fluid">
+      <contact-verbindungen [contact]="contact"></contact-verbindungen>
+    </div>
 
     <div class="card p-fluid">
       <p-panel header="Sonstiges" [toggleable]="true" [collapsed]="true" class="line-height-3 m-0">
@@ -9,10 +15,12 @@
       </p-panel>
     </div>
 
-    <div class="flex flex-wrap gap-2">
-      <button pButton pRipple type="button" label="Zurueck" class="p-button-secondary" (click)="onZurueck()"></button>
-      <button pButton pRipple type="button" label="Del" class="p-button-raised p-button-danger" (click)="onDel()"></button>
+    <div class="card">
+      <div class="flex flex-wrap gap-2">
+        <button pButton pRipple type="button" label="Zurueck" class="p-button-secondary" (click)="onZurueck()"></button>
+        <button pButton pRipple type="button" label="Del" class="p-button-raised p-button-danger" (click)="onDel()"></button>
+      </div>
     </div>
 
-  </div>
+  </grid-column>
 </div>

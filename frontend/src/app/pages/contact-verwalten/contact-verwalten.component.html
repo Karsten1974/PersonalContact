@@ -1,42 +1,18 @@
-<div class="shadow-3 p-3">
+<div class="grid">
+  <grid-column>
+    <div grid-card>
+      <div class="field col-12 md:col-6">
+        <input-text idName="suche" placeholder="Suche..." [(myModel)]="suche"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <button pButton pRipple type="button" label="suchen" class="p-button-raised" (click)="onSearch()"></button>
+      </div>
 
-  <div class="grid">
-
-    <div class="col-2">
+      <div class="field col-12">
+        <p-button label="filter"></p-button>
+      </div>
     </div>
-
-    <div class="col-10">
-
-      <form class="ml-3">
-        <div class="grid">
-          <div class="col-6">
-            <div class="shadow-3 p-3">
-
-              <div class="formgrid grid">
-                <div class="field col-4">
-                  <input type="text" pInputText name="suche" placeholder="Suche..." [(ngModel)]="suche">
-                </div>
-                <div class="field col-4">
-                  <p-button label="suchen" (click)="onSearch()"></p-button>
-                </div>
-              </div>
-
-              <div class="field flex">
-                <div class="field col-4">
-                  <p-button label="filter"></p-button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </form>
-
-    </div>
-
-  </div>
-
+  </grid-column>
 </div>
-<div class="shadow-3 p-3">
-  <contact-list [contacts]="contacts" [layout]="layout"></contact-list>
-</div>
+
+<contact-list [contacts]="contacts" [layout]="layout"></contact-list>

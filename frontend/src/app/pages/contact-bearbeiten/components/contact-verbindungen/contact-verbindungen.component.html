@@ -1,48 +1,40 @@
-<div class="grid">
-  <div class="col-12">
+<div *ngIf="!verbindungenEdit; else doVerbindungenEdit">
 
-    <div *ngIf="!verbindungenEdit; else noVerbindungenEdit">
-      <div class="card p-fluid">
-
-        <div class="flex justify-content-between mb-3">
-          <div>
-            <span class="font-medium bg-gray-100 border-round p-2 mb-3">Verbindungsdaten:</span>
-          </div>
-          <div class="flex align-items-center justify-content-center">
-            <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
-          </div>
-        </div>
-
-        <div class="text-800 font-medium mb-1">
-          {{verbindungDaten(contact, 'EMAIL')}}
-        </div>
-
-        <div class="flex justify-content-between mb-3">
-          <div class="text-800 font-medium mt-1">{{verbindungDaten(contact, 'TELEFON')}}</div>
-          <div class="text-800 font-medium mt-1">{{verbindungDaten(contact, 'MOBIL')}}</div>
-        </div>
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="font-medium bg-gray-100 border-round p-2 mb-3">Verbindungsdaten:</span>
+      </div>
+      <div class="flex align-items-center justify-content-center">
+        <i class="pi pi-pencil" (click)="onBearbeiten()"></i>
       </div>
     </div>
 
-    <ng-template #noVerbindungenEdit>
-      <div class="shadow-3 p-3">
-        <form class="card p-fluid p-formgrid grid" [formGroup]="verbindungForm">
+    <div class="text-800 font-medium mb-1">
+      {{verbindungDaten(contact, 'EMAIL')}}
+    </div>
 
-          <div class="field col-12">
-            <input pInputText type="text" formControlName="email" placeholder="EMail">
-          </div>
-          <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="telefon" placeholder="Telefon">
-          </div>
-          <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="mobil" placeholder="Mobil">
-          </div>
-
-          <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
-          <i class="pi pi-check" (click)="onSpeichern()"></i>
-        </form>
-      </div>
-    </ng-template>
-
-  </div>
+    <div class="flex justify-content-between mb-3">
+      <div class="text-800 font-medium mt-1">{{verbindungDaten(contact, 'TELEFON')}}</div>
+      <div class="text-800 font-medium mt-1">{{verbindungDaten(contact, 'MOBIL')}}</div>
+    </div>
 </div>
+
+<ng-template #doVerbindungenEdit>
+  <div class="shadow-3 p-3">
+    <form class="card p-fluid p-formgrid grid" [formGroup]="verbindungForm">
+
+      <div class="field col-12">
+        <input pInputText type="text" formControlName="email" placeholder="EMail">
+      </div>
+      <div class="field col-12 md:col-6">
+        <input pInputText type="text" formControlName="telefon" placeholder="Telefon">
+      </div>
+      <div class="field col-12 md:col-6">
+        <input pInputText type="text" formControlName="mobil" placeholder="Mobil">
+      </div>
+
+      <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+      <i class="pi pi-check" (click)="onSpeichern()"></i>
+    </form>
+  </div>
+</ng-template>
