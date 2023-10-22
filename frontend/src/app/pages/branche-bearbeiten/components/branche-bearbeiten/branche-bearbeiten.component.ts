@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {BrancheDto} from "../../../../backend-api/models/branche-dto";
+import {BrancheFactory} from "../../../../core/factory/branche-factory";
 
 @Component({
   selector: 'branche-bearbeiten',
@@ -7,8 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./branche-bearbeiten.component.css']
 })
 export class BrancheBearbeitenComponent implements OnInit {
-  @Input() branchenForm: FormGroup = new FormGroup('');
-
+  @Input() branche: BrancheDto = BrancheFactory.empty();
   constructor() { }
 
   ngOnInit(): void {

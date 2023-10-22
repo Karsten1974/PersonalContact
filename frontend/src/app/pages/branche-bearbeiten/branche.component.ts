@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrancheService } from '../../shared/service/branche.service';
 import { BrancheFactory } from '../../core/factory/branche-factory';
@@ -12,11 +12,8 @@ import {BrancheCreateDto} from "../../backend-api/models/branche-create-dto";
   styleUrls: ['./branche.component.css']
 })
 export class BrancheComponent implements OnInit {
-  branchenForm: FormGroup = this.fb.group({
-    bezeichnung: ['']
-  });
 
-  brancheLoaded: BrancheDto = BrancheFactory.empty();
+  branche: BrancheDto = BrancheFactory.empty();
 
   branchen: BrancheDto[] = [];
 
@@ -34,7 +31,7 @@ export class BrancheComponent implements OnInit {
       this.brancheUUID = pBrancheUUID;
     } else {
       this.brancheUUID = '';
-      this.brancheLoaded = BrancheFactory.empty();
+      this.branche = BrancheFactory.empty();
     }
     this.initForm();
   }
@@ -44,23 +41,20 @@ export class BrancheComponent implements OnInit {
 
     if (this.editMode) {
       this.ds.getBranche(this.brancheUUID).subscribe(t => {
-        this.brancheLoaded = t;
-        this.branchenForm.patchValue(t);
+        this.branche = t;
       });
     }
 
   }
 
   submitForm() {
-    const formValue = this.branchenForm.value;
-
     if (this.editMode) {
-      const branche: BrancheDto = {...formValue, version: this.brancheLoaded.version, id: this.brancheLoaded.id};
+      const branche: BrancheDto = {'version': this.branche.version, 'id': this.branche.id, 'fachCode': this.branche.fachCode, 'bezeichnung': this.branche.bezeichnung};
       this.ds.updateBranche(branche).subscribe(() => {
         this.router.navigate(['/branche/', branche.id]);
       });
     } else {
-      const branche: BrancheCreateDto = {...formValue};
+      const branche: BrancheCreateDto = {'fachCode': this.branche.fachCode, 'bezeichnung': this.branche.bezeichnung}
       this.ds.createBranche(branche).subscribe(t => {
         this.router.navigate(['/branche/', t]);
       });

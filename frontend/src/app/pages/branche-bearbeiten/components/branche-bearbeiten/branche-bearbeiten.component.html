@@ -1,8 +1,13 @@
-<form [formGroup]="branchenForm">
+<form #branchenForm="ngForm">
     <div grid-card>
       <div class="field col-12">
-        <label for="branchefield">Branche</label>
-        <input id="branchefield" class="pr-8" type="text" pInputText formControlName="bezeichnung" placeholder="Name">
+        <label>Branche</label>
+      </div>
+      <div class="-mt-4 field col-12 md:col-6">
+        <input pInputText type="text" name="branchefachcode" required placeholder="Fachcode" [(ngModel)]="branche.fachCode">
+      </div>
+      <div class="-mt-4 field col-12 md:col-6">
+        <input pInputText type="text" name="branchefield" required placeholder="Name" [(ngModel)]="branche.bezeichnung">
       </div>
     </div>
 </form>
