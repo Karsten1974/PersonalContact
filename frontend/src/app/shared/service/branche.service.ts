@@ -23,17 +23,26 @@ export class BrancheService {
   }
 
   createBranche(branche: BrancheCreateDto): Observable<string> {
-    let myBranche = {...branche, fachCode: branche.bezeichnung.substring(0,2)};
-    return this.bs.create1({body: myBranche});
+    this.convertFachcode(branche);
+    return this.bs.create1({body: branche});
   }
 
   updateBranche(branche: BrancheDto): Observable<any> {
-    let myBranche = {...branche, fachCode: branche.bezeichnung.substring(0,2)};
-    return this.bs.update1({body: myBranche});
+    this.convertFachcode(branche);
+    return this.bs.update1({body: branche});
   }
 
   deleteBranche(brancheUUID: string): Observable<any> {
     return this.bs.delete1({brancheUUID: brancheUUID});
+  }
+
+  convertFachcode(branche: BrancheCreateDto) {
+    if (branche.fachCode != null && branche.fachCode != undefined) {
+      branche.fachCode = branche.fachCode + branche.bezeichnung;
+      branche.fachCode = branche.fachCode.substring(0,2);
+    } else {
+      branche.fachCode = branche.bezeichnung.substring(0,2);
+    }
   }
 
 }

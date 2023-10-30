@@ -36,7 +36,22 @@ export class ContactPersonComponent implements OnInit {
   }
 
   onBearbeiten() {
-    this.bs.getBrancheByFachCode(this.contact.brancheFachCode).subscribe(res => this.selBranche = res);
+    this.bs.getBrancheByFachCode(this.contact.brancheFachCode).subscribe({
+        next: res => {
+          this.selBranche = res;
+        }, error: () => {
+          // Branche Temp. erstellen ...
+          this.selBranche = {
+            fachCode: this.contact.brancheFachCode,
+            bezeichnung: this.contact.brancheBezeichnung,
+            id: '0', version: 0
+          };
+
+          //... und zufügen
+          this.branchen.push(this.selBranche);
+        }
+      }
+    );
     this.personEdit = true;
   }
 
