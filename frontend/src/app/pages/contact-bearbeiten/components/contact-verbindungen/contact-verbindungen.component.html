@@ -21,19 +21,22 @@
 
 <ng-template #doVerbindungenEdit>
   <div class="shadow-3 p-3">
-    <form class="card p-fluid p-formgrid grid" [formGroup]="verbindungForm">
+    <form [formGroup]="verbindungsdatenForm">
 
-      <div class="field col-12">
-        <input pInputText type="text" formControlName="email" placeholder="EMail">
-      </div>
-      <div class="field col-12 md:col-6">
-        <input pInputText type="text" formControlName="telefon" placeholder="Telefon">
-      </div>
-      <div class="field col-12 md:col-6">
-        <input pInputText type="text" formControlName="mobil" placeholder="Mobil">
+      <div formArrayName="verbindungsdaten">
+        <div class="card p-fluid p-formgrid grid" *ngFor="let vdItem of controls; let i = index" [formGroupName]="i">
+
+          <div class="field col-12 md:col-6">
+            <p-dropdown formControlName="verbindungsart" [options]="verbindungsdatenArten" optionLabel="bezeichnung"></p-dropdown>
+          </div>
+          <div class="field col-12 md:col-6">
+            <input pInputText type="text" formControlName="verbindungsdaten" placeholder="Nr">
+          </div>
+
+        </div>
       </div>
 
-      <i class="pi pi-times mr-3 ml-2" (click)="onCancel()"></i>
+      <i class="pi pi-times mr-3 ml-2 mt-3" (click)="onCancel()"></i>
       <i class="pi pi-check" (click)="onSpeichern()"></i>
     </form>
   </div>
