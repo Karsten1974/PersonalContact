@@ -35,6 +35,7 @@ import { InputNumberComponent } from './shared/components/input-number/input-num
 import { GridColumnComponent } from './shared/components/grid-column/grid-column.component';
 import { GridCardComponent } from './shared/components/grid-card/grid-card.component';
 import { InputPlzComponent } from './shared/components/input-plz/input-plz.component';
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { InputPlzComponent } from './shared/components/input-plz/input-plz.compo
     DataViewModule,
     InputNumberModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

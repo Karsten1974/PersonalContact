@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ContactDto} from "../../../../backend-api/models/contact-dto";
 import {VerbindungDto} from "../../../../backend-api/models/verbindung-dto";
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ContactService} from "../../../../shared/service/contact.service";
 
 @Component({
@@ -10,7 +9,7 @@ import {ContactService} from "../../../../shared/service/contact.service";
   styleUrls: ['./contact-verbindungen.component.css']
 })
 export class ContactVerbindungenComponent implements OnInit, OnChanges {
-  verbindungsdatenArten: { verbindungsart: string; bezeichnung: string }[] = [
+  verbindungsArten: { verbindungsart: string; bezeichnung: string }[] = [
   {
     verbindungsart: 'TELEFON',
     bezeichnung: 'Tel'
@@ -24,7 +23,12 @@ export class ContactVerbindungenComponent implements OnInit, OnChanges {
     bezeichnung: 'eMail'
   }
   ];
-  verbindungsdatenForm: FormGroup = new FormGroup('');
+
+  verbindungen: VerbindungDto[] | undefined;
+  selectedVerbindung: VerbindungDto | undefined;
+  editVerbindungsArt= this.verbindungsArten[0];
+  editVerbindungsdaten: string = '';
+
   verbindungenEdit = false;
   @Input() contact : ContactDto = {
     version: 0,
@@ -32,18 +36,14 @@ export class ContactVerbindungenComponent implements OnInit, OnChanges {
     brancheFachCode: '',
     brancheBezeichnung: ''
   };
-  constructor(private fb: FormBuilder, private cs: ContactService) { }
+  constructor(private cs: ContactService) { }
 
   ngOnInit(): void {
-    let verbindungsdatenFormArray = new FormArray<FormGroup>([]);
-    this.verbindungsdatenForm = new FormGroup({
-      'verbindungsdaten': verbindungsdatenFormArray
-    });
   }
 
   ngOnChanges() {
     if (this.contact.id) {
-      this.loadVebindungsdaten();
+      this.loadVerbindungsdaten();
     }
   }
 
@@ -64,13 +64,60 @@ export class ContactVerbindungenComponent implements OnInit, OnChanges {
     return "";
   }
 
+  verbindungArt(verbindung: VerbindungDto): string | undefined  {
+    for (let vdaItem of this.verbindungsArten) {
+      if (vdaItem.verbindungsart === verbindung.verbindungsart) {
+        return vdaItem.bezeichnung;
+      }
+    }
+
+    return "";
+  }
+
   onCancel() {
     this.verbindungenEdit = false;
+    this.resetEingabeFelderUndSelection();
   }
 
   onSpeichern() {
-    const formValue = this.verbindungsdatenForm.value;
-    let verbindungsdatenFormArray = formValue['verbindungsdaten'];
+    if (this.selectedVerbindung) {
+      this.verbindungen?.forEach(value => {
+
+        if (value.id === this.selectedVerbindung?.id) {
+
+          if (this.editVerbindungsArt.verbindungsart === 'TELEFON') {
+            value.verbindungsart = 'TELEFON';
+          } else if (this.editVerbindungsArt.verbindungsart === 'MOBIL') {
+            value.verbindungsart = 'MOBIL';
+          } if (this.editVerbindungsArt.verbindungsart === 'EMAIL') {
+            value.verbindungsart = 'EMAIL';
+          }
+
+          value.verbindungsdaten = this.editVerbindungsdaten;
+        }
+      });
+
+    } else {
+      if (this.editVerbindungsdaten != '') {
+        let vb :VerbindungDto = {
+          id:'',
+          reihenfolge: 0,
+          version: 0,
+          verbindungsdaten: this.editVerbindungsdaten,
+          verbindungsart: 'TELEFON'
+        };
+
+        if (this.editVerbindungsArt.verbindungsart === 'TELEFON') {
+          vb.verbindungsart = 'TELEFON';
+        } else if (this.editVerbindungsArt.verbindungsart === 'MOBIL') {
+          vb.verbindungsart = 'MOBIL';
+        } if (this.editVerbindungsArt.verbindungsart === 'EMAIL') {
+          vb.verbindungsart = 'EMAIL';
+        }
+
+        this.verbindungen?.push(vb);
+      }
+    }
 
     this.cs.getContact(this.contact.id).subscribe(res => {
 
@@ -87,90 +134,66 @@ export class ContactVerbindungenComponent implements OnInit, OnChanges {
         'bemerkung': res.bemerkung,
         'todesprio': res.todesprio,
         'todesBemerkung': res.todesBemerkung,
-        'verbindungen': res.verbindungen
+        'verbindungen': this.verbindungen
       };
-
-      let verbindungen = new Array<VerbindungDto>;
-
-      for (let frmGrp of verbindungsdatenFormArray) {
-
-        let vb :VerbindungDto = {
-          id:frmGrp['id'],
-          reihenfolge: frmGrp['reihenfolge'],
-          version: frmGrp['version'],
-          verbindungsdaten: frmGrp['verbindungsdaten'],
-          verbindungsart: 'TELEFON'
-        };
-
-        if (frmGrp['verbindungsart'].verbindungsart === 'TELEFON') {
-          vb.verbindungsart = 'TELEFON';
-        } else if (frmGrp['verbindungsart'].verbindungsart === 'MOBIL') {
-          vb.verbindungsart = 'MOBIL';
-        } if (frmGrp['verbindungsart'].verbindungsart === 'EMAIL') {
-          vb.verbindungsart = 'EMAIL';
-        }
-
-        verbindungen.push(vb);
-      }
-
-      saveContact.verbindungen = verbindungen;
 
       this.cs.updateContact(saveContact).subscribe( res => {
         this.verbindungenEdit = false;
         this.contact = saveContact;
+        this.resetEingabeFelderUndSelection();
+        this.loadVerbindungsdaten();
       });
 
     });
 
   }
 
-  private loadVebindungsdaten() {
+  private loadVerbindungsdaten() {
     this.cs.getContact(this.contact.id).subscribe(res=> {
-      let verbindungsdaten: VerbindungDto[] | undefined = res.verbindungen;
+      this.verbindungen = res.verbindungen;
+    });
+  }
 
-      /* Verbindungsdaten bestehen aus Zeilen mit jeweils 2 Controls
-       * Die Zeilen (Array) werden als >verbindungsdaten< in einer FormGroup abgelegt.
-       */
-      let verbindungsdatenFormArray = new FormArray<FormGroup>([]);
+  onDeleteVerbindung(verbindung: VerbindungDto) {
+    if (this.verbindungen) {
+      let verbindungenNeue = this.verbindungen.filter(value => {
+        return value.id != verbindung.id;
+      });
 
-      if (verbindungsdaten != undefined) {
-        let verbindungsartItem;
-        for (let vdItem of verbindungsdaten) {
+      this.verbindungen = verbindungenNeue;
+      this.onSpeichern();
+    }
+  }
 
-          // passende Verbindunsdatenart zu Verbindungsdaten suchen
-          let bFound = false;
-          for (let vdaItem of this.verbindungsdatenArten) {
-            if (vdaItem.verbindungsart === vdItem.verbindungsart) {
-              verbindungsartItem = vdaItem;
-              bFound = true;
-            }
-          }
+  onNeu() {
+    this.resetEingabeFelderUndSelection()
+  }
 
-          if (!bFound) {
-            verbindungsartItem = this.verbindungsdatenArten[0];
-          }
+  private resetEingabeFelderUndSelection() {
+    this.selectedVerbindung = undefined;
 
-          verbindungsdatenFormArray.push(
-            new FormGroup({
-              'verbindungsart': new FormControl(verbindungsartItem),
-              'verbindungsdaten': new FormControl(vdItem.verbindungsdaten),
-              'id': new FormControl(vdItem.id),
-              'reihenfolge': new FormControl(vdItem.reihenfolge),
-              'version': new FormControl(vdItem.version)
-            })
-          );
+    this.editVerbindungsArt = this.verbindungsArten[0];
+    this.editVerbindungsdaten = '';
+  }
+
+  onSelectVerbindung() {
+    let verbArtItem = this.verbindungsArten[0];
+    let verbDaten = '';
+
+    if (this.selectedVerbindung) {
+      for (let vdaItem of this.verbindungsArten) {
+        if (vdaItem.verbindungsart === this.selectedVerbindung.verbindungsart) {
+          verbArtItem = vdaItem;
         }
       }
 
-      this.verbindungsdatenForm = new FormGroup({
-        'verbindungsdaten': verbindungsdatenFormArray
-      });
+      if (this.selectedVerbindung.verbindungsdaten) {
+        verbDaten = this.selectedVerbindung.verbindungsdaten;
+      }
+    }
 
-    });
-  }
-
-  get controls() {
-    return (<FormArray>this.verbindungsdatenForm.get('verbindungsdaten')).controls;
+    this.editVerbindungsArt = verbArtItem;
+    this.editVerbindungsdaten = verbDaten;
   }
 
 }

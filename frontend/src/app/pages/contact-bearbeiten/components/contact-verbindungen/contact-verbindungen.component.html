@@ -21,23 +21,38 @@
 
 <ng-template #doVerbindungenEdit>
   <div class="shadow-3 p-3">
-    <form [formGroup]="verbindungsdatenForm">
+    <form class="card p-fluid p-formgrid grid">
 
-      <div formArrayName="verbindungsdaten">
-        <div class="card p-fluid p-formgrid grid" *ngFor="let vdItem of controls; let i = index" [formGroupName]="i">
-
-          <div class="field col-12 md:col-6">
-            <p-dropdown formControlName="verbindungsart" [options]="verbindungsdatenArten" optionLabel="bezeichnung"></p-dropdown>
-          </div>
-          <div class="field col-12 md:col-6">
-            <input pInputText type="text" formControlName="verbindungsdaten" placeholder="Nr">
-          </div>
-
-        </div>
+      <div class="field col-12 md:col-6">
+        <p-dropdown id="verbindungsart" name="verbindungsart" [options]="verbindungsArten" optionLabel="bezeichnung" [(ngModel)]="this.editVerbindungsArt"/>
+      </div>
+      <div class="field col-12 md:col-6">
+        <input-text idName="verbindungsdatenNr" placeholder="Nr" [(myModel)]="this.editVerbindungsdaten"/>
       </div>
 
-      <i class="pi pi-times mr-3 ml-2 mt-3" (click)="onCancel()"></i>
-      <i class="pi pi-check" (click)="onSpeichern()"></i>
+      <p-table [value]="this.verbindungen" selectionMode="single"
+               [(selection)]="selectedVerbindung" class="field col-12" *ngIf="this.verbindungen">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Art</th>
+            <th>Daten</th>
+            <th style="width: 1rem"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-verbindung>
+          <tr [pSelectableRow]="verbindung" (click)="onSelectVerbindung()">
+            <td>{{verbindungArt(verbindung)}}</td>
+            <td>{{verbindung.verbindungsdaten}}</td>
+            <td>
+              <i class="pi pi-trash" (click)="onDeleteVerbindung(verbindung)"></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <i class="pi pi-times" (click)="onCancel()"></i>
+      <i class="pi pi-check mr-3 ml-3" (click)="onSpeichern()"></i>
+      <i class="pi pi-plus" (click)="onNeu()"></i>
     </form>
   </div>
 </ng-template>
