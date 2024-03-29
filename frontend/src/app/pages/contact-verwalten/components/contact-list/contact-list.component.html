@@ -9,8 +9,8 @@
           </div>
         </ng-template>
 
-        <ng-template let-ct pTemplate="listItem">
-          <div class="col-12 mySelect" [routerLink]="['/bearbeiten/', ct.id]">
+        <ng-template let-cts pTemplate="listItem">
+          <div class="col-12 mySelect" *ngFor="let ct of cts" [routerLink]="['/bearbeiten/', ct.id]">
             <div class="flex flex-column md:flex-row align-items-center p-3 w-full">
 
               <div class= "flex-1 flex flex-column text-left">
@@ -31,8 +31,8 @@
           </div>
         </ng-template>
 
-        <ng-template let-ct pTemplate="gridItem">
-          <div class="col-12 mySelect md:col-4" [routerLink]="['/bearbeiten/', ct.id]">
+        <ng-template let-cts pTemplate="gridItem">
+          <div class="col-12 mySelect md:col-4" *ngFor="let ct of cts" [routerLink]="['/bearbeiten/', ct.id]">
             <div class="card m-3 border-1 surface-border">
               <div class="flex flex-column text-left mb-3">
                 <div class="text-2xl font-bold">{{ct.name}}, {{ct.vorname}}</div>

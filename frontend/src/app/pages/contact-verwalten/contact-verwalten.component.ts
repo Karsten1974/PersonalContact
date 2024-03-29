@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ContactVerwaltenComponent implements OnInit {
   contacts: ContactDto[] = [];
-  layout: string = "list";
+  layout: 'list' | 'grid' = "list";
   suche: string = "";
 
   constructor(private cs: ContactService, private route: ActivatedRoute) {}

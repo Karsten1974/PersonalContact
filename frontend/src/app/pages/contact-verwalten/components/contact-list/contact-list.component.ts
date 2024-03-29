@@ -9,7 +9,7 @@ import {VerbindungDto} from "../../../../backend-api/models/verbindung-dto";
 })
 export class ContactListComponent implements OnInit {
   @Input() contacts: ContactDto[] = [];
-  @Input() layout: string = "list";
+  @Input() layout: 'list' | 'grid' = "list";
   constructor() {}
 
   ngOnInit(): void {
