@@ -1,1 +1,1 @@
-<p-inputNumber mode="decimal" inputId="{{idName}}" name="{{idName}}" plzValidate [useGrouping]="false" [ngModel]="myModel" (ngModelChange)="ngChangeEvent($event)"/>
+<p-inputNumber #plzModel="ngModel" mode="decimal" inputId="{{idName}}" name="{{idName}}" plzValidate [useGrouping]="false" [ngModel]="myModel" (ngModelChange)="ngChangeEvent($event)"/>
